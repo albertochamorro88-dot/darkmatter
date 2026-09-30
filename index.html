@@ -1,0 +1,1637 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dark Matter™</title>
+<meta name="description" content="Dark Matter™ is a haute couture house from another reality. Enter the hall, meet the muses, watch the season.">
+<meta property="og:title" content="Dark Matter™">
+<meta property="og:description" content="Haute couture from another reality. Season 01 · 30.09 → 28.11.2026">
+<meta property="og:image" content="a/og.jpg">
+<meta name="theme-color" content="#0A0E08">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Una sola noche: la reliquia abre el sitio, la cámara retrocede y revela la sala de pantallas; en ellas esperan las musas. Después: invitación, pasarela, film, encuentro, temporada, library sellada y salida. Mundo verde-gris y frío; el rojo es lo único que grita. */
+:root{
+  --negro:#0A0E08; --sombra:#1F231F; --niebla:#5E686C; --laca:#4B1913; --rojo:#E12423; --cromo:#ABB8C5; --hueso:#C9C5BA;
+  --txt:rgba(201,197,186,.8); --soft:rgba(171,184,197,.62);
+  --line:rgba(171,184,197,.12); --line2:rgba(171,184,197,.26); --ghost:rgba(94,104,108,.3); --ghost2:rgba(171,184,197,.4);
+  --f-ui:"Geist","Helvetica Neue",Arial,sans-serif; --f-mono:"Geist Mono",ui-monospace,Menlo,monospace;
+  --side:clamp(16px,2.2vw,30px); --rail:96px; --ease:cubic-bezier(.7,0,.2,1); --out:cubic-bezier(.2,.7,.2,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--negro)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+html.lock,html.lock body{overflow:hidden}
+html.inv{filter:invert(1) hue-rotate(180deg)}
+html.inv img,html.inv video,html.inv canvas{filter:invert(1) hue-rotate(180deg)}
+body{margin:0;background:var(--negro);color:var(--txt);font:300 16px/1.6 var(--f-ui);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0;padding:0}
+a{color:inherit}
+img,video,canvas{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+::selection{background:var(--rojo);color:var(--negro)}
+:focus-visible{outline:1px solid var(--rojo);outline-offset:3px}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lab{font:400 10px/1.5 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.n{font:500 1em/1 var(--f-mono);letter-spacing:.04em;color:var(--rojo)}
+.red{color:var(--rojo)}
+.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--rojo);vertical-align:1px;animation:blink 1.3s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.btn{display:inline-flex;align-items:center;gap:10px;font:400 10px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;padding:12px 16px 11px;border:1px solid var(--line2);background:transparent;color:var(--hueso);text-decoration:none;transition:border-color .3s,background .3s,color .3s;white-space:nowrap}
+.btn:hover{border-color:var(--hueso)}
+.btn.solid{background:var(--hueso);border-color:var(--hueso);color:var(--negro)}
+.btn.solid:hover{background:#fff}
+.btn.hot{background:var(--rojo);border-color:var(--rojo);color:var(--negro)}
+.btn.hot:hover{background:var(--hueso);border-color:var(--hueso)}
+.btn[hidden]{display:none}
+.mk{position:absolute;z-index:13;width:13px;height:13px;pointer-events:none}
+.mk::before,.mk::after{content:"";position:absolute;background:var(--cromo);opacity:.7}
+.mk::before{left:6px;top:0;width:1px;height:13px}.mk::after{top:6px;left:0;height:1px;width:13px}
+.disp{font:600 clamp(56px,10.8vw,196px)/.86 var(--f-ui);letter-spacing:-.055em;text-transform:uppercase}
+
+/* ——— capa fija ——— */
+.fx{position:fixed;z-index:60}
+#bar{top:0;left:0;right:0;height:1px;background:var(--rojo);transform-origin:0 50%;transform:scaleX(0)}
+.brand{top:10px;left:var(--side);display:flex;align-items:baseline;gap:.34em;text-decoration:none;font:600 clamp(20px,2.5vw,38px)/1 var(--f-ui);letter-spacing:-.05em;text-transform:uppercase;color:var(--hueso);white-space:nowrap}
+.brand sup{font-size:.4em;vertical-align:top;position:relative;top:.12em;letter-spacing:0}
+.brand .tg{font-weight:300;color:var(--ghost2);letter-spacing:-.04em}
+.icons{top:calc(16px + clamp(20px,2.5vw,38px));left:var(--side);display:flex;gap:6px}
+.icons a{width:28px;height:28px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;background:rgba(10,14,8,.6);transition:border-color .2s}
+.icons a:hover{border-color:var(--rojo)}
+.icons img{width:17px;height:auto}.icons svg{width:13px;height:13px}
+.top-r{top:14px;right:var(--side);display:flex;gap:18px;align-items:center}
+.sw{display:inline-flex;align-items:center;gap:9px;background:none;border:0;padding:4px 0;font:400 10px/1 var(--f-mono);letter-spacing:.16em;color:var(--soft)}
+.sw i{position:relative;width:24px;height:11px;border:1px solid var(--line2)}
+.sw i::after{content:"";position:absolute;top:1px;left:1px;width:7px;height:7px;background:var(--niebla);transition:transform .3s,background .3s}
+.sw.on{color:var(--hueso)} .sw.on i::after{transform:translateX(13px);background:var(--rojo)}
+.top-r a{font:400 10px/1 var(--f-mono);letter-spacing:.14em;color:var(--hueso);text-decoration:none}
+.lang{display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line2);padding:2px}
+.lang button{background:none;border:0;padding:5px 7px 4px;font:400 10px/1 var(--f-mono);letter-spacing:.16em;color:var(--niebla);transition:color .25s,background .25s}
+.lang button:hover{color:var(--hueso)}
+.lang button[aria-pressed="true"]{background:var(--hueso);color:var(--negro)}
+html.pre .fx.top-r:not(#bar){opacity:1;pointer-events:auto}
+html.pre .top-r > :not(.lang){opacity:0;pointer-events:none}
+.top-r a:hover{color:var(--rojo)}
+.chnav{right:var(--side);top:50%;transform:translateY(-50%);display:grid;gap:8px;justify-items:end;transition:opacity .5s}
+.chnav a{display:flex;align-items:center;gap:10px;text-decoration:none;font:400 9.5px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--niebla);transition:color .3s}
+.chnav a span{opacity:0;transform:translateX(6px);transition:opacity .3s,transform .3s}
+.chnav a:hover span,.chnav a.on span{opacity:1;transform:none}
+.chnav a::after{content:"";width:10px;height:1px;background:currentColor;transition:width .4s var(--out)}
+.chnav a.on{color:var(--hueso)} .chnav a.on::after{width:26px;background:var(--rojo)}
+.chlab{right:var(--side);bottom:22px;font:400 10px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft);text-align:right;transition:opacity .5s}
+.chlab b{font-weight:500;color:var(--rojo);margin-right:8px}
+.stamp{left:var(--side);bottom:18px;width:70px;height:70px;display:grid;place-items:center;transition:opacity .5s}
+.stamp svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 26s linear infinite}
+.stamp text{font:400 7.4px var(--f-mono);letter-spacing:.2em;fill:var(--niebla);text-transform:uppercase}
+.stamp img{width:24px;opacity:.85}
+html.imm .chlab,html.imm .stamp{opacity:0;pointer-events:none}
+html.pre .fx:not(#bar){opacity:0;pointer-events:none}
+.fx{transition:opacity .8s}
+#grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.06;mix-blend-mode:overlay;background-size:170px 170px;animation:grain .9s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+#cur{position:fixed;left:0;top:0;z-index:95;pointer-events:none;opacity:0;transition:opacity .3s}
+#cur i{position:absolute;left:-14px;top:-14px;width:28px;height:28px;border:1px solid rgba(201,197,186,.6);border-radius:50%;transition:transform .35s var(--out),border-color .3s,background .3s}
+#cur span{position:absolute;left:20px;top:-5px;font:400 9px/1 var(--f-mono);letter-spacing:.16em;color:var(--hueso);white-space:nowrap;opacity:0;transition:opacity .25s}
+#cur.lb i{transform:scale(1.6);border-color:var(--rojo)}
+#cur.lb span{opacity:1}
+#cur.hold i{transform:scale(.6);background:var(--rojo);border-color:var(--rojo)}
+
+/* ——— la sala: intro + musas en una sola escena ——— */
+.hall{position:relative;height:620vh}
+.stage{position:sticky;top:0;height:100vh;height:calc(var(--vh,1vh)*100);overflow:hidden}
+#hall3d{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.hall-fb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.veil{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 85% 75% at 50% 50%,transparent 55%,rgba(10,14,8,.8) 100%),repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px)}
+/* intro */
+.intro-ui{position:absolute;inset:0;z-index:5;pointer-events:none;transition:opacity 1s}
+.intro-ui.gone{opacity:0}
+.intro-ui .row{position:absolute;left:var(--side);right:var(--side);display:flex;justify-content:space-between;gap:16px}
+.intro-ui .top{top:22px}.intro-ui .bot{bottom:24px;align-items:flex-end}
+.in-mid{position:absolute;left:50%;bottom:clamp(60px,9vh,110px);transform:translateX(-50%);display:grid;justify-items:center;gap:16px;width:min(760px,90vw);pointer-events:auto}
+.in-mid .in-line{width:min(420px,100%)}
+.in-say{font:600 clamp(22px,2.4vw,34px)/1 var(--f-ui);letter-spacing:-.04em;text-transform:uppercase;color:var(--hueso);text-align:center}
+.in-line{position:relative;width:100%;height:1px;background:var(--line2)}
+.in-line i{position:absolute;left:0;top:0;height:1px;width:0;background:var(--hueso)}
+.in-pct{font:400 11px/1 var(--f-mono);letter-spacing:.2em;color:var(--cromo)}
+.in-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;opacity:0;transform:translateY(8px);transition:opacity .8s,transform .8s var(--out);pointer-events:none}
+.stage.ready .in-btns{opacity:1;transform:none;pointer-events:auto}
+/* musas */
+.mz-info{position:absolute;z-index:4;left:var(--side);bottom:clamp(70px,11vh,120px);max-width:min(420px,40vw);display:grid;gap:14px;opacity:0;transform:translateY(16px);transition:opacity .6s,transform .8s var(--out);pointer-events:none}
+.mz-info.on{opacity:1;transform:none;pointer-events:auto}
+.mz-info .n{font-size:14px}
+.mz-info h2{font:600 clamp(40px,5vw,86px)/.86 var(--f-ui);letter-spacing:-.055em;text-transform:uppercase;color:var(--hueso)}
+.mz-info p{font-size:15px;max-width:34ch}
+.mz-attr{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font:400 10px/1.5 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;border-top:1px solid var(--line);padding-top:12px}
+.mz-attr dt{color:var(--niebla)} .mz-attr dd{color:var(--hueso)}
+.mz-hold{display:flex;align-items:center;gap:12px;font:400 10px/1 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--hueso)}
+.mz-hold svg{width:36px;height:36px}
+.mz-hold circle{fill:none;stroke-width:1.5}
+.mz-hold .bg{stroke:rgba(201,197,186,.25)} .mz-hold .fg{stroke:var(--rojo);stroke-dasharray:100.5;stroke-dashoffset:100.5;transform:rotate(-90deg);transform-origin:50% 50%}
+.mz-line{position:absolute;z-index:4;left:50%;top:clamp(90px,15vh,140px);transform:translateX(-50%);font:500 clamp(14px,1.3vw,18px)/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--rojo);text-align:center;opacity:0;transition:opacity .6s;pointer-events:none;text-shadow:0 2px 14px rgba(0,0,0,.8);width:90%}
+.mz-line.on{opacity:1}
+.mz-list{position:absolute;z-index:4;right:calc(var(--side) + var(--rail) + 4px);bottom:clamp(70px,11vh,120px);list-style:none;display:grid;gap:8px;opacity:0;transition:opacity .6s}
+.mz-list.on{opacity:1}
+.mz-list button{display:flex;align-items:center;gap:12px;justify-content:flex-end;background:none;border:0;padding:3px 0;color:var(--niebla);font:400 10px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;transition:color .3s}
+.mz-list img{width:64px;height:36px;object-fit:cover;filter:grayscale(1) brightness(.55);transition:filter .4s;order:2}
+.mz-list button:hover,.mz-list button.on{color:var(--hueso)}
+.mz-list button.on img,.mz-list button:hover img{filter:none}
+.mz-list button.on b{color:var(--rojo)}
+.mz-list b{font-weight:500}
+.hall-cap{position:absolute;z-index:4;left:50%;bottom:clamp(64px,10vh,110px);transform:translateX(-50%);text-align:center;display:grid;gap:10px;justify-items:center;opacity:0;transition:opacity .6s;pointer-events:none;width:92%}
+.hall-cap.on{opacity:1}
+.hall-cap h1{font:600 clamp(34px,5.4vw,96px)/.86 var(--f-ui);letter-spacing:-.055em;text-transform:uppercase;color:var(--hueso)}
+.hall-foot{position:absolute;z-index:4;left:0;right:0;bottom:24px;display:flex;justify-content:center;gap:28px;font:400 10px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft);pointer-events:none;opacity:0;transition:opacity .6s}
+.hall-foot.on{opacity:1}
+
+/* ——— capítulos ——— */
+.ch{padding:22vh calc(var(--side) + var(--rail)) 8vh var(--side);display:grid;justify-items:start;gap:16px;max-width:1600px;margin:0 auto}
+.ch-n{font:500 13px/1 var(--f-mono);letter-spacing:.16em;color:var(--rojo)}
+.ch-t{color:var(--hueso);display:flex;flex-wrap:wrap}
+.ch-t .w{display:inline-flex;overflow:hidden;padding-bottom:.04em;margin-right:.2em}
+.ch-t .c{display:inline-block;transform:translateY(105%);transition:transform 1.1s var(--out);transition-delay:calc(var(--i) * 26ms)}
+.ch.in .ch-t .c{transform:none}
+.ch-s{font:300 clamp(16px,1.3vw,19px)/1.5 var(--f-ui);color:var(--soft);max-width:46ch;opacity:0;transform:translateY(12px);transition:opacity 1s .35s,transform 1s .35s var(--out)}
+.ch.in .ch-s{opacity:1;transform:none}
+.nomo .ch-t .c,.nomo .ch-s{transform:none;opacity:1}
+
+/* invitación */
+.invite{position:relative;height:420vh}
+.inv-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.34) saturate(.8);will-change:transform}
+.inv-veil{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(10,14,8,.2) 10%,var(--negro) 95%)}
+.inv-lines{position:absolute;inset:0;display:grid;place-items:center;padding:0 var(--side)}
+.inv-lines p{grid-area:1/1;max-width:16ch;text-align:center;font:600 clamp(40px,6.2vw,110px)/.9 var(--f-ui);letter-spacing:-.05em;text-transform:uppercase;color:var(--hueso);opacity:0;filter:blur(14px);will-change:opacity,filter,transform}
+.inv-lines p em{font-style:normal;color:var(--rojo)}
+.inv-count{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);font:400 10px/1 var(--f-mono);letter-spacing:.2em;color:var(--soft)}
+
+/* pasarela horizontal */
+.runway{position:relative}
+.rw-ghost{position:absolute;left:0;top:50%;transform:translateY(-50%);white-space:nowrap;font:600 clamp(120px,22vw,380px)/.8 var(--f-ui);letter-spacing:-.07em;text-transform:uppercase;color:rgba(94,104,108,.12);pointer-events:none;will-change:transform}
+.rw-track{position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;gap:clamp(30px,4vw,80px);padding:0 calc(50vw - min(31vw, 55vh));will-change:transform}
+.wd{flex:0 0 auto;display:grid;gap:14px;width:min(62vw,110vh);transform:scale(.86);opacity:.4;transition:transform 1s var(--out),opacity .8s}
+.wd.on{transform:none;opacity:1}
+.wd-m{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--sombra)}
+.wd-m img,.wd-m video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.wd-m video{opacity:0;transition:opacity .8s}
+.wd-m video.ok{opacity:1}
+.wd-m .n{position:absolute;left:14px;top:12px;font-size:13px;color:var(--hueso)}
+.wd-t{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.wd h3{font:600 clamp(24px,2.4vw,40px)/.9 var(--f-ui);letter-spacing:-.045em;text-transform:uppercase;color:var(--hueso)}
+.wd p{font:400 10px/1.5 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--soft);text-align:right}
+.rw-bar{position:absolute;left:calc(var(--side) + 90px);right:calc(var(--side) + 90px);bottom:30px;display:flex;align-items:center;gap:16px;font:400 10px/1 var(--f-mono);letter-spacing:.16em;color:var(--soft)}
+.rw-bar .tr{flex:1;height:1px;background:var(--line2);position:relative}
+.rw-bar .tr i{position:absolute;left:0;top:0;height:1px;width:0;background:var(--rojo)}
+.rw-bar b{font-weight:400;color:var(--hueso)}
+
+/* film */
+.film{position:relative;height:280vh}
+.vb{position:absolute;inset:0;overflow:hidden;background:#000;will-change:clip-path}
+#reel{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vb.fx1 #reel{filter:url(#fx-cold)} .vb.fx2 #reel{filter:url(#fx-signal)}
+#vbTrail{position:absolute;inset:0;width:100%;height:100%;mix-blend-mode:difference;pointer-events:none}
+.vb-veil{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px),radial-gradient(ellipse 80% 75% at 50% 50%,transparent 45%,rgba(10,14,8,.85) 100%)}
+.vb-say{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:92%;text-align:center;pointer-events:none;font:600 clamp(36px,5.8vw,104px)/.88 var(--f-ui);letter-spacing:-.055em;text-transform:uppercase;color:var(--hueso);opacity:0}
+.vb-say em{font-style:normal;color:var(--rojo)}
+.vb-ui{position:absolute;left:var(--side);right:var(--side);bottom:20px;display:flex;gap:10px;align-items:center;opacity:0;transition:opacity .6s;pointer-events:none}
+.vb-ui.on{opacity:1;pointer-events:auto}
+.vb-tc{font:400 10px/1 var(--f-mono);color:var(--hueso);letter-spacing:.12em;min-width:96px}
+.vb-seek{position:relative;flex:1;height:28px}
+.vb-seek::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(201,197,186,.3)}
+.vb-prog{position:absolute;left:0;top:50%;height:1px;width:0;background:var(--rojo);pointer-events:none}
+.vb-seek input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:pointer}
+.vb-prev{position:absolute;bottom:32px;left:0;width:192px;height:108px;border:1px solid var(--hueso);background:#000 no-repeat;transform:translateX(-50%);opacity:0;transition:opacity .15s;pointer-events:none}
+.vb-prev span{position:absolute;left:0;bottom:-20px;font:400 9.5px/1 var(--f-mono);color:var(--negro);background:var(--hueso);padding:3px 5px}
+.vb-seek:hover .vb-prev{opacity:1}
+.vb-ui .btn{padding:9px 12px 8px;background:rgba(10,14,8,.5)}
+
+/* encuentro + juego */
+.enc{position:relative;height:300vh}
+.enc-fig{position:absolute;inset:0;overflow:hidden}
+.enc-eyes{display:block;width:100%;height:100%;object-fit:cover;opacity:0;will-change:opacity,transform}
+.enc-vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse var(--vr,70vmax) calc(var(--vr,70vmax) * .72) at 50% 52%,transparent 0,transparent 34%,var(--negro) 100%)}
+.enc-txt{position:absolute;left:0;right:0;bottom:9vh;display:grid;place-items:center;padding:0 var(--side)}
+.enc-txt p{grid-area:1/1;text-align:center;font:600 clamp(26px,3.4vw,56px)/.95 var(--f-ui);letter-spacing:-.045em;text-transform:uppercase;color:var(--hueso);opacity:0;transition:opacity .8s;text-shadow:0 2px 24px rgba(0,0,0,.7)}
+.enc-txt p.on{opacity:1}
+/* The Eyes: pantalla completa; la cabeza sigue al cursor */
+.game{position:relative}
+.gb-frame{position:relative;background:#000}
+.gb-head{position:absolute;z-index:4;left:var(--side);right:calc(var(--side) + var(--rail));top:clamp(76px,10vh,110px);display:flex;gap:16px;align-items:center;font:400 10px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft);pointer-events:none}
+.gb-head .dl{flex:1;border-top:1px dashed var(--line2)}
+.gb-head b{font-weight:400;color:var(--hueso);font-variant-numeric:tabular-nums}
+.gb-body{position:relative;height:100vh;height:calc(var(--vh,1vh)*100);min-height:420px;width:100%;overflow:hidden;touch-action:pan-y;background:#000}
+.gz-zoom{position:absolute;inset:0;transform-origin:50% 42%;transition:transform 13s linear,filter .9s}
+.gz-flip,.gz-zoom video{position:absolute;inset:0;width:100%;height:100%}
+.gz-zoom video{object-fit:cover}
+.gz-flip.m{transform:scaleX(-1)}
+.gb-body::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 90% at 50% 45%,transparent 45%,rgba(10,14,8,.75) 100%)}
+.gb-body.hold .gz-zoom{transform:scale(1.25)}
+.gb-body.won .gz-zoom{filter:contrast(1.3) saturate(0) brightness(1.05)}
+.gb-body.lost{animation:shake .35s linear 2}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.gb-eyes{position:absolute;z-index:2;left:50%;top:42%;width:14%;aspect-ratio:2/1;transform:translate(-50%,-50%);border:1px dashed rgba(201,197,186,.55);border-radius:50%;pointer-events:none;transition:opacity .3s}
+.gb-body.hold .gb-eyes{opacity:.15}
+.gb-ring{position:absolute;z-index:3;right:calc(var(--side) + var(--rail));bottom:28px;width:84px;height:84px}
+.gb-ring circle{fill:none;stroke-width:1.5}
+.gb-ring .bg{stroke:rgba(201,197,186,.2)} .gb-ring .fg{stroke:var(--rojo);stroke-dasharray:239;stroke-dashoffset:239;transform:rotate(-90deg);transform-origin:50% 50%}
+.gb-ring text{font:400 13px var(--f-mono);fill:var(--hueso)}
+.gb-msg{position:absolute;z-index:3;left:var(--side);bottom:28px;max-width:min(460px,60%);font:500 12px/1.6 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--hueso)}
+.gb-over{position:absolute;z-index:3;inset:0;display:grid;place-items:center;align-content:end;gap:18px;padding-bottom:16vh;text-align:center;background:linear-gradient(0deg,rgba(10,14,8,.85) 0%,rgba(10,14,8,.2) 55%,transparent 100%);transition:opacity .5s}
+.gb-over.gone{opacity:0;pointer-events:none}
+.gb-over h3{font:600 clamp(44px,6.4vw,112px)/.86 var(--f-ui);letter-spacing:-.055em;text-transform:uppercase;color:var(--hueso)}
+.gb-over p{font-size:15px;max-width:40ch;color:var(--txt)}
+
+/* temporada */
+.season{position:relative;max-width:1600px;margin:0 auto;padding:0 calc(var(--side) + var(--rail)) 0 var(--side)}
+.tonight{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:end;padding:28px 0;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);margin-bottom:6vh}
+.tonight .big{font:600 clamp(40px,5.6vw,98px)/.88 var(--f-ui);letter-spacing:-.055em;text-transform:uppercase;color:var(--hueso)}
+.tonight .big em{font-style:normal;color:var(--rojo)}
+.sched{position:relative;padding-left:28px}
+.sched::before{content:"";position:absolute;left:5px;top:0;bottom:0;width:1px;background:var(--line)}
+.sched .tl{position:absolute;left:5px;top:0;width:1px;height:100%;background:var(--hueso);transform-origin:0 0;transform:scaleY(0)}
+.row{position:relative;display:grid;grid-template-columns:60px minmax(0,1.1fr) minmax(0,1.6fr) 150px 130px;gap:18px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateY(20px);transition:opacity .9s,transform .9s var(--out)}
+.row.in{opacity:1;transform:none}
+.row::before{content:"";position:absolute;left:-27px;top:50%;width:9px;height:9px;margin-top:-4.5px;border:1px solid var(--niebla);background:var(--negro);border-radius:50%}
+.row.on::before{background:var(--rojo);border-color:var(--rojo)}
+.row.past{opacity:.45}
+.row .nn{font:500 12px/1 var(--f-mono);color:var(--niebla)}
+.row .t{font:600 clamp(20px,2vw,32px)/.95 var(--f-ui);letter-spacing:-.035em;text-transform:uppercase;color:var(--hueso)}
+.row .c{font-size:14px;line-height:1.45;color:var(--soft)}
+.row .d{font:400 10.5px/1.5 var(--f-mono);letter-spacing:.1em;color:var(--soft)}
+.st{justify-self:end;font:400 9.5px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--niebla);white-space:nowrap}
+.st.on{color:var(--rojo)} .st.next{color:var(--hueso)}
+
+/* library sellada */
+.library{max-width:1600px;margin:0 auto;padding:0 calc(var(--side) + var(--rail)) 0 var(--side);overflow-x:clip}
+.lib{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(30px,6vw,110px);align-items:center}
+.seal-w{position:relative;display:grid;place-items:center;aspect-ratio:1;max-width:520px;width:100%;justify-self:center}
+.seal{position:relative;width:62%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 36% 30%,#f0453d 0,var(--rojo) 30%,#8c1512 72%,var(--laca) 100%);box-shadow:0 30px 80px rgba(75,25,19,.8),inset 0 -12px 30px rgba(0,0,0,.35),inset 0 10px 20px rgba(255,255,255,.12);will-change:transform}
+.seal::before{content:"";position:absolute;inset:7%;border-radius:50%;border:1px solid rgba(10,14,8,.35)}
+.seal img{width:46%;filter:brightness(0) opacity(.55);mix-blend-mode:multiply}
+.seal-ring{position:absolute;inset:0;animation:spin 40s linear infinite}
+.seal-ring text{font:400 8.5px var(--f-mono);letter-spacing:.3em;fill:var(--niebla);text-transform:uppercase}
+.lib h3{font:600 clamp(44px,5vw,88px)/.86 var(--f-ui);letter-spacing:-.055em;text-transform:uppercase;color:var(--hueso)}
+.lib .sub{margin-top:14px;font-size:16px;max-width:44ch}
+.redact{list-style:none;display:grid;margin:28px 0;border-top:1px solid var(--line)}
+.redact li{display:grid;grid-template-columns:70px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);font:400 11px/1.5 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soft);cursor:default}
+.redact li b{font-weight:400;color:var(--niebla)}
+.redact .bars{color:var(--sombra);background:var(--sombra);transition:background .3s}
+.redact li:hover .bars{background:transparent;color:var(--niebla)}
+.redact .open{color:var(--hueso)}
+.price-row{display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap}
+.price{font:600 clamp(84px,9.6vw,164px)/.8 var(--f-ui);letter-spacing:-.07em;color:var(--hueso);font-variant-numeric:tabular-nums}
+.pnote{font:400 10px/1.6 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--soft);padding-bottom:10px}
+.pnote b{font-weight:400;color:var(--rojo)}
+.ladder{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;align-items:end;height:90px;margin-top:26px}
+.ladder div{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%;align-items:center}
+.ladder i{display:block;width:100%;background:rgba(94,104,108,.22)}
+.ladder div.now i{background:var(--rojo)}
+.ladder span{font:400 9px/1.3 var(--f-mono);color:var(--niebla);text-align:center}
+.ladder div.now span{color:var(--hueso)}
+.how{margin-top:28px;font:500 clamp(20px,1.8vw,26px)/1.25 var(--f-ui);color:var(--hueso);letter-spacing:-.015em}
+.how .kw{font:500 .8em/1 var(--f-mono);letter-spacing:.1em;color:var(--rojo)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+
+/* salida */
+.exit{position:relative;overflow:hidden;padding-bottom:6vh}
+#planet{position:absolute;left:-14vw;top:20vh;width:min(100vh,72vw);height:min(100vh,72vw);pointer-events:none}
+.faq{position:relative;z-index:2;max-width:1600px;margin:0 auto;padding:0 calc(var(--side) + var(--rail)) 0 var(--side)}
+.faq-in{max-width:980px;margin-left:auto;border-bottom:1px solid var(--line)}
+.faq details{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:flex-end;align-items:baseline;gap:14px;padding:18px 0;font:400 clamp(11.5px,1.05vw,14px)/1.4 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--cromo);text-align:right;transition:color .2s}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--hueso)}
+.faq summary b{font-weight:400;color:var(--rojo);white-space:nowrap}
+.faq summary b::before{content:"[+]"} .faq details[open] summary b::before{content:"[−]"}
+.faq details[open] summary{color:var(--hueso)}
+.faq details p{margin:0 0 20px auto;max-width:56ch;text-align:right;font-size:15px}
+.intake{position:relative;z-index:2;width:min(580px,calc(100% - 2 * var(--side)));margin:14vh calc(var(--side) + var(--rail)) 0 auto;display:grid;gap:18px;padding:26px;background:rgba(10,14,8,.6);border:1px solid var(--line2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ik-step{display:grid;gap:12px}
+.ik-step[hidden]{display:none}
+.ik-step h3{font:400 14px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--hueso)}
+.ik-step h3 .n{margin-right:8px}
+.ik-step h3::after{content:"";display:inline-block;width:8px;height:14px;background:var(--rojo);margin-left:6px;vertical-align:-2px;animation:blink 1s steps(2) infinite}
+.ik-opts{display:flex;flex-wrap:wrap;gap:8px}
+.ik-opts button{font:400 10px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;padding:11px 13px 10px;border:1px solid var(--line2);background:transparent;color:var(--soft);transition:all .25s}
+.ik-opts button:hover{border-color:var(--hueso);color:var(--hueso)}
+.ik-opts button[aria-pressed="true"]{background:var(--hueso);border-color:var(--hueso);color:var(--negro)}
+.intake input,.intake textarea{width:100%;background:rgba(31,35,31,.6);border:1px solid var(--line2);color:var(--hueso);font:400 13px/1.6 var(--f-mono);padding:12px;border-radius:0;resize:vertical}
+.intake input:focus,.intake textarea:focus{outline:none;border-color:var(--hueso)}
+.intake textarea{min-height:130px}
+.ik-nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ik-nav .note{font:400 10px/1.4 var(--f-mono);letter-spacing:.1em;color:var(--rojo);text-transform:uppercase}
+.handle{position:relative;z-index:2;display:block;text-align:right;margin:16vh calc(var(--side) + var(--rail)) 0 var(--side);font:600 clamp(44px,9.6vw,180px)/.86 var(--f-ui);letter-spacing:-.065em;text-transform:uppercase;color:var(--ghost2);text-decoration:none;transition:color .4s}
+.handle:hover{color:var(--hueso)}
+/* final: la firma hecha de micropartículas */
+.fin{position:relative;padding-top:20vh}
+#finCv{position:absolute;left:0;top:-24vh;width:100%;height:calc(100% + 24vh);display:block;pointer-events:none;z-index:1}
+.fin-k,.fin-h{position:relative;z-index:2;margin:0 calc(var(--side) + var(--rail)) 0 var(--side);font:400 10px/1.6 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.fin-k{text-align:right;margin-bottom:22px}
+.fin-h{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px 28px;margin-top:26px;opacity:0;transition:opacity 1s}
+.fin-h b{font-weight:400;color:var(--hueso);font-variant-numeric:tabular-nums}
+.fin.on .fin-h{opacity:1}
+.fin .handle{margin-top:0}
+.fin.on .handle,.fin.on .handle:hover{color:transparent}
+.fin.on footer{background:linear-gradient(to bottom,rgba(10,14,8,0),rgba(10,14,8,.55) 40%)}
+footer{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding:48px calc(var(--side) + var(--rail)) 120px calc(var(--side) + 90px);margin-top:10vh;border-top:1px solid var(--line);font:400 10px/1.8 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--niebla)}
+footer b{display:block;font-weight:500;color:var(--hueso);margin-bottom:6px}
+footer a{text-decoration:none}footer a:hover{color:var(--rojo)}
+
+/* ——— pestañas: los films / la temporada ——— */
+.views{top:calc(16px + clamp(20px,2.5vw,38px));left:calc(var(--side) + 110px);display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line2);padding:2px;background:rgba(10,14,8,.6);transition:opacity .8s,left .6s var(--out)}
+.views button{background:none;border:0;padding:8px 10px 7px;font:400 10px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--niebla);transition:color .25s,background .25s;white-space:nowrap}
+.views button:hover{color:var(--hueso)}
+.views button[aria-pressed="true"]{background:var(--hueso);color:var(--negro)}
+html.pre .fx.views:not(#bar){opacity:1;pointer-events:auto;left:var(--side)}
+[data-view][hidden]{display:none!important}
+.lk{font:400 10px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hueso);text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:3px;white-space:nowrap}
+.lk:hover{color:var(--rojo);border-color:var(--rojo)}
+
+/* las siluetas: tres looks hechos de partículas */
+.dust{position:relative;height:540vh}
+#dustCv{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y}
+.ds-info{position:absolute;z-index:3;left:var(--side);bottom:clamp(76px,13vh,140px);display:grid;gap:12px;max-width:min(460px,40vw);opacity:0;transform:translateY(14px);transition:opacity .6s,transform .8s var(--out);pointer-events:none}
+.ds-info.on{opacity:1;transform:none}
+.ds-info .n{font-size:13px}
+.ds-info h3{font:600 clamp(40px,5vw,88px)/.86 var(--f-ui);letter-spacing:-.055em;text-transform:uppercase;color:var(--hueso)}
+.ds-info p{font:400 10.5px/1.6 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--soft);border-top:1px solid var(--line);padding-top:12px}
+.ds-foot{position:absolute;z-index:3;left:0;right:0;bottom:24px;display:flex;justify-content:center;gap:28px;font:400 10px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft);pointer-events:none}
+.ds-foot b{font-weight:400;color:var(--hueso);font-variant-numeric:tabular-nums}
+
+/* temporada: portada con la catedral */
+.sv-hero{position:relative;height:100vh;height:calc(var(--vh,1vh)*100);min-height:560px;overflow:hidden;display:grid;align-items:end}
+.sv-hero video,.sv-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.42) saturate(.8)}
+.sv-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--negro) 2%,rgba(10,14,8,.2) 55%,rgba(10,14,8,.5) 100%)}
+.sv-in{position:relative;z-index:2;padding:0 calc(var(--side) + var(--rail)) 11vh var(--side);display:grid;gap:18px;max-width:1600px;width:100%;margin:0 auto}
+.sv-in h1{font:600 clamp(64px,13vw,236px)/.82 var(--f-ui);letter-spacing:-.065em;text-transform:uppercase;color:var(--hueso)}
+.sv-in p{font:300 clamp(16px,1.3vw,19px)/1.5 var(--f-ui);color:var(--soft);max-width:46ch}
+.sv-jump{display:flex;flex-wrap:wrap;gap:10px}
+
+/* encargos: se cotizan por DM */
+.comm{max-width:1600px;margin:0 auto;padding:0 calc(var(--side) + var(--rail)) 0 var(--side)}
+.cm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.cm{background:var(--negro);padding:clamp(20px,2.4vw,36px);display:flex;flex-direction:column;gap:14px;min-height:340px;transition:background .4s}
+.cm:hover{background:#0f140e}
+.cm .n{font-size:13px}
+.cm h3{font:600 clamp(30px,3vw,54px)/.88 var(--f-ui);letter-spacing:-.05em;text-transform:uppercase;color:var(--hueso)}
+.cm p{font-size:15px;max-width:34ch}
+.cm ul{list-style:none;display:grid;gap:7px;margin-top:auto;border-top:1px solid var(--line);padding-top:14px;font:400 10px/1.5 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.cm ul li::before{content:"+ ";color:var(--niebla)}
+.cm-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,48px);margin-top:clamp(40px,6vh,70px)}
+.cm-steps li{display:grid;gap:10px;border-top:1px solid var(--line2);padding-top:14px}
+.cm-steps b{font:500 12px/1 var(--f-mono);color:var(--rojo);letter-spacing:.1em}
+.cm-steps span{font:500 clamp(18px,1.6vw,24px)/1.25 var(--f-ui);letter-spacing:-.015em;color:var(--hueso)}
+.cm-cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:clamp(30px,5vh,56px)}
+.cm-cta .note{font:400 10px/1.4 var(--f-mono);letter-spacing:.1em;color:var(--rojo);text-transform:uppercase}
+.cm-q{font:400 10px/1.6 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-top:18px}
+#vSeason footer{margin-top:16vh}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1.1s ease,transform 1.1s var(--out)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:1000px){
+  :root{--rail:0px}
+  .chnav{display:none}
+  .brand .tg{display:none}
+  .mz-info{left:var(--side);right:var(--side);max-width:none;bottom:118px;gap:8px}
+  .mz-info p,.mz-attr{display:none}
+  .mz-info h2{font-size:clamp(34px,9vw,60px)}
+  .mz-list{left:var(--side);right:var(--side);bottom:64px;grid-auto-flow:column;justify-content:center;gap:8px}
+  .mz-list button span{display:none}
+  .mz-list img{width:56px;height:32px}
+  .row{grid-template-columns:48px minmax(0,1fr) auto;grid-template-areas:"n t st" "n c c" "n d d"}
+  .row .nn{grid-area:n}.row .t{grid-area:t}.row .c{grid-area:c}.row .d{grid-area:d}.row .st{grid-area:st}
+  .lib{grid-template-columns:minmax(0,1fr)}
+  .seal-w{max-width:360px}
+  .tonight{grid-template-columns:minmax(0,1fr)}
+  footer{grid-template-columns:repeat(2,minmax(0,1fr));padding-left:var(--side)}
+  .wd{width:86vw}.rw-track{padding:0 7vw}
+  .cm-grid,.cm-steps{grid-template-columns:minmax(0,1fr)}
+  .cm{min-height:0}
+}
+@media (max-width:640px){
+  .top-r #invBtn,.top-r a{display:none} .top-r{gap:12px}
+  .chlab{display:none}
+  .stamp{width:54px;height:54px}.stamp img{width:18px}
+  .gb-msg{max-width:calc(100% - 130px);font-size:11px}
+  .vb-tc{display:none}
+  .enc-txt{bottom:8vh}
+  #planet{left:-40vw;width:130vw;height:130vw;top:30vh;opacity:.8}
+  footer{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px;padding-bottom:96px}
+  .rw-bar{left:var(--side);right:var(--side)}
+  .gb-over h3{font-size:44px}
+  .disp{font-size:12.4vw}
+  .ds-info{max-width:none;right:var(--side);bottom:64px}
+  .sv-in h1{font-size:15vw}
+  .views{left:var(--side);top:calc(22px + clamp(20px,2.5vw,38px) + 28px);transition:opacity .4s,transform .4s}
+  .wd p{display:none}
+  /* al bajar, el selector se esconde y vuelve al subir; la barra lleva un velo para no pisar los títulos */
+  html.hidev:not(.pre) .views{opacity:0;pointer-events:none;transform:translateY(-10px)}
+  body::after{content:'';position:fixed;left:0;right:0;top:0;height:calc(92px + env(safe-area-inset-top,0px));background:linear-gradient(to bottom,rgba(10,14,8,.94) 30%,rgba(10,14,8,0));z-index:55;pointer-events:none;opacity:0;transition:opacity .5s}
+  html.scrolled:not(.pre):not(.imm) body::after{opacity:1}
+}
+@media (max-width:760px) and (orientation:portrait){
+  .wd{width:76vw}.wd-m{aspect-ratio:4/5}
+}
+@media (pointer:coarse){#cur{display:none}}
+@media (prefers-reduced-motion:reduce){
+  #grain,.stamp svg,.seal-ring,.dot{animation:none!important}
+  .rv,.row{opacity:1;transform:none;transition:none}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="fx-cold" color-interpolation-filters="sRGB">
+    <feColorMatrix type="matrix" values=".3 .55 .15 0 0 .3 .55 .15 0 0 .3 .55 .15 0 0 0 0 0 1 0"/>
+    <feComponentTransfer><feFuncR type="table" tableValues=".04 .12 .37 .67 .79"/><feFuncG type="table" tableValues=".05 .14 .41 .72 .77"/><feFuncB type="table" tableValues=".03 .12 .42 .77 .73"/></feComponentTransfer>
+  </filter>
+  <filter id="fx-signal" color-interpolation-filters="sRGB">
+    <feColorMatrix type="matrix" values=".3 .55 .15 0 0 .3 .55 .15 0 0 .3 .55 .15 0 0 0 0 0 1 0"/>
+    <feComponentTransfer><feFuncR type="table" tableValues=".04 .29 .88 .79"/><feFuncG type="table" tableValues=".05 .1 .14 .77"/><feFuncB type="table" tableValues=".03 .07 .14 .73"/></feComponentTransfer>
+  </filter>
+</svg>
+
+<div id="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"><i></i><span id="curl"></span></div>
+<audio id="amb" src="a/score.mp3" loop preload="none"></audio>
+
+<div class="fx" id="bar" aria-hidden="true"></div>
+<a class="fx brand" href="#hall" aria-label="Dark Matter, back to the hall">Dark Matter<sup>™</sup> <span class="tg">Haute couture from below.</span></a>
+<div class="fx icons">
+  <a href="#hall" aria-label="The hall"><img src="a/logo.png" alt=""></a>
+  <a href="https://www.instagram.com/darkmatter.tm/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 12 12"><path d="M6 0l.9 5.1L12 6l-5.1.9L6 12l-.9-5.1L0 6l5.1-.9z" fill="#E12423"/></svg></a>
+  <a href="https://www.tiktok.com/@darkmattertm" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 16 10"><path d="M1 5c2-3.2 4.3-4.5 7-4.5S13 1.8 15 5c-2 3.2-4.3 4.5-7 4.5S3 8.2 1 5z" fill="none" stroke="#ABB8C5"/><circle cx="8" cy="5" r="2" fill="#C9C5BA"/></svg></a>
+</div>
+<div class="fx views" role="group" aria-label="Views"><button type="button" data-v="films" aria-pressed="true">The films</button><button type="button" data-v="season" aria-pressed="false">The season</button></div>
+<div class="fx top-r">
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-l="en" aria-pressed="true">EN</button><button type="button" data-l="es" aria-pressed="false">ES</button></div>
+  <button class="sw" type="button" id="snd" aria-pressed="false"><i></i><span id="sndt">SOUND OFF</span></button>
+  <button class="sw" type="button" id="invBtn" aria-pressed="false"><i></i><span class="inv-t">INVERT</span></button>
+  <a href="https://www.instagram.com/darkmatter.tm/" target="_blank" rel="noopener">@DARKMATTER.TM</a>
+</div>
+<nav class="fx chnav" id="chnav" aria-label="Chapters"></nav>
+<div class="fx chlab" id="chlab" aria-live="polite"><b>(I)</b>The muses</div>
+<div class="fx stamp" aria-hidden="true">
+  <svg viewBox="0 0 100 100"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text><textPath href="#circ">Dark Matter™ · Season 01 · haute couture from below ·</textPath></text></svg>
+  <img src="a/logo.png" alt="">
+</div>
+
+<!-- Vista 1 · Los films: todo sobre los videos -->
+<main id="vFilms" data-view="films">
+<!-- La sala: intro (la reliquia) y (I) las musas -->
+<section class="hall" id="hall" data-ch="I" data-name="The muses" aria-label="The hall of the muses">
+  <div class="stage" id="stage">
+    <canvas id="hall3d" aria-label="A chrome Dark Matter relic in a dark hall of hanging screens. On each screen a muse walks."></canvas>
+    <i class="veil" aria-hidden="true"></i>
+    <div class="intro-ui" id="introUi">
+      <div class="row top"><span class="lab">Dark Matter™</span><span class="lab">Signals from another reality</span></div>
+      <div class="in-mid">
+        <p class="in-say">The house is about to open</p>
+        <div class="in-line"><i id="inBar"></i></div>
+        <span class="in-pct" id="inPct">000</span>
+        <div class="in-btns"><button class="btn hot" type="button" id="enterSound">Enter with sound</button><button class="btn" type="button" id="enter">Enter in silence</button></div>
+      </div>
+      <div class="row bot"><span class="lab">Season 01 · 30.09 → 28.11.2026</span><span class="lab">Drag the relic</span></div>
+    </div>
+    <div class="hall-cap" id="hallCap"><span class="lab"><span class="n">(I)</span>&nbsp; Four muses are waiting</span><h1>The hall of the muses</h1><span class="lab">Scroll and the camera takes you to each one</span></div>
+    <div class="mz-info" id="mzInfo">
+      <span class="n" id="mzNum">(01) / (04)</span>
+      <h2 id="mzTitle">The Silver Bishop</h2>
+      <p id="mzDesc">It attends every show. Nobody has seen its face.</p>
+      <dl class="mz-attr" id="mzAttr"></dl>
+      <div class="mz-hold"><svg viewBox="0 0 36 36" aria-hidden="true"><circle class="bg" cx="18" cy="18" r="16"/><circle class="fg" id="mzRing" cx="18" cy="18" r="16"/></svg><span id="mzHoldT">On screen now</span></div>
+    </div>
+    <p class="mz-line" id="mzLine" aria-live="polite"></p>
+    <ol class="mz-list" id="mzList" aria-label="Go to a muse"></ol>
+    <div class="hall-foot" id="hallFoot"><span id="mzCount">Hall</span><span>Drag the relic</span><span>Scroll ↓</span></div>
+  </div>
+</section>
+
+<!-- (II) La invitación -->
+<section class="invite" id="invite" data-ch="II" data-name="The invitation" aria-label="The invitation">
+  <div class="stage">
+    <video class="inv-bg" id="invBg" src="a/inv.mp4" poster="a/inv.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <div class="inv-veil"></div>
+    <div class="inv-lines" id="invLines">
+      <p>You were not <em>invited.</em></p>
+      <p>You came anyway.</p>
+      <p>Tonight the house shows its new season.</p>
+      <p>Nobody on the runway is entirely <em>human.</em></p>
+      <p>Neither is the audience.</p>
+      <p>Take your <em>seat.</em></p>
+    </div>
+    <span class="inv-count" id="invCount">01 / 06</span>
+  </div>
+</section>
+
+<!-- (III) Las siluetas: tres looks hechos de partículas; el scroll los arma y el cursor los deshace -->
+<header class="ch" id="ch-dust" data-ch="III" data-name="The silhouettes"><span class="ch-n">(III)</span><h2 class="ch-t disp">The silhouettes</h2><p class="ch-s">Three looks from the new season, made of dust. Scroll and they take shape. Move and they come apart.</p></header>
+<section class="dust" id="dust" aria-label="Three looks made of particles">
+  <div class="stage">
+    <canvas id="dustCv" aria-hidden="true"></canvas>
+    <div class="ds-info" id="dsInfo"><span class="n" id="dsNum">(01) / (03)</span><h3 id="dsName">The Horned Lacquer</h3><p id="dsMat">Red lacquer · horned helm · floor-length cape</p></div>
+    <div class="ds-foot"><span><b id="dsN">00 000</b> <span>particles</span></span><span id="dsHint">Move to scatter them</span></div>
+  </div>
+</section>
+
+<!-- (IV) El film -->
+<header class="ch" id="ch-film" data-ch="IV" data-name="The film"><span class="ch-n">(IV)</span><h2 class="ch-t disp">The film</h2><p class="ch-s">Twenty-five seconds from the other side. It opens as you come closer.</p></header>
+<section class="film" id="film" aria-label="Film">
+  <div class="stage">
+    <div class="vb" id="vb" data-cur="TRACE">
+      <video id="reel" src="a/film3.mp4" data-poster="a/film.jpg" muted loop playsinline preload="none" aria-label="Dark Matter reel: the new looks of the season"></video>
+      <canvas id="vbTrail" aria-hidden="true"></canvas>
+      <div class="vb-veil" aria-hidden="true"></div>
+      <p class="vb-say" id="vbSay">We dress the things<br>that walk <em>at night.</em></p>
+      <div class="vb-ui" id="vbUi">
+        <span class="vb-tc" id="vbTc">00:00 / 00:30</span>
+        <div class="vb-seek" id="vbSeekW"><input type="range" id="vbSeek" min="0" max="1000" value="0" aria-label="Video position"><i class="vb-prog" id="vbProg"></i><div class="vb-prev" id="vbPrev" aria-hidden="true"><span id="vbPrevT">00:00</span></div></div>
+        <button class="btn" type="button" id="vbFx">Grade · Raw</button>
+        <button class="btn" type="button" id="vbSnd">Sound off</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- (V) La pasarela -->
+<header class="ch" id="ch-runway" data-ch="V" data-name="The runway"><span class="ch-n">(V)</span><h2 class="ch-t disp">The runway</h2><p class="ch-s">Every film lives in one world. Before the numbered shows there were eight; keep scrolling and they walk past you.</p></header>
+<section class="runway" id="runway" aria-label="Eight worlds">
+  <div class="stage">
+    <div class="rw-ghost" id="rwGhost" aria-hidden="true">Season 00 · Eight worlds · Season 00</div>
+    <div class="rw-track" id="rwTrack"></div>
+    <div class="rw-bar"><span><b id="rwN">(01)</b> / (08)</span><span class="tr"><i id="rwP"></i></span><span id="rwName">Infernal runway</span></div>
+  </div>
+</section>
+
+<!-- (VI) El encuentro -->
+<header class="ch" id="ch-enc" data-ch="VI" data-name="The encounter"><span class="ch-n">(VI)</span><h2 class="ch-t disp">The encounter</h2><p class="ch-s">Someone in the audience has not looked at the runway once.</p></header>
+<section class="enc" id="enc" aria-label="The encounter">
+  <div class="stage">
+    <div class="enc-fig"><video class="enc-eyes" id="encEyes" src="a/enc2.mp4" data-poster="a/enc2.jpg" muted playsinline preload="none" aria-label="A porcelain figure in a chrome cage raises her eyes to you"></video></div>
+    <div class="enc-vig" id="encVig"></div>
+    <div class="enc-txt" id="encTxt"><p>She has been watching you since you came in</p><p>She only exists in reflections</p><p>Do not look away</p></div>
+  </div>
+</section>
+<div class="game" id="game">
+  <div class="gb-frame">
+    <div class="gb-head"><span>Hold her gaze</span><span class="dl"></span><span>Time <b id="gzT">13.0</b></span><span>Best <b id="gzB">00.0</b></span></div>
+    <div class="gb-body" id="gz" data-cur="HOLD">
+      <div class="gz-zoom"><div class="gz-flip" id="gzFlip"><video id="gzV" src="a/eyes2.mp4" data-poster="a/eyes2.jpg" muted playsinline preload="none" aria-label="The Eyes. Her head follows you across the screen"></video></div></div>
+      <i class="gb-eyes" aria-hidden="true"></i>
+      <svg class="gb-ring" viewBox="0 0 84 84" aria-hidden="true"><circle class="bg" cx="42" cy="42" r="38"/><circle class="fg" id="gzFg" cx="42" cy="42" r="38"/><text x="42" y="46.5" text-anchor="middle" id="gzRt">13.0</text></svg>
+      <p class="gb-msg" id="gzMsg" aria-live="polite">Rest on her eyes and keep still for thirteen seconds.</p>
+      <div class="gb-over" id="gzOver"><h3>Hold her gaze</h3><p>She follows you across the screen. Rest your cursor on her eyes and do not move for thirteen seconds. On a phone, press and hold.</p><button class="btn hot" type="button" id="gzPlay">Begin</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- (VII) La salida -->
+<header class="ch" id="ch-exit" data-ch="VII" data-name="The exit"><span class="ch-n">(VII)</span><h2 class="ch-t disp">The exit</h2><p class="ch-s">Questions at the door, and a way back in.</p></header>
+<section class="exit" id="exit" aria-label="Questions and contact">
+  <canvas id="planet" aria-hidden="true"></canvas>
+  <div class="faq"><div class="faq-in">
+    <details><summary>How is Dark Matter made? <b></b></summary><p>That stays inside the house. The Library opens the atelier to those who buy it.</p></details>
+    <details><summary>Who designs the collections? <b></b></summary><p>The house has no face. The work is signed with a number.</p></details>
+    <details><summary>What is inside the Library? <b></b></summary><p>Everything behind Season 01, sealed until you buy it. Comment LIBRARY on any post and we send you the link.</p></details>
+    <details><summary>When is the next show? <b></b></summary><p>A new look every night until 28 November. The season tab shows what is on tonight. <a class="lk" href="#season">Open the season →</a></p></details>
+    <details><summary>Do you take commissions? <b></b></summary><p>Yes: music videos, fashion films and campaign worlds in the Dark Matter style. Every one is quoted by DM. <a class="lk" href="#comm">See commissions →</a></p></details>
+    <details><summary>Why horror? <b></b></summary><p>Couture has always been a little frightening. We stopped pretending it isn't.</p></details>
+  </div></div>
+  <div class="intake rv" id="intake">
+    <span class="lab"><span class="dot"></span>&nbsp; The house replies by DM</span>
+    <div class="ik-step" data-step="1"><h3><span class="n">1/3</span>What brings you here</h3>
+      <div class="ik-opts" id="ikOpts"><button type="button" data-k="library" aria-pressed="false">The library</button><button type="button" data-k="collab" aria-pressed="false">Collaborate</button><button type="button" data-k="commission" aria-pressed="false">Commission a show</button><button type="button" data-k="casting" aria-pressed="false">Become a muse</button><button type="button" data-k="press" aria-pressed="false">Press</button><button type="button" data-k="watch" aria-pressed="false">Just watching</button></div>
+    </div>
+    <div class="ik-step" data-step="2" hidden><h3><span class="n">2/3</span>Who is asking</h3><input id="ikName" type="text" autocomplete="nickname" placeholder="Your name or @handle"></div>
+    <div class="ik-step" data-step="3" hidden><h3><span class="n">3/3</span>Your message</h3><textarea id="ikMsg" aria-label="Your message"></textarea></div>
+    <div class="ik-nav"><button class="btn" type="button" id="ikBack" hidden>← Back</button><button class="btn solid" type="button" id="ikNext">Next →</button><span class="note" id="ikNote" aria-live="polite"></span></div>
+  </div>
+  <div class="fin" id="fin">
+    <canvas id="finCv" aria-hidden="true"></canvas>
+    <p class="fin-k"><span class="n">(∞)</span> <span>Everything returns to dark matter.</span></p>
+    <a class="handle" href="https://www.instagram.com/darkmatter.tm/" target="_blank" rel="noopener">@darkmatter.tm</a>
+    <p class="fin-h"><span><b id="finN">00 000</b> <span>particles</span></span><span id="finHint">Move to disturb it · click to detonate</span></p>
+  <footer>
+    <div><b>Dark Matter™</b>Haute couture from another reality</div>
+    <div><b>Follow</b><a href="https://www.instagram.com/darkmatter.tm/" target="_blank" rel="noopener">Instagram @darkmatter.tm</a><br><a href="https://www.tiktok.com/@darkmattertm" target="_blank" rel="noopener">TikTok @darkmattertm</a></div>
+    <div><b>Season 01</b>30.09 → 28.11.2026<br>Nine collections</div>
+    <div><b>©2026</b>All rights reserved<br><a href="#hall">Back to the hall ↑</a></div>
+  </footer>
+  </div>
+</section>
+</main>
+
+<!-- Vista 2 · La temporada: el programa, la Library con sus precios y los encargos -->
+<main id="vSeason" data-view="season" hidden>
+<section class="sv-hero" id="svHero" aria-label="Season 01">
+  <video id="svV" src="a/s/sv_hero.mp4" data-poster="a/s/sv_hero.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+  <div class="sv-in">
+    <span class="lab"><span class="n">Season 01</span>&nbsp; 30.09 → 28.11.2026</span>
+    <h1>The season</h1>
+    <p>What is on tonight, the Library that opens only for those who buy it, and the commissions the house accepts.</p>
+    <div class="sv-jump"><a class="btn" href="#ch-season">Program</a><a class="btn" href="#ch-lib">The library</a><a class="btn" href="#ch-com">Commissions</a></div>
+  </div>
+</section>
+
+<!-- (I) El programa -->
+<header class="ch" id="ch-season" data-ch="I" data-name="The season"><span class="ch-n">(I)</span><h2 class="ch-t disp">The season</h2><p class="ch-s">Nine collections, twenty-seven shows, sixty nights. A new look every night until the finale.</p></header>
+<section class="season" id="season" aria-label="Season 01 program">
+  <div class="tonight rv"><span class="lab" id="tnLab">Premiere</span><span class="big" id="tnBig">The Red Opera</span><span class="lab" id="tnWhen">30.09</span></div>
+  <div class="sched" id="sched"><i class="tl" id="schedTl"></i></div>
+</section>
+
+<!-- (II) La library -->
+<header class="ch" id="ch-lib" data-ch="II" data-name="The library"><span class="ch-n">(II)</span><h2 class="ch-t disp">The library</h2><p class="ch-s">Everything behind Season 01, sealed. It opens only for those who buy it.</p></header>
+<section class="library" id="library" aria-label="The Season 1 Library">
+  <div class="lib">
+    <div class="seal-w" id="sealW">
+      <svg class="seal-ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="circ2" d="M50,50 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#circ2">Sealed · Season 1 Library · opens on purchase · Sealed · Season 1 Library · opens on purchase ·</textPath></text></svg>
+      <div class="seal" id="seal"><img src="a/logo.png" alt="The Dark Matter seal"></div>
+    </div>
+    <div class="rv">
+      <span class="lab">Season 1 Library · <span id="libState">opens 11.10</span></span>
+      <h3 style="margin-top:12px">Sealed until<br>you buy it</h3>
+      <p class="sub">The complete formula behind every look and every movement of the season. We do not show what is inside. You will know when you open it.</p>
+      <ul class="redact" aria-label="Contents, sealed">
+        <li><b>N° 001</b><span><span class="open">Sixty nights</span> · <span class="bars">the formula of every look</span></span></li>
+        <li><b>N° 002</b><span><span class="open">Every movement</span> · <span class="bars">written the way the house writes it</span></span></li>
+        <li><b>N° 003</b><span><span class="open">The house references</span> · <span class="bars">the ones that keep the grade</span></span></li>
+        <li><b>N° 004</b><span><span class="open">A new chapter</span> · <span class="bars">every Wednesday until the finale</span></span></li>
+      </ul>
+      <div class="price-row"><span class="price" id="price">$12</span><span class="pnote"><b id="priceNote">launch price</b><br>the price rises every Wednesday</span></div>
+      <div class="ladder" id="ladder" aria-label="Price by week"></div>
+      <p class="how">Comment <span class="kw">LIBRARY</span> on any of our posts and we send you the link by DM.</p>
+      <div class="btns"><a class="btn hot" href="https://www.instagram.com/darkmatter.tm/" target="_blank" rel="noopener">Open Instagram</a><a class="btn" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener">Send us a DM</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- (III) Encargos: sin precios publicados; se cotizan por DM -->
+<header class="ch" id="ch-com" data-ch="III" data-name="Commissions"><span class="ch-n">(III)</span><h2 class="ch-t disp">Commissions</h2><p class="ch-s">Music videos, fashion films and campaign worlds in the house style. Every commission is quoted by DM.</p></header>
+<section class="comm" id="comm" aria-label="Commissions">
+  <div class="cm-grid rv">
+    <article class="cm"><span class="n">(01)</span><h3>Music video</h3><p>A film for your song, built the way the house builds its own: one look, one world, one turn.</p><ul><li>For artists and labels</li></ul></article>
+    <article class="cm"><span class="n">(02)</span><h3>Fashion film</h3><p>Your collection walks one of our runways. Couture first, horror last.</p><ul><li>For designers and houses</li></ul></article>
+    <article class="cm"><span class="n">(03)</span><h3>Campaign world</h3><p>A world made for your brand: its muse, its palette, its night.</p><ul><li>For brands and agencies</li></ul></article>
+  </div>
+  <p class="cm-q rv">Prices are not published. Every world is quoted by DM.</p>
+  <ol class="cm-steps rv">
+    <li><b>01</b><span>Tell us what it is for and when you need it.</span></li>
+    <li><b>02</b><span>The house answers with a world: one look, one turn.</span></li>
+    <li><b>03</b><span>Quote and dates, by DM.</span></li>
+  </ol>
+  <div class="cm-cta rv"><a class="btn hot" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener" data-dm="commission">Ask for a quote by DM</a><a class="btn" href="https://www.instagram.com/darkmatter.tm/" target="_blank" rel="noopener">See the work on Instagram</a><span class="note" id="cmNote" aria-live="polite"></span></div>
+</section>
+<footer>
+  <div><b>Dark Matter™</b>Haute couture from another reality</div>
+  <div><b>Follow</b><a href="https://www.instagram.com/darkmatter.tm/" target="_blank" rel="noopener">Instagram @darkmatter.tm</a><br><a href="https://www.tiktok.com/@darkmattertm" target="_blank" rel="noopener">TikTok @darkmattertm</a></div>
+  <div><b>Season 01</b>30.09 → 28.11.2026<br>Nine collections</div>
+  <div><b>©2026</b>All rights reserved<br><a href="#hall">Back to the films ↑</a></div>
+</footer>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/objects/Reflector.js"></script>
+<script>
+(function(){
+  'use strict';
+  var reduce = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var fine = !!(window.matchMedia && matchMedia('(pointer: fine)').matches);
+  var small = innerWidth < 760, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var root = document.documentElement;
+  /* alto real de la ventana: dentro del visor el marco nace bajo y crece, y 100svh se queda con el alto inicial */
+  (function(){ var ly = 0, acc = 0; window.addEventListener('scroll', function(){ var y = window.scrollY || 0, d = y - ly; ly = y; acc = (d > 0) === (acc > 0) ? acc + d : d; root.classList.toggle('scrolled', y > 60); if (y < 240 || acc < -40) root.classList.remove('hidev'); else if (acc > 40) root.classList.add('hidev'); }, {passive: true}); })();
+  function setVh(){ var h = window.innerHeight || root.clientHeight; if (h) root.style.setProperty('--vh', (h * 0.01) + 'px'); }
+  setVh(); window.addEventListener('resize', setVh); if (window.visualViewport) visualViewport.addEventListener('resize', setVh);
+  if (window.ResizeObserver) new ResizeObserver(setVh).observe(root);
+  function $(s, r){ return (r || document).querySelector(s); }
+  function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function pad(n, l){ n = String(n); while (n.length < (l || 2)) n = '0' + n; return n; }
+  function clamp(v, a, b){ return v < a ? a : v > b ? b : v; }
+  function lerp(a, b, t){ return a + (b - a) * t; }
+  function ease(t){ return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function safe(n, f){ try{ f(); }catch(e){ if (window.console) console.warn('[dm] ' + n, e); } }
+  if (reduce) root.classList.add('nomo');
+  /* abierto como archivo: el navegador bloquea el 3D y los videos */
+  if (location.protocol === 'file:') safe('file', function(){ var n = document.createElement('div'); n.textContent = 'Local file: the 3D and the videos are blocked. Open it with “Abrir sitio.command” in 06_WEB.'; n.style.cssText = 'position:fixed;z-index:9999;left:50%;top:14px;transform:translateX(-50%);padding:10px 14px;background:#E12423;color:#0A0E08;font:500 11px/1.3 "Geist Mono",monospace;letter-spacing:.06em;text-transform:uppercase;max-width:92vw;text-align:center'; document.body.appendChild(n); });
+  /* ——— idioma: inglés / español ——— */
+  var ES = {
+    'Haute couture from below.': 'Alta costura desde abajo.',
+    'SOUND OFF': 'SIN SONIDO', 'SOUND ON': 'CON SONIDO', 'Sound off': 'Sin sonido', 'Sound on': 'Con sonido', 'INVERT': 'INVERTIR',
+    'The muses': 'Las musas', 'The invitation': 'La invitación', 'The runway': 'La pasarela', 'The film': 'La película', 'The encounter': 'El encuentro',
+    'The season': 'La temporada', 'The library': 'La Library', 'The exit': 'La salida', 'The hall': 'La sala', 'Hall': 'Sala', 'Chapters': 'Capítulos',
+    'Dark Matter™ · Season 01 · haute couture from below ·': 'Dark Matter™ · Temporada 01 · costura desde abajo ·',
+    'DARK MATTER™ · SEASON 01 · HAUTE COUTURE FROM BELOW · FOUR MUSES ARE WAITING · ': 'DARK MATTER™ · TEMPORADA 01 · ALTA COSTURA DESDE ABAJO · CUATRO MUSAS TE ESPERAN · ',
+    'Signals from another reality': 'Señales de otra realidad', 'The house is about to open': 'La casa está por abrir',
+    'Enter with sound': 'Entrar con sonido', 'Enter in silence': 'Entrar en silencio',
+    'Season 01 · 30.09 → 28.11.2026': 'Temporada 01 · 30.09 → 28.11.2026', 'Drag the relic': 'Arrastra la reliquia',
+    'Four muses are waiting': 'Cuatro musas te esperan', 'The hall of the muses': 'La sala de las musas',
+    'Scroll and the camera takes you to each one': 'Baja y la cámara te lleva a cada una',
+    'On screen now': 'En pantalla', 'Scroll ↓': 'Baja ↓',
+    'The Silver Bishop': 'El Obispo de Plata', 'The Red Bride': 'La Novia Roja', 'The Albino': 'La Albina', 'The Machine': 'La Máquina',
+    'It attends every show. Nobody has seen its face.': 'Asiste a cada show. Nadie ha visto su rostro.',
+    'She has walked every season. She has never reached the altar.': 'Ha desfilado todas las temporadas. Nunca ha llegado al altar.',
+    'Ivory horns, a coat of feathers and cable. Always in the crowd.': 'Cuernos de marfil, un abrigo de plumas y cables. Siempre entre el público.',
+    'Chrome, cable and a red light where the eyes should be.': 'Cromo, cables y una luz roja donde deberían estar los ojos.',
+    'Seat': 'Asiento', 'Front row': 'Primera fila', 'Since': 'Desde', 'Season 00': 'Temporada 00', 'Face': 'Rostro', 'Never shown': 'Nunca visto',
+    'Train': 'Cola', 'Nine metres': 'Nueve metros', 'Never': 'Nunca', 'Row 13': 'Fila 13', 'Horns': 'Cuernos', 'Ivory': 'Marfil', 'Pulse': 'Pulso', 'Red': 'Rojo',
+    'Eyes': 'Ojos', 'Red light': 'Luz roja', 'Heart': 'Corazón', 'Unknown': 'Desconocido',
+    'It turned. It will remember you.': 'Giró. Te va a recordar.', 'She is still walking. Toward you.': 'Sigue caminando. Hacia ti.',
+    'The crowd has stopped breathing.': 'El público dejó de respirar.', 'It has learned your face.': 'Ya aprendió tu rostro.',
+    'ROTATE': 'GIRA', 'DRAG': 'ARRASTRA', 'WAKING': 'DESPERTANDO', 'HOLD': 'MANTÉN',
+    'You were not': 'Nadie te', 'invited.': 'invitó.', 'You came anyway.': 'Viniste de todos modos.',
+    'Tonight the house shows its new season.': 'Esta noche la casa presenta su nueva temporada.',
+    'Nobody on the runway is entirely': 'Nadie en la pasarela es del todo', 'human.': 'humano.', 'Neither is the audience.': 'Tampoco el público.',
+    'Take your': 'Toma tu', 'seat.': 'asiento.',
+    'Every film lives in one world. Before the numbered shows there were eight; keep scrolling and they walk past you.': 'Cada film vive en un solo mundo. Antes de los shows numerados hubo ocho; sigue bajando y pasarán frente a ti.',
+    'Season 00 · Eight worlds · Season 00': 'Temporada 00 · Ocho mundos · Temporada 00', 'Eight worlds': 'Ocho mundos',
+    'Infernal runway': 'Pasarela infernal', 'Lacquer red · horns · latex': 'Rojo laca · cuernos · látex',
+    'The silhouettes': 'Las siluetas', 'Three looks made of particles': 'Tres looks hechos de partículas',
+    'Three looks from the new season, made of dust. Scroll and they take shape. Move and they come apart.': 'Tres looks de la nueva temporada, hechos de polvo. Baja y toman forma. Muévete y se deshacen.',
+    'The Horned Lacquer': 'La Laca con Cuernos', 'Red lacquer · horned helm · floor-length cape': 'Laca roja · yelmo con cuernos · capa hasta el suelo',
+    'The Monument': 'El Monumento', 'A collar taller than the head · lacquer ribs · train': 'Un cuello más alto que la cabeza · costillas de laca · cola',
+    'The Hood': 'La Capucha', 'Red horns · pointed hood · a cape that hides everything': 'Cuernos rojos · capucha en punta · una capa que lo esconde todo',
+    'particles': 'partículas', 'Move to scatter them': 'Muévete para dispersarlas', 'Touch to scatter them': 'Toca para dispersarlas', 'Everything returns to dark matter.': 'Todo vuelve a la materia oscura.', 'Move to disturb it · click to detonate': 'Muévete para perturbarla · haz clic para detonarla', 'Touch to detonate it': 'Tócala para detonarla',
+    'The black choir': 'El coro negro', 'Black lacquer · horns · red lips': 'Laca negra · cuernos · labios rojos',
+    'Apocalypse': 'Apocalipsis', 'Burning fields · red capes': 'Campos en llamas · capas rojas',
+    'Black water theatre': 'Teatro de agua negra', 'A runway over black water': 'Una pasarela sobre agua negra',
+    'Possessed close-ups': 'Primeros planos poseídos', 'Chrome · red eyes · machines': 'Cromo · ojos rojos · máquinas',
+    'Editorial and period': 'Editorial y de época', 'Lace · salons · candles': 'Encaje · salones · velas',
+    'Future Asia': 'Asia futura', 'Sky trains · red coats': 'Trenes elevados · abrigos rojos',
+    'Sky terminal': 'Terminal del cielo', 'Black latex · volume · a city above the clouds': 'Látex negro · volumen · una ciudad sobre las nubes',
+    'Twenty-five seconds from the other side. It opens as you come closer.': 'Veinticinco segundos del otro lado. Se abre mientras te acercas.',
+    'We dress the things': 'Vestimos a las cosas', 'that walk': 'que caminan', 'at night.': 'de noche.',
+    'Film': 'Película', 'Video position': 'Posición del video', 'Dark Matter reel: the new looks of the season': 'Reel de Dark Matter: los nuevos looks de la temporada',
+    'Someone in the audience has not looked at the runway once.': 'Alguien en el público no ha mirado la pasarela ni una vez.',
+    'She has been watching you since you came in': 'Te está mirando desde que entraste', 'She only exists in reflections': 'Solo existe en los reflejos',
+    'Do not look away': 'No apartes la mirada', 'A porcelain figure in a chrome cage raises her eyes to you': 'Una figura de porcelana en una jaula de cromo levanta los ojos hacia ti',
+    'Hold her gaze': 'Sostén su mirada', 'Time': 'Tiempo', 'Best': 'Récord', 'Begin': 'Empezar', 'Again': 'Otra vez', 'The Eyes. Her head follows you across the screen': 'Los Ojos. Su cabeza te sigue por toda la pantalla',
+    'Rest on her eyes and keep still for thirteen seconds.': 'Pon el cursor en sus ojos y no te muevas durante trece segundos.',
+    'She follows you across the screen. Rest your cursor on her eyes and do not move for thirteen seconds. On a phone, press and hold.': 'Te sigue por toda la pantalla. Pon el cursor sobre sus ojos y no te muevas durante trece segundos. En el celular, mantén presionado.',
+    'Thirteen seconds. She turned to you. She let you go. This time.': 'Trece segundos. Giró hacia ti. Te dejó ir. Esta vez.',
+    'Closer. Rest on her eyes.': 'Más cerca. Sobre sus ojos.', 'Keep still. She is looking at you.': 'No te muevas. Te está mirando.',
+    'Rest on her eyes and keep still.': 'Quédate sobre sus ojos, sin moverte.', 'You moved. She is still looking.': 'Te moviste. Todavía te mira.',
+    'You looked away.': 'Apartaste la mirada.', 'You let go.': 'Soltaste.',
+    'Nine collections, twenty-seven shows, sixty nights. A new look every night until the finale.': 'Nueve colecciones, veintisiete shows, sesenta noches. Un look nuevo cada noche hasta el final.',
+    'Season 01 program': 'Programa de la Temporada 01', 'Premiere': 'Estreno', 'Next collection': 'Próxima colección', 'On air tonight': 'Al aire esta noche',
+    'Shown': 'Presentado', '● On air': '● Al aire', 'Upcoming': 'Próximamente', 'is over': 'terminó', '27 shows · 60 nights': '27 shows · 60 noches',
+    'The Red Opera': 'La Ópera Roja', 'An abandoned opera house. The audience has been seated for decades.': 'Una ópera abandonada. El público lleva décadas sentado.',
+    'Hall of Mirrors': 'Salón de los Espejos', 'A palace of candles and mirrors. The reflections do not obey.': 'Un palacio de velas y espejos. Los reflejos no obedecen.',
+    'A runway of black ice. Nobody on it is breathing.': 'Una pasarela de hielo negro. Nadie sobre ella respira.',
+    'The Atelier': 'El Atelier', 'The fittings before Halloween. The mannequins follow the camera.': 'Las pruebas antes de Halloween. Los maniquíes siguen a la cámara.',
+    'The invitation, the show, the morning after and All Souls.': 'La invitación, el show, la mañana siguiente y la noche de las almas.',
+    'Hotel Obsidian': 'Hotel Obsidiana', 'Check-in is at midnight. Check-out is never.': 'El check-in es a medianoche. El check-out, nunca.',
+    'Exhibit 13': 'Sala 13', 'A museum after hours. Friday the 13th falls here.': 'Un museo fuera de horario. Aquí cae el viernes 13.',
+    'Black Garden': 'Jardín Negro', 'Eden, after the end. The flowers turn to watch you.': 'El Edén, después del fin. Las flores giran para mirarte.',
+    'Finale': 'Final', 'The last walk, the banquet, and the bride.': 'La última caminata, el banquete y la novia.',
+    'Everything behind Season 01, sealed. It opens only for those who buy it.': 'Todo lo que hay detrás de la Temporada 01, sellado. Solo se abre para quien la compra.',
+    'Sealed · Season 1 Library · opens on purchase · Sealed · Season 1 Library · opens on purchase ·': 'Sellada · Library T01 · se abre al comprarla · Sellada · Library T01 · se abre al comprarla ·',
+    'Season 1 Library ·': 'Library Temporada 1 ·', 'The Season 1 Library': 'La Library de la Temporada 1', 'opens 11.10': 'abre el 11.10',
+    'Sealed until': 'Sellada hasta', 'you buy it': 'que la compres', 'The Dark Matter seal': 'El sello de Dark Matter', 'Contents, sealed': 'Contenido, sellado',
+    'The complete formula behind every look and every movement of the season. We do not show what is inside. You will know when you open it.': 'La fórmula completa detrás de cada look y cada movimiento de la temporada. No mostramos lo que hay dentro. Lo sabrás cuando la abras.',
+    'Sixty nights': 'Sesenta noches', 'Every movement': 'Cada movimiento', 'The house references': 'Las referencias de la casa', 'A new chapter': 'Un capítulo nuevo',
+    'sealed · opens on purchase': 'sellada · se abre al comprarla', 'Price by week': 'Precio por semana',
+    'launch price · opens 11.10': 'precio de lanzamiento · abre el 11.10', 'the price rises every Wednesday': 'el precio sube cada miércoles',
+    "this week's price": 'precio de esta semana', 'open now': 'abierta ahora', 'the complete season': 'la temporada completa', 'complete': 'completa',
+    'Comment': 'Comenta', 'on any of our posts and we send you the link by DM.': 'en cualquiera de nuestros posts y te mandamos el link por DM.',
+    'Open Instagram': 'Abrir Instagram', 'Send us a DM': 'Escríbenos por DM', 'Questions at the door, and a way back in.': 'Preguntas en la puerta, y un camino de regreso.',
+    'Questions and contact': 'Preguntas y contacto',
+    'How is Dark Matter made?': '¿Cómo se hace Dark Matter?', 'That stays inside the house. The Library opens the atelier to those who buy it.': 'Eso se queda dentro de la casa. La Library abre el atelier a quien la compra.',
+    'Who designs the collections?': '¿Quién diseña las colecciones?', 'The house has no face. The work is signed with a number.': 'La casa no tiene rostro. El trabajo se firma con un número.',
+    'What is inside the Library?': '¿Qué hay dentro de la Library?',
+    'Everything behind Season 01, sealed until you buy it. Comment LIBRARY on any post and we send you the link.': 'Todo lo que hay detrás de la Temporada 01, sellado hasta que la compres. Comenta LIBRARY en cualquier post y te mandamos el link.',
+    'When is the next show?': '¿Cuándo es el próximo show?',
+    'A new look every night until 28 November. The season tab shows what is on tonight.': 'Un look nuevo cada noche hasta el 28 de noviembre. La pestaña de la temporada muestra qué hay esta noche.',
+    'Do you take commissions?': '¿Aceptan encargos?', 'Yes: music videos, fashion films and campaign worlds in the Dark Matter style. Every one is quoted by DM.': 'Sí: videoclips, fashion films y mundos de campaña con el estilo de Dark Matter. Cada uno se cotiza por DM.',
+    'Why horror?': '¿Por qué terror?', "Couture has always been a little frightening. We stopped pretending it isn't.": 'La alta costura siempre ha dado un poco de miedo. Dejamos de fingir que no.',
+    'The house replies by DM': 'La casa responde por DM', 'What brings you here': 'Qué te trae aquí', 'Collaborate': 'Colaborar', 'Commission a show': 'Encargar un show',
+    'Become a muse': 'Ser musa', 'Press': 'Prensa', 'Just watching': 'Solo miro', 'Who is asking': 'Quién pregunta', 'Your message': 'Tu mensaje',
+    'Your name or @handle': 'Tu nombre o @usuario', '← Back': '← Atrás', 'Next →': 'Siguiente →', 'Copy & open DM →': 'Copiar y abrir DM →',
+    'Pick one first': 'Elige una opción primero', 'Copied. Paste it in the DM.': 'Copiado. Pégalo en el DM.', 'Select the text and copy it.': 'Selecciona el texto y cópialo.',
+    'Open instagram.com/darkmatter.tm': 'Abre instagram.com/darkmatter.tm',
+    'LIBRARY\nHi Dark Matter, I would like the Season 1 Library.': 'LIBRARY\nHola Dark Matter, quiero la Library de la Temporada 1.',
+    'Hi Dark Matter, I would like to collaborate.\nI make [images / sound / clothes].\nMy work: [link]': 'Hola Dark Matter, me gustaría colaborar.\nHago [imágenes / sonido / ropa].\nMi trabajo: [link]',
+    'Hi Dark Matter, I would like to commission a show.\nProject: [music video / fashion film / campaign]\nTimeline: [date]': 'Hola Dark Matter, me gustaría encargar un show.\nProyecto: [videoclip / fashion film / campaña]\nFecha: [fecha]',
+    'Hi Dark Matter, I would like to be considered as a muse.\nWhy me: [one line]': 'Hola Dark Matter, me gustaría que me consideren como musa.\nPor qué yo: [una línea]',
+    'Hi Dark Matter, I am writing about couture and horror for [outlet].\nCould we talk?': 'Hola Dark Matter, escribo sobre alta costura y terror para [medio].\n¿Podemos hablar?',
+    'Hi Dark Matter. Just watching. Keep the signal on.': 'Hola Dark Matter. Solo miro. Mantengan la señal encendida.',
+    'Haute couture from another reality': 'Alta costura de otra realidad', 'Follow': 'Síguenos', 'Season 01': 'Temporada 01', 'Nine collections': 'Nueve colecciones',
+    'All rights reserved': 'Todos los derechos reservados', 'Back to the hall ↑': 'Volver a la sala ↑', 'Dark Matter, back to the hall': 'Dark Matter, volver a la sala',
+    'Go to a muse': 'Ir a una musa', 'Language': 'Idioma',
+    'The films': 'Los films', 'Views': 'Vistas', 'Back to the films ↑': 'Volver a los films ↑', 'Open the season →': 'Abrir la temporada →', 'See commissions →': 'Ver encargos →',
+    'What is on tonight, the Library that opens only for those who buy it, and the commissions the house accepts.': 'Lo que hay esta noche, la Library que solo se abre para quien la compra y los encargos que acepta la casa.',
+    'Program': 'Programa', 'Commissions': 'Encargos',
+    'Music videos, fashion films and campaign worlds in the house style. Every commission is quoted by DM.': 'Videoclips, fashion films y mundos de campaña con el estilo de la casa. Cada encargo se cotiza por DM.',
+    'Music video': 'Videoclip', 'A film for your song, built the way the house builds its own: one look, one world, one turn.': 'Un film para tu canción, hecho como la casa hace los suyos: un look, un mundo, un giro.',
+    'For artists and labels': 'Para artistas y sellos', 'Your collection walks one of our runways. Couture first, horror last.': 'Tu colección desfila en una de nuestras pasarelas. Primero la costura, al final el terror.',
+    'For designers and houses': 'Para diseñadores y casas de moda', 'Campaign world': 'Mundo de campaña', 'A world made for your brand: its muse, its palette, its night.': 'Un mundo hecho para tu marca: su musa, su paleta, su noche.',
+    'For brands and agencies': 'Para marcas y agencias', 'Prices are not published. Every world is quoted by DM.': 'No publicamos precios. Cada mundo se cotiza por DM.',
+    'Tell us what it is for and when you need it.': 'Cuéntanos para qué es y cuándo lo necesitas.', 'The house answers with a world: one look, one turn.': 'La casa responde con un mundo: un look, un giro.',
+    'Quote and dates, by DM.': 'Cotización y fechas, por DM.', 'Ask for a quote by DM': 'Pide una cotización por DM', 'See the work on Instagram': 'Ver el trabajo en Instagram',
+    'A chrome Dark Matter relic in a dark hall of hanging screens. On each screen a muse walks.': 'Una reliquia de cromo de Dark Matter en una sala oscura de pantallas colgantes. En cada pantalla camina una musa.'
+  };
+  var GRADE = {Raw: 'Crudo', Cold: 'Frío', Signal: 'Señal'}, GRADE_EN = {Crudo: 'Raw', 'Frío': 'Cold', 'Señal': 'Signal'};
+  var RULES = {
+    es: [[/^Next · (.+)$/, 'Próximo · $1'], [/^tomorrow · (.+)$/, 'mañana · $1'], [/^in (\d+) days · (.+)$/, 'en $1 días · $2'], [/^Muse (\d+) \/ 04$/, 'Musa $1 / 04'], [/^Grade · (Raw|Cold|Signal)$/, function(m, a){ return 'Tono · ' + GRADE[a]; }]],
+    en: [[/^Próximo · (.+)$/, 'Next · $1'], [/^mañana · (.+)$/, 'tomorrow · $1'], [/^en (\d+) días · (.+)$/, 'in $1 days · $2'], [/^Musa (\d+) \/ 04$/, 'Muse $1 / 04'], [/^Tono · (Crudo|Frío|Señal)$/, function(m, a){ return 'Grade · ' + GRADE_EN[a]; }]]
+  };
+  var EN = {}; for (var ek in ES) if (ES.hasOwnProperty(ek)) EN[ES[ek]] = ek;
+  var LANG = 'en', langCbs = [], langMo = null;
+  function trS(s, to){
+    var d = to === 'es' ? ES : EN; if (d.hasOwnProperty(s)) return d[s];
+    var R = RULES[to]; for (var i = 0; i < R.length; i++) if (R[i][0].test(s)) return s.replace(R[i][0], R[i][1]);
+    return null;
+  }
+  function TR(s){ return LANG === 'es' ? (trS(s, 'es') || s) : s; }
+  function onLang(fn){ langCbs.push(fn); }
+  function skipNode(el){ return !el || /^(SCRIPT|STYLE|TEXTAREA)$/.test(el.tagName) || (el.closest && el.closest('.ch-t')); }
+  function trText(n){
+    if (skipNode(n.parentElement)) return;
+    var raw = n.data, t = raw.replace(/\s+/g, ' ').trim(); if (!t || !/[A-Za-zÀ-ÿ]/.test(t)) return;
+    var r = trS(t, LANG); if (r == null || r === t) return;
+    n.data = raw.match(/^\s*/)[0] + r + raw.match(/\s*$/)[0];
+  }
+  function trAttrs(el){ ['aria-label', 'alt', 'placeholder', 'title'].forEach(function(a){ var v = el.getAttribute(a); if (!v) return; var r = trS(v.trim(), LANG); if (r != null && r !== v) el.setAttribute(a, r); }); }
+  function trTree(root){
+    if (root.nodeType === 3){ trText(root); return; }
+    if (root.nodeType !== 1 || skipNode(root)) return;
+    trAttrs(root); $$('[aria-label],[alt],[placeholder],[title]', root).forEach(trAttrs);
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), n; while ((n = w.nextNode())) trText(n);
+  }
+  function setLang(l){
+    LANG = l === 'es' ? 'es' : 'en'; root.lang = LANG;
+    try{ localStorage.setItem('dm_lang', LANG); }catch(e){}
+    $$('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-l') === LANG ? 'true' : 'false'); });
+    langCbs.forEach(function(fn){ safe('lang', fn); });
+    trTree(document.body); if (langMo) langMo.takeRecords();
+  }
+
+  /* ——— bucle único ——— */
+  var jobs = [];
+  function onFrame(el, fn, fps){
+    var j = {fn: fn, vis: !el, step: fps ? 1 / fps : 0, acc: 0};
+    if (el && 'IntersectionObserver' in window) new IntersectionObserver(function(es){ j.vis = es[0].isIntersecting; }, {rootMargin: '120px'}).observe(el); else j.vis = true;
+    jobs.push(j); return j;
+  }
+  var last = performance.now(), T = 0, lenis = null;
+  function loop(now){
+    var dt = Math.min(0.05, (now - last) / 1000); last = now; T += dt;
+    if (lenis) lenis.raf(now);
+    for (var i = 0; i < jobs.length; i++){ var j = jobs[i]; if (!j.vis) continue; if (j.step){ j.acc += dt; if (j.acc < j.step) continue; } (function(j){ safe('job', function(){ j.fn(T, j.step ? j.acc : dt); }); })(j); j.acc = 0; }
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+  /* carga diferida: lo que está lejos espera a que el visitante se acerque */
+  function near(el, fn){ if (!('IntersectionObserver' in window)){ fn(); return; } var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting){ io.disconnect(); fn(); } }, {rootMargin: '150% 0px'}); io.observe(el); }
+  function away(el, fn){ if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ if (!es[0].isIntersecting) fn(); }).observe(el); }
+  safe('posters', function(){ $$('video[data-poster]').forEach(function(v){ near(v, function(){ v.poster = v.getAttribute('data-poster'); }); }); });
+  function fit(c){ var w = c.clientWidth, h = c.clientHeight; if (!w || !h) return false; var W = Math.round(w * DPR), H = Math.round(h * DPR); if (c.width !== W || c.height !== H){ c.width = W; c.height = H; } return true; }
+
+  /* ——— scroll suave ——— */
+  safe('lenis', function(){ if (window.Lenis && !reduce) lenis = new Lenis({lerp: 0.085, smoothWheel: true}); });
+  function goTo(y){ if (lenis) lenis.scrollTo(y, {duration: 1.6}); else scrollTo({top: typeof y === 'number' ? y : y.getBoundingClientRect().top + scrollY, behavior: reduce ? 'auto' : 'smooth'}); }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+    var t = document.querySelector(a.getAttribute('href')); if (!t) return; e.preventDefault();
+    var vw = t.closest('[data-view]'), v = vw && vw.getAttribute('data-view');
+    if (v && v !== VIEW){ setView(v); setTimeout(function(){ goTo(t); }, 60); } else goTo(t);
+  });
+  var MX = innerWidth / 2, MY = innerHeight / 2;
+  window.addEventListener('pointermove', function(e){ MX = e.clientX; MY = e.clientY; }, {passive: true});
+  function prog(el){ var r = el.getBoundingClientRect(), span = r.height - innerHeight; return span > 0 ? clamp(-r.top / span, 0, 1) : (r.top < 0 ? 1 : 0); }
+
+  /* ——— grano ——— */
+  safe('grain', function(){ var gc = document.createElement('canvas'); gc.width = gc.height = 170; var gx = gc.getContext('2d'), id = gx.createImageData(170, 170); for (var i = 0; i < id.data.length; i += 4){ var v = Math.random() * 255 | 0; id.data[i] = id.data[i+1] = id.data[i+2] = v; id.data[i+3] = 255; } gx.putImageData(id, 0, 0); $('#grain').style.backgroundImage = 'url(' + gc.toDataURL() + ')'; });
+
+  /* ——— cursor ——— */
+  var cur = $('#cur'), curl = $('#curl'), cx = -99, cy = -99, curLab = '';
+  function setCur(l){ if (l === curLab) return; curLab = l; curl.textContent = l || ''; cur.classList.toggle('lb', !!l); }
+  if (fine && !reduce){
+    window.addEventListener('pointermove', function(){ cur.style.opacity = 1; }, {passive: true});
+    document.addEventListener('pointerover', function(e){ var el = e.target.closest ? e.target.closest('[data-cur],a,button,summary') : null; if (el && el.id === 'hall3d') return; setCur(el ? (el.getAttribute('data-cur') || '') : ''); if (el && !el.getAttribute('data-cur')) cur.classList.add('lb'); });
+    onFrame(null, function(){ cx += (MX - cx) * 0.25; cy += (MY - cy) * 0.25; cur.style.transform = 'translate(' + cx + 'px,' + cy + 'px)'; });
+  }
+
+  /* ——— sonido e inversión ——— */
+  var amb = $('#amb'), snd = $('#snd'), sndt = $('#sndt'), vbSnd = $('#vbSnd'), fadeT = null, soundOn = false;
+  function setSound(on){
+    soundOn = on; snd.classList.toggle('on', on); snd.setAttribute('aria-pressed', on ? 'true' : 'false'); sndt.textContent = on ? 'SOUND ON' : 'SOUND OFF'; vbSnd.textContent = on ? 'Sound on' : 'Sound off';
+    clearInterval(fadeT);
+    if (on){ amb.preload = 'auto'; amb.volume = 0; var p = amb.play(); if (p && p.catch) p.catch(function(){ var retry = function(){ document.removeEventListener('pointerdown', retry, true); if (!soundOn) return; var q = amb.play(); if (q && q.catch) q.catch(function(){ setSound(false); }); }; document.addEventListener('pointerdown', retry, true); }); fadeT = setInterval(function(){ amb.volume = Math.min(0.5, amb.volume + 0.025); if (amb.volume >= 0.5) clearInterval(fadeT); }, 80); }
+    else fadeT = setInterval(function(){ amb.volume = Math.max(0, amb.volume - 0.05); if (amb.volume <= 0){ clearInterval(fadeT); amb.pause(); } }, 60);
+  }
+  snd.addEventListener('click', function(){ setSound(!soundOn); });
+  vbSnd.addEventListener('click', function(){ setSound(!soundOn); });
+  $('#invBtn').addEventListener('click', function(){ var on = !root.classList.contains('inv'); root.classList.toggle('inv', on); this.classList.toggle('on', on); this.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+
+  /* ——— capítulos ——— */
+  var VIEW = 'films', CH = [], chnav = $('#chnav'), chlab = $('#chlab'), bar = $('#bar'), curCh = -1, chLinks = [];
+  function buildNav(){
+    CH = $$('[data-view="' + VIEW + '"] [data-ch]'); curCh = -1;
+    chnav.innerHTML = CH.map(function(s){ return '<a href="#' + s.id + '"><span>' + s.getAttribute('data-name') + '</span>(' + s.getAttribute('data-ch') + ')</a>'; }).join('');
+    chLinks = $$('a', chnav);
+  }
+  buildNav();
+  onFrame(null, function(){
+    var H = document.documentElement.scrollHeight - innerHeight; bar.style.transform = 'scaleX(' + (H > 0 ? scrollY / H : 0).toFixed(4) + ')';
+    if (!CH.length) return;
+    var k = 0; for (var i = 0; i < CH.length; i++) if (CH[i].getBoundingClientRect().top < innerHeight * 0.5) k = i;
+    var imm = false; if (VIEW === 'films') ['dust', 'runway', 'film'].forEach(function(id){ var r = document.getElementById(id).getBoundingClientRect(); if (r.top < innerHeight * 0.5 && r.bottom > innerHeight * 0.5) imm = true; }); root.classList.toggle('imm', imm);
+    if (k !== curCh){ curCh = k; chLinks.forEach(function(a, i){ a.classList.toggle('on', i === k); }); chlab.innerHTML = '<b>(' + CH[k].getAttribute('data-ch') + ')</b>' + CH[k].getAttribute('data-name'); }
+  });
+  function splitT(h){ var src = h.getAttribute('data-en') || h.textContent.trim(); h.setAttribute('data-en', src); var i = 0; h.innerHTML = TR(src).split(' ').map(function(w){ return '<span class="w">' + w.split('').map(function(c){ return '<span class="c" style="--i:' + (i++) + '">' + c + '</span>'; }).join('') + '</span>'; }).join(''); }
+  $$('.ch-t').forEach(splitT); onLang(function(){ $$('.ch-t').forEach(splitT); });
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); }, {rootMargin: '0px 0px -12% 0px'});
+    $$('.ch,.rv').forEach(function(el){ io.observe(el); });
+  } else $$('.ch,.rv').forEach(function(el){ el.classList.add('in'); });
+
+  /* ——— la sala: intro + musas ——— */
+  var MUSES = [
+    {k: 'bishop', title: 'The Silver Bishop', desc: 'It attends every show. Nobody has seen its face.', attr: [['Seat', 'Front row'], ['Since', 'Season 00'], ['Face', 'Never shown']], line: 'It turned. It will remember you.'},
+    {k: 'bride', title: 'The Red Bride', desc: 'She has walked every season. She has never reached the altar.', attr: [['Seat', 'The runway'], ['Train', 'Nine metres'], ['Altar', 'Never']], line: 'She is still walking. Toward you.'},
+    {k: 'albino', title: 'The Albino', desc: 'Ivory horns, a coat of feathers and cable. Always in the crowd.', attr: [['Seat', 'Row 13'], ['Horns', 'Ivory'], ['Pulse', 'Red']], line: 'The crowd has stopped breathing.'},
+    {k: 'machine', title: 'The Machine', desc: 'Chrome, cable and a red light where the eyes should be.', attr: [['Seat', 'Backstage'], ['Eyes', 'Red light'], ['Heart', 'Unknown']], line: 'It has learned your face.'}
+  ];
+  var WORLDS = [
+    ['Infernal runway', 'Lacquer red · horns · latex', 'w1'], ['The black choir', 'Black lacquer · horns · red lips', 'w2m'], ['Apocalypse', 'Burning fields · red capes', 'w3'], ['Black water theatre', 'A runway over black water', 'w4'],
+    ['Possessed close-ups', 'Chrome · red eyes · machines', 'w5'], ['Editorial and period', 'Lace · salons · candles', 'w6'], ['Future Asia', 'Sky trains · red coats', 'w7'], ['Sky terminal', 'Black latex · volume · a city above the clouds', 'w8m']
+  ];
+  var stage = $('#stage'), hall = $('#hall'), introUi = $('#introUi'), entered = false, loadP = {relic: 0, muse: 0, fonts: 0}, shownP = 0, introT0 = performance.now(), hallApi = null;
+  root.classList.add('lock', 'pre'); if (lenis) lenis.stop();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ loadP.fonts = 1; }); else loadP.fonts = 1;
+  setTimeout(function(){ loadP.relic = loadP.muse = loadP.fonts = 1; }, Math.max(2500, 7000 - performance.now()));
+  /* en el celular (modo de bajo consumo, apps) el navegador solo deja reproducir un video
+     si alguna vez arrancó con un toque: el toque de entrada los habilita a todos */
+  function unlockMedia(){
+    var list = $$('video'); if (hallApi && hallApi.vids) list = list.concat(hallApi.vids);
+    list.forEach(function(v){
+      if (v.__ok) return; v.__ok = true; v.muted = true; v.defaultMuted = true; v.playsInline = true; v.setAttribute('playsinline', '');
+      var was = v.paused, p; try{ p = v.play(); }catch(e){}
+      if (p && p.catch) p.catch(function(){}); if (was) try{ v.pause(); }catch(e){}
+    });
+  }
+  var needUnlock = !fine || ('ontouchstart' in window) || (navigator.maxTouchPoints || 0) > 0 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (needUnlock) ['touchend', 'click'].forEach(function(ev){ document.addEventListener(ev, unlockMedia, true); });
+  function enter(withSound){
+    if (entered) return; entered = true;
+    if (needUnlock) unlockMedia();
+    if (withSound) setSound(true);
+    introUi.classList.add('gone'); root.classList.remove('pre');
+    var unlocked = false, unlock = function(){ if (unlocked) return; unlocked = true; if (VIEW === 'films'){ root.classList.remove('lock'); if (lenis) lenis.start(); } };
+    if (hallApi && !reduce){ hallApi.open(unlock); setTimeout(unlock, 3000); } else unlock();
+    /* las otras tres musas empiezan a bajar cuando la música ya arrancó */
+    setTimeout(function(){ if (hallApi && hallApi.warm) hallApi.warm(); }, withSound ? 2500 : 600);
+  }
+  $('#enter').addEventListener('click', function(){ enter(false); });
+  $('#enterSound').addEventListener('click', function(){ enter(true); });
+  document.addEventListener('keydown', function(e){ if (VIEW === 'films' && !entered && e.key === 'Enter' && stage.classList.contains('ready')){ e.preventDefault(); enter(false); } });
+  window.addEventListener('wheel', function(e){ if (VIEW === 'films' && !entered && stage.classList.contains('ready') && e.deltaY > 20) enter(false); }, {passive: true});
+
+  /* ——— vistas: los films / la temporada ——— */
+  function setView(v){
+    v = v === 'season' ? 'season' : 'films'; if (v === VIEW) return;
+    VIEW = v;
+    $$('[data-view]').forEach(function(m){ m.hidden = m.getAttribute('data-view') !== v; });
+    $$('.views button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-v') === v ? 'true' : 'false'); });
+    if (v === 'season' || entered){ root.classList.remove('lock', 'pre'); if (lenis) lenis.start(); }
+    else { root.classList.add('lock', 'pre'); if (lenis) lenis.stop(); }
+    if (lenis) lenis.scrollTo(0, {immediate: true, force: true}); scrollTo(0, 0);
+    buildNav(); window.dispatchEvent(new Event('resize'));
+    var sv = $('#svV'); if (v === 'season' && sv && !reduce){ sv.preload = 'auto'; var pl = sv.play(); if (pl && pl.catch) pl.catch(function(){}); } else if (sv) sv.pause();
+    try{ history.replaceState(null, '', v === 'season' ? '#season' : location.pathname + location.search); }catch(e){}
+  }
+  $$('.views button').forEach(function(b){ b.addEventListener('click', function(){ setView(b.getAttribute('data-v')); }); });
+  onFrame(null, function(){
+    if (entered) return;
+    var p = clamp(loadP.relic * 0.6 + loadP.muse * 0.2 + loadP.fonts * 0.1 + clamp((performance.now() - introT0) / 2500, 0, 1) * 0.1, 0, 1);
+    shownP += (p - shownP) * 0.07; if (p >= 1 && shownP > 0.995) shownP = 1;
+    $('#inPct').textContent = pad(Math.round(shownP * 100), 3); $('#inBar').style.width = (shownP * 100) + '%';
+    if (shownP >= 1){ stage.classList.add('ready'); if (amb.preload !== 'auto') amb.preload = 'auto'; }
+  });
+
+  safe('hall', function(){
+    var cv = $('#hall3d');
+    function fb(){ var img = document.createElement('img'); img.src = 'a/m/bishop.jpg'; img.alt = 'The Silver Bishop'; img.className = 'hall-fb'; cv.replaceWith(img); loadP.relic = loadP.muse = 1; }
+    if (!window.THREE || !THREE.GLTFLoader){ fb(); return; }
+    var R; try{ R = new THREE.WebGLRenderer({canvas: cv, antialias: !small, powerPreference: 'high-performance'}); }catch(e){ fb(); return; }
+    R.setPixelRatio(Math.min(DPR, small ? 1.5 : 1.75)); R.setClearColor(0x0a0e08, 1); R.outputEncoding = THREE.sRGBEncoding; R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.1;
+    var scene = new THREE.Scene(); scene.fog = new THREE.FogExp2(0x0a0e08, 0.045);
+    var cam = new THREE.PerspectiveCamera(36, 1, 0.05, 160);
+    var pm = new THREE.PMREMGenerator(R);
+    var envImg = new Image(); envImg.onload = function(){ var ec = document.createElement('canvas'); ec.width = envImg.width; ec.height = envImg.height; var ex = ec.getContext('2d'); ex.filter = 'grayscale(1)'; ex.drawImage(envImg, 0, 0); ex.filter = 'none'; ex.globalCompositeOperation = 'multiply'; ex.fillStyle = 'rgb(200,212,205)'; ex.fillRect(0, 0, ec.width, ec.height); var t = new THREE.CanvasTexture(ec); t.mapping = THREE.EquirectangularReflectionMapping; t.encoding = THREE.sRGBEncoding; scene.environment = pm.fromEquirectangular(t).texture; t.dispose(); }; envImg.src = 'a/env.jpg';
+    var redL = new THREE.PointLight(0xe12423, 3.2, 12); redL.position.set(-2.6, -1.0, 1.6); scene.add(redL);
+    var key = new THREE.DirectionalLight(0xc9c5ba, 0.7); key.position.set(2, 5, 6); scene.add(key);
+    var rim = new THREE.DirectionalLight(0xabb8c5, 0.6); rim.position.set(-4, 3, -5); scene.add(rim);
+    scene.add(new THREE.AmbientLight(0x5e686c, 0.12));
+    var FLOOR = -2.3, i, k;
+
+    /* piso: espejo + retícula fría */
+    if (THREE.Reflector && !small){ var refl = new THREE.Reflector(new THREE.PlaneGeometry(90, 90), {clipBias: 0.003, textureWidth: Math.round(innerWidth * 0.5 * DPR), textureHeight: Math.round(innerHeight * 0.5 * DPR), color: 0x7a7a7a}); refl.rotation.x = -Math.PI / 2; refl.position.y = FLOOR; scene.add(refl); }
+    var gcv = document.createElement('canvas'); gcv.width = gcv.height = 256; var gg = gcv.getContext('2d'), grd = gg.createRadialGradient(128, 128, 10, 128, 128, 128);
+    grd.addColorStop(0, 'rgb(130,130,130)'); grd.addColorStop(0.35, 'rgb(185,185,185)'); grd.addColorStop(1, 'rgb(255,255,255)'); gg.fillStyle = grd; gg.fillRect(0, 0, 256, 256);
+    var dim = new THREE.Mesh(new THREE.PlaneGeometry(90, 90), new THREE.MeshBasicMaterial({color: 0x0a0e08, transparent: true, alphaMap: new THREE.CanvasTexture(gcv), depthWrite: false}));
+    dim.rotation.x = -Math.PI / 2; dim.position.y = FLOOR + 0.005; scene.add(dim);
+    var lp = [];
+    for (i = 0; i < 48; i++){ var a = i / 48 * Math.PI * 2; lp.push(Math.cos(a) * 1.8, 0, Math.sin(a) * 1.8, Math.cos(a) * 40, 0, Math.sin(a) * 40); }
+    [3.5, 7, 11, 16].forEach(function(r){ for (k = 0; k < 120; k++){ var a1 = k / 120 * Math.PI * 2, a2 = (k + 1) / 120 * Math.PI * 2; lp.push(Math.cos(a1) * r, 0, Math.sin(a1) * r, Math.cos(a2) * r, 0, Math.sin(a2) * r); } });
+    var lg = new THREE.BufferGeometry(); lg.setAttribute('position', new THREE.Float32BufferAttribute(lp, 3));
+    var grid = new THREE.LineSegments(lg, new THREE.LineBasicMaterial({color: 0x5e686c, transparent: true, opacity: 0.4, fog: true})); grid.position.y = FLOOR + 0.01; scene.add(grid);
+    var dp = []; for (i = 0; i < (small ? 200 : 460); i++) dp.push((Math.random() - 0.5) * 26, FLOOR + Math.random() * 10, (Math.random() - 0.5) * 22 - 3);
+    var dg = new THREE.BufferGeometry(); dg.setAttribute('position', new THREE.Float32BufferAttribute(dp, 3));
+    var dust = new THREE.Points(dg, new THREE.PointsMaterial({color: 0xabb8c5, size: 0.03, transparent: true, opacity: 0.45, depthWrite: false})); scene.add(dust);
+    /* haz de luz sobre la reliquia */
+    var beam = new THREE.Mesh(new THREE.ConeGeometry(2.4, 10, 48, 1, true), new THREE.ShaderMaterial({transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending,
+      vertexShader: 'varying float vH;varying vec3 vN;varying vec3 vV;void main(){vH=(position.y+5.)/10.;vN=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.);vV=-mv.xyz;gl_Position=projectionMatrix*mv;}',
+      fragmentShader: 'varying float vH;varying vec3 vN;varying vec3 vV;void main(){float e=pow(abs(dot(normalize(vN),normalize(vV))),1.6);float a=.06*pow(vH,1.3)*e;gl_FragColor=vec4(vec3(.79,.77,.73)*a,a);}'}));
+    beam.position.y = FLOOR + 5; scene.add(beam);
+
+    /* letrero LED: lo único rojo que grita en la sala */
+    var TXT = 'DARK MATTER™ · SEASON 01 · HAUTE COUTURE FROM BELOW · FOUR MUSES ARE WAITING · ';
+    var tc = document.createElement('canvas'), tcx = tc.getContext('2d'), tw = 1;
+    function drawLed(str){ tcx.font = '700 22px Arial, sans-serif'; tw = Math.ceil(tcx.measureText(str).width); tc.width = tw; tc.height = 30; tcx.fillStyle = '#000'; tcx.fillRect(0, 0, tw, 30); tcx.font = '700 22px Arial, sans-serif'; tcx.fillStyle = '#fff'; tcx.textBaseline = 'middle'; tcx.fillText(str, 0, 16); }
+    drawLed(TXT);
+    var ttex = new THREE.CanvasTexture(tc); ttex.wrapS = THREE.RepeatWrapping; ttex.minFilter = ttex.magFilter = THREE.NearestFilter; ttex.generateMipmaps = false;
+    var LU = {map: {value: ttex}, off: {value: 0}, grid: {value: new THREE.Vector2(240, 30)}, span: {value: 240 / tw}, on: {value: 0}};
+    onLang(function(){ drawLed(TR(TXT)); LU.span.value = 240 / tw; ttex.needsUpdate = true; });
+    var led = new THREE.Mesh(new THREE.PlaneGeometry(8, 1), new THREE.ShaderMaterial({uniforms: LU,
+      vertexShader: 'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+      fragmentShader: 'uniform sampler2D map;uniform float off;uniform vec2 grid;uniform float span;uniform float on;varying vec2 vUv;void main(){vec2 c=floor(vUv*grid)+.5;float lit=texture2D(map,vec2(c.x/grid.x*span+off,c.y/grid.y)).r;vec2 f=fract(vUv*grid)-.5;float d=smoothstep(.46,.26,length(f));vec3 col=mix(vec3(.05,.01,.01),vec3(1.,.14,.12)*1.6,lit*on)*d;gl_FragColor=vec4(col,1.);}'}));
+    var ledG = new THREE.Group(); var ledF = new THREE.Mesh(new THREE.BoxGeometry(8.2, 1.18, 0.12), new THREE.MeshStandardMaterial({color: 0x121614, metalness: 0.9, roughness: 0.35})); ledF.position.z = -0.07; ledG.add(ledF); ledG.add(led);
+    ledG.position.set(0, 5.1, -9.5); ledG.rotation.x = 0.1; scene.add(ledG);
+
+    /* pantallas de las musas (horizontales) */
+    var SW = 3.2, SH = 1.8, RAD = 6.6, ANG = [-56, -19, 19, 56], screens = [], vids = [], hitMeshes = [];
+    var frameMat = new THREE.MeshStandardMaterial({color: 0x121614, metalness: 0.95, roughness: 0.3});
+    var cableMat = new THREE.MeshStandardMaterial({color: 0x1f231f, metalness: 1, roughness: 0.4});
+    MUSES.forEach(function(m, j){
+      var v = document.createElement('video'); v.muted = true; v.loop = true; v.playsInline = true; v.setAttribute('playsinline', ''); v.setAttribute('muted', ''); v.crossOrigin = 'anonymous'; v.preload = j === 0 ? 'auto' : 'none'; v.src = 'a/m/' + m.k + '.mp4';
+      if (j === 0) v.addEventListener('loadeddata', function(){ loadP.muse = 1; }, {once: true});
+      var vt = new THREE.VideoTexture(v); vt.minFilter = vt.magFilter = THREE.LinearFilter; vt.generateMipmaps = false;
+      var U = {map: {value: vt}, light: {value: new THREE.Vector2(-3, -3)}, rad: {value: 0.2}, wake: {value: 0}, on: {value: 0}, dim: {value: 1}, t: {value: 0}, seed: {value: Math.random() * 9}};
+      var mat = new THREE.ShaderMaterial({uniforms: U,
+        vertexShader: 'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+        fragmentShader: 'uniform sampler2D map;uniform vec2 light;uniform float rad;uniform float wake;uniform float on;uniform float dim;uniform float t;uniform float seed;varying vec2 vUv;void main(){vec2 uv=vUv;float g=step(.994,fract(sin(floor(t*8.+seed)*43758.5)))*.01;uv.x+=g*sin(uv.y*90.);vec3 c=texture2D(map,uv).rgb;float d=distance(vUv*vec2(1.778,1.),light*vec2(1.778,1.));float lamp=smoothstep(rad,rad*.3,d);float vis=mix(.06,1.,clamp(max(lamp,wake),0.,1.));c*=vis*dim;c*=.88+.12*sin(vUv.y*800.);vec2 q=vUv-.5;c*=1.-dot(q,q)*1.1;float fl=on<1.?step(.5,fract(sin(floor(t*24.+seed)*91.7)*43758.5))*on+on*.35:1.;c*=clamp(fl,0.,1.)*on;gl_FragColor=vec4(c,1.);}'});
+      var g = new THREE.Group(), sc = new THREE.Mesh(new THREE.PlaneGeometry(SW, SH), mat);
+      var fr = new THREE.Mesh(new THREE.BoxGeometry(SW + 0.14, SH + 0.14, 0.1), frameMat); fr.position.z = -0.056;
+      var strip = new THREE.Mesh(new THREE.PlaneGeometry(SW * 0.28, 0.016), new THREE.MeshBasicMaterial({color: 0xe12423, toneMapped: false})); strip.position.set(0, -SH / 2 - 0.04, 0.001);
+      g.add(fr); g.add(sc); g.add(strip);
+      [-1, 1].forEach(function(sx){ var cb = new THREE.Mesh(new THREE.CylinderGeometry(0.01, 0.01, 12, 6), cableMat); cb.position.set(sx * SW * 0.42, SH / 2 + 6, -0.05); g.add(cb); });
+      var an = ANG[j] * Math.PI / 180; g.position.set(RAD * Math.sin(an), 0.9, -RAD * Math.cos(an)); g.lookAt(0, 0.9, 0);
+      sc.userData.i = j; scene.add(g); screens.push({g: g, sc: sc, U: U, v: v}); vids.push(v); hitMeshes.push(sc);
+    });
+    /* pantallas altas con los ocho mundos */
+    var tl = new THREE.TextureLoader(), worldU = [];
+    WORLDS.forEach(function(w, j){
+      var an = (-70 + j * 20) * Math.PI / 180, r = 12.5, tx = tl.load('a/h/h' + (j + 1) + '.jpg'); tx.encoding = THREE.sRGBEncoding;
+      var U = {map: {value: tx}, on: {value: 0}};
+      var m = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 1.35), new THREE.ShaderMaterial({uniforms: U, fog: false,
+        vertexShader: 'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+        fragmentShader: 'uniform sampler2D map;uniform float on;varying vec2 vUv;void main(){vec3 c=texture2D(map,vUv).rgb;c=pow(c,vec3(2.2));c*=.55*on;c*=.85+.15*sin(vUv.y*500.);gl_FragColor=vec4(pow(c,vec3(1./2.2)),1.);}'}));
+      var g = new THREE.Group(); var fr = new THREE.Mesh(new THREE.BoxGeometry(2.5, 1.45, 0.08), frameMat); fr.position.z = -0.045; g.add(fr); g.add(m);
+      g.position.set(r * Math.sin(an), 3.4 + Math.sin(j * 1.3) * 0.25, -r * Math.cos(an)); g.lookAt(0, 1.5, 0); scene.add(g); worldU.push(U);
+    });
+
+    /* la reliquia */
+    var relic = new THREE.Group(); scene.add(relic); var halo = null;
+    new THREE.GLTFLoader().load('a/relic.json', function(gl){
+      var m = gl.scene, box = new THREE.Box3().setFromObject(m), c = box.getCenter(new THREE.Vector3()), s = box.getSize(new THREE.Vector3());
+      var kk = 3.3 / Math.max(s.x, s.y); m.scale.setScalar(kk); m.position.copy(c).multiplyScalar(-kk);
+      m.traverse(function(o){ if (!o.isMesh) return; var mt = o.material; mt.envMapIntensity = 1.35;
+        if (/chrome/i.test(mt.name)){ mt.metalness = 1; mt.roughness = 0.18; }
+        if (/gunmetal/i.test(mt.name)){ mt.metalness = 1; mt.roughness = 0.32; }
+        if (/signal/i.test(mt.name)){ mt.emissive = new THREE.Color(0xe12423); mt.emissiveIntensity = 2.4; }
+        if (/^halo$/i.test(o.name) || /^halo$/i.test(o.parent && o.parent.name)) halo = halo || o; });
+      relic.add(m); loadP.relic = 1;
+    }, function(e){ loadP.relic = Math.max(loadP.relic, Math.min(0.99, (e && e.loaded ? e.loaded / (e.total || 1650812) : 0))); }, function(){ loadP.relic = 1; });
+
+    /* cámara: intro → sala → cada musa → vista alta */
+    var V = function(x, y, z){ return new THREE.Vector3(x, y, z); };
+    var INTRO = {p: V(0, 0.35, 4.6), t: V(0, 0.3, 0)};
+    var KEYS = [{p: V(0, 1.7, 9.2), t: V(0, 0.9, -3)}];
+    screens.forEach(function(s){
+      var pos = s.g.position.clone(), n = V(-pos.x, 0, -pos.z).normalize(), dir = n.clone().negate(), right = V(0, 0, 0).crossVectors(dir, V(0, 1, 0)).normalize();
+      KEYS.push({p: pos.clone().add(n.clone().multiplyScalar(4.7)).add(V(0, 0.08, 0)), t: pos.clone().sub(right.clone().multiplyScalar(0.95)), c: pos.clone(), n: n, right: right});
+    });
+    KEYS.push({p: V(0, 5.2, 12.5), t: V(0, 0.4, -4)});
+    function size(){ var w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return; R.setSize(w, h, false); cam.aspect = w / h; cam.fov = w / h < 1 ? 58 : 36; cam.updateProjectionMatrix(); }
+    window.addEventListener('resize', size); size();
+
+    var openT = -1, openCb = null, focused = -1, holding = false, woke = false, ray = new THREE.Raycaster(), ndc = new THREE.Vector2(-9, -9), pointerIn = false, spinV = 0, rotY = 0, rx = 0, drag = false, lx = 0, ly = 0, tiltV = 0, tilt = 0, rSph = new THREE.Sphere(new THREE.Vector3(0, 0.3, 0), 1.45);
+    function setNdc(e){ var r = cv.getBoundingClientRect(); ndc.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1); }
+    function onRelic(){ if (!relic.children.length) return false; ray.setFromCamera(ndc, cam); rSph.center.set(0, relic.position.y, 0); return ray.ray.intersectsSphere(rSph); }
+    var info = $('#mzInfo'), cap = $('#hallCap'), foot = $('#hallFoot'), list = $('#mzList'), lineEl = $('#mzLine'), ring = $('#mzRing'), zAxis = new THREE.Vector3(0, 0, 1);
+    list.innerHTML = MUSES.map(function(m, j){ return '<li><button type="button" data-i="' + j + '"><span><b>(' + pad(j + 1) + ')</b> ' + m.title + '</span><img src="a/m/' + m.k + '_t.jpg" alt=""></button></li>'; }).join('');
+    var listBtns = $$('button', list);
+    listBtns.forEach(function(b){ b.addEventListener('click', function(){ var j = +b.getAttribute('data-i'); var span = hall.offsetHeight - innerHeight; goTo(hall.getBoundingClientRect().top + scrollY + span * (j + 1) / 5); }); });
+    cv.addEventListener('pointermove', function(e){ setNdc(e); pointerIn = true; if (drag){ spinV += (e.clientX - lx) * 0.004; tiltV += (e.clientY - ly) * 0.003; lx = e.clientX; ly = e.clientY; } });
+    cv.addEventListener('pointerleave', function(){ pointerIn = false; ndc.set(-9, -9); });
+    cv.addEventListener('pointerdown', function(e){
+      setNdc(e);
+      /* la reliquia se gira arrastrando: en la intro, en las tomas de la sala o sobre ella */
+      if (!entered || focused < 0 || onRelic()){ drag = true; lx = e.clientX; ly = e.clientY; cv.setPointerCapture && cv.setPointerCapture(e.pointerId); return; }
+    });
+    function release(){ drag = false; if (!holding) return; holding = false; cur.classList.remove('hold'); if (focused >= 0) vids[focused].pause(); }
+    cv.addEventListener('pointerup', release); cv.addEventListener('pointercancel', release); cv.addEventListener('lostpointercapture', release);
+    cv.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+
+    away(stage, function(){ vids.forEach(function(v){ v.pause(); }); });
+    hallApi = {vids: vids, open: function(cb){ openT = 0; openCb = cb; }, warm: function(){ vids.forEach(function(v){ if (v.preload !== 'auto'){ v.preload = 'auto'; try{ v.load(); }catch(e){} } }); }};
+    var camP = INTRO.p.clone(), camT = INTRO.t.clone(), look = new THREE.Vector3(), tmp = new THREE.Vector3(), tmp2 = new THREE.Vector3();
+    onFrame(stage, function(t, dt){
+      var px = MX / innerWidth - 0.5, py = MY / innerHeight - 0.5, portrait = cam.aspect < 1;
+      /* posición de la cámara según el scroll */
+      var p = prog(hall), s = p * (KEYS.length - 1), j = Math.min(KEYS.length - 2, Math.floor(s)), f = s - j, fe = ease(clamp((f - 0.22) / 0.56, 0, 1));
+      var A = KEYS[j], B = KEYS[j + 1];
+      tmp.copy(A.p).lerp(B.p, fe); tmp2.copy(A.t).lerp(B.t, fe);
+      if (portrait){ if (A.c) tmp2.lerp(A.c, 1 - fe); if (B.c) tmp2.lerp(B.c, fe); }
+      var ob = 1;
+      if (!entered){ ob = 0; } else if (openT >= 0 && openT < 1){ openT = Math.min(1, openT + dt / (reduce ? 0.01 : 2.6)); ob = ease(openT); if (openT >= 1 && openCb){ openCb(); openCb = null; } } else ob = 1;
+      var targetP = INTRO.p.clone().lerp(tmp, ob), targetT = INTRO.t.clone().lerp(tmp2, ob);
+      targetP.x += px * (0.5 - 0.3 * ob); targetP.y -= py * 0.3;
+      camP.lerp(targetP, 0.12); camT.lerp(targetT, 0.12); cam.position.copy(camP); cam.lookAt(camT);
+      /* pantallas encendidas tras la entrada */
+      screens.forEach(function(sObj, q){ var target = entered ? clamp((openT < 0 ? 1 : openT) * 1.8 - q * 0.18, 0, 1) : 0; sObj.U.on.value += (target - sObj.U.on.value) * 0.2; sObj.U.t.value = t; });
+      worldU.forEach(function(U, q){ var target = entered ? clamp((openT < 0 ? 1 : openT) * 1.6 - 0.3 - q * 0.05, 0, 1) : 0; U.on.value += (target - U.on.value) * 0.1; });
+      LU.on.value += ((entered ? 1 : 0) - LU.on.value) * 0.05; LU.off.value = (LU.off.value + dt * 30 / tw) % 1;
+      /* musa enfocada */
+      var nf = -1; for (var q = 1; q <= 4; q++) if (Math.abs(s - q) < 0.3) nf = q - 1;
+      if (nf !== focused){
+        if (focused >= 0){ var ov = vids[focused]; ov.pause(); }
+        focused = nf; woke = false; lineEl.classList.remove('on');
+        if (focused >= 0){
+          var m = MUSES[focused]; try{ vids[focused].currentTime = 0; }catch(e){}
+          $('#mzNum').textContent = '(' + pad(focused + 1) + ') / (04)'; $('#mzTitle').textContent = m.title; $('#mzDesc').textContent = m.desc;
+          $('#mzAttr').innerHTML = m.attr.map(function(a){ return '<dt>' + a[0] + '</dt><dd>' + a[1] + '</dd>'; }).join('');
+          $('#mzCount').textContent = 'Muse ' + pad(focused + 1) + ' / 04';
+        } else $('#mzCount').textContent = 'The hall';
+        listBtns.forEach(function(b, q){ b.classList.toggle('on', q === focused); });
+      }
+      info.classList.toggle('on', entered && focused >= 0); list.classList.toggle('on', entered && ob > 0.9);
+      cap.classList.toggle('on', entered && ob > 0.9 && s < 0.55); foot.classList.toggle('on', entered && ob > 0.9);
+      setCur(drag ? 'ROTATE' : !pointerIn ? '' : !entered ? 'DRAG' : (focused < 0 || onRelic()) ? 'DRAG' : '');
+      /* las pantallas quedan encendidas: la musa enfocada corre en bucle */
+      screens.forEach(function(sObj, q){
+        var v = sObj.v, U = sObj.U, d = v.duration || 5, kk = clamp((v.currentTime || 0) / d, 0, 1);
+        if (q === focused){
+          if (v.paused && !reduce){ var fp = v.play(); if (fp && fp.catch) fp.catch(function(){}); }
+          if (!woke && kk > 0.3){ woke = true; lineEl.textContent = MUSES[q].line; lineEl.classList.add('on'); }
+          ring.style.strokeDashoffset = (100.5 * (1 - kk)).toFixed(1);
+        } else if (entered && focused < 0 && !reduce){ if (v.paused){ var pp = v.play(); if (pp && pp.catch) pp.catch(function(){}); } }
+        else if (!v.paused) v.pause();
+        U.wake.value += (1 - U.wake.value) * 0.1; U.dim.value += (1 - U.dim.value) * 0.1; U.light.value.set(-3, -3);
+        if (v.readyState >= 2) U.map.value.needsUpdate = true;
+      });
+      /* reliquia */
+      spinV *= 0.94; tiltV *= 0.9; tilt = clamp(tilt + tiltV, -0.9, 0.9); if (!drag) tilt *= 0.985;
+      rotY += spinV + (reduce ? 0 : dt * 0.16); rx += ((py * 0.3 + tilt) - rx) * 0.12;
+      relic.rotation.set(rx, rotY + px * 0.4, 0); relic.position.y = 0.3 + (reduce ? 0 : Math.sin(t * 0.8) * 0.07);
+      if (halo && !reduce) halo.rotateOnWorldAxis(zAxis, dt * 0.1);
+      redL.intensity = 3 + Math.sin(t * 1.6) * 0.9; dust.rotation.y = t * 0.01;
+      R.render(scene, cam);
+    });
+  });
+
+  /* ——— (II) invitación ——— */
+  safe('invite', function(){
+    var sec = $('#invite'), lines = $$('#invLines p'), bg = $('#invBg'), cnt = $('#invCount'), n = lines.length, bgOn = false;
+    away(sec, function(){ bg.pause(); bgOn = false; });
+    onFrame(sec, function(){
+      var p = prog(sec), f = p * n;
+      if (!bgOn && p > 0 && p < 1){ bgOn = true; bg.preload = 'auto'; var pl = bg.play(); if (pl && pl.catch) pl.catch(function(){ bgOn = false; }); }
+      lines.forEach(function(l, i){
+        var d = f - i - 0.5, a = d < -0.5 ? 0 : d < 0 ? (d + 0.5) * 2 : d < 0.25 ? 1 : d < 0.5 ? 1 - (d - 0.25) * 4 : 0;
+        if (i === n - 1 && d >= 0) a = 1;
+        l.style.opacity = a.toFixed(3); l.style.filter = 'blur(' + ((1 - a) * 14).toFixed(1) + 'px)'; l.style.transform = 'translateY(' + ((d < 0 ? 1 : -1) * (1 - a) * 30).toFixed(1) + 'px)';
+      });
+      cnt.textContent = pad(clamp(Math.floor(f) + 1, 1, n)) + ' / ' + pad(n);
+      bg.style.transform = 'scale(' + (1.02 + p * 0.16).toFixed(3) + ')';
+    });
+  });
+
+  /* ——— (III) las siluetas: tres looks hechos de partículas ——— */
+  var LOOKS = [
+    ['The Horned Lacquer', 'Red lacquer · horned helm · floor-length cape'],
+    ['The Monument', 'A collar taller than the head · lacquer ribs · train'],
+    ['The Hood', 'Red horns · pointed hood · a cape that hides everything']
+  ];
+  safe('dust', function(){
+    if (!window.THREE) return;
+    var sec = $('#dust'), cv = $('#dustCv'), info = $('#dsInfo'), R;
+    try{ R = new THREE.WebGLRenderer({canvas: cv, antialias: false, powerPreference: 'high-performance'}); }catch(e){ return; }
+    R.setPixelRatio(Math.min(DPR, small ? 1.3 : 1.75)); R.setClearColor(0x0a0e08, 1);
+    var scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(35, 1, 0.1, 60); cam.position.set(0, 0, 7.4);
+    var N = small ? 26000 : 64000, pts = null, geo = new THREE.BufferGeometry();
+    var U = {uT: {value: 0}, uP: {value: 0}, uM: {value: new THREE.Vector3(99, 99, 0)}, uMs: {value: 0}, uSize: {value: (small ? 2.4 : 2.7) * Math.min(DPR, 1.75)}};
+    $('#dsN').textContent = String(N).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    if (!fine) $('#dsHint').textContent = 'Touch to scatter them';
+    var mat = new THREE.ShaderMaterial({uniforms: U, transparent: true, depthWrite: false,
+      vertexShader: [
+        'attribute vec3 aA;attribute vec3 aB;attribute vec3 aC;attribute vec3 aD;attribute vec3 cA;attribute vec3 cB;attribute vec3 cC;attribute float aR;',
+        'uniform float uT;uniform float uP;uniform vec3 uM;uniform float uMs;uniform float uSize;varying vec3 vC;varying float vA;',
+        /* polvo: una galaxia inclinada que gira despacio */
+        'vec3 dust(){float a=uT*.05;float c=cos(a),s=sin(a);vec3 p=aD;p.z+=1.2;return vec3(c*p.x-s*p.z,p.y,s*p.x+c*p.z-1.2);}',
+        'vec3 P(float k){return k<.5?dust():k<1.5?aA:k<2.5?aB:k<3.5?aC:dust();}',
+        'vec3 C(float k){vec3 d=vec3(.5,.54,.56);return k<.5?d:k<1.5?cA:k<2.5?cB:k<3.5?cC:d;}',
+        'void main(){',
+        '  float k=floor(uP),f=uP-k,d=aR*.4,e=smoothstep(d,d+.6,f);',
+        '  vec3 p=mix(P(k),P(k+1.),e);vec3 col=mix(C(k),C(k+1.),e);',
+        '  float tw=sin(e*3.14159);',
+        '  p+=vec3(sin(aR*40.+uT*.7+p.y*2.),cos(aR*31.+uT*.6+p.x*2.),sin(aR*17.+uT*.5))*(.9*tw+.012);',
+        '  vec3 dm=p-uM;float fo=smoothstep(.95,0.,length(dm.xy))*uMs;',
+        '  p.xy+=normalize(dm.xy+1e-4)*fo*.6;p.z+=fo*.9*(aR-.3);',
+        '  vec4 mv=modelViewMatrix*vec4(p,1.);gl_Position=projectionMatrix*mv;',
+        '  gl_PointSize=uSize*(.6+aR*.9)*(6./-mv.z);',
+        '  vC=pow(col,vec3(.8))*1.35+.02;vA=.62+.38*(1.-tw)-fo*.25;',
+        '}'].join('\n'),
+      fragmentShader: 'varying vec3 vC;varying float vA;void main(){vec2 q=gl_PointCoord-.5;float r=length(q);if(r>.5)discard;gl_FragColor=vec4(vC,smoothstep(.5,.08,r)*vA);}'
+    });
+    /* el mapa de densidad (3 looks lado a lado) se convierte en posiciones y colores */
+    var img = new Image();
+    img.onload = function(){ safe('dust-build', function(){
+      var IW = img.width, W = IW / 3, H = img.height, c = document.createElement('canvas'); c.width = IW; c.height = H;
+      var x = c.getContext('2d'); x.drawImage(img, 0, 0); var d = x.getImageData(0, 0, IW, H).data, sc = 4.3 / H, i;
+      var P = [0, 1, 2, 3].map(function(){ return new Float32Array(N * 3); }), C = [0, 1, 2].map(function(){ return new Uint8Array(N * 3); }), rnd = new Float32Array(N);
+      for (var L = 0; L < 3; L++){
+        var cdf = new Float32Array(W * H), tot = 0, px, py;
+        for (py = 0; py < H; py++) for (px = 0; px < W; px++){ tot += d[(py * IW + L * W + px) * 4 + 3]; cdf[py * W + px] = tot; }
+        for (i = 0; i < N; i++){
+          var r = Math.random() * tot, lo = 0, hi = W * H - 1; while (lo < hi){ var mid = (lo + hi) >> 1; if (cdf[mid] < r) lo = mid + 1; else hi = mid; }
+          px = lo % W; py = (lo / W) | 0; var o = (py * IW + L * W + px) * 4, lum = (d[o] + d[o + 1] + d[o + 2]) / 765, nx = (px - W / 2) / (W / 2);
+          P[L][i * 3] = (px + Math.random() - W / 2) * sc; P[L][i * 3 + 1] = (H / 2 - py - Math.random()) * sc;
+          P[L][i * 3 + 2] = Math.cos(nx * 1.4) * 0.35 + lum * 0.55 + (Math.random() - 0.5) * 0.12;
+          C[L][i * 3] = d[o]; C[L][i * 3 + 1] = d[o + 1]; C[L][i * 3 + 2] = d[o + 2];
+        }
+      }
+      for (i = 0; i < N; i++){ var rr = 0.6 + Math.pow(Math.random(), 0.7) * 4.6, a = Math.random() * Math.PI * 2; P[3][i * 3] = Math.cos(a) * rr; P[3][i * 3 + 1] = Math.sin(a) * rr * 0.26 + (Math.random() - 0.5) * 0.28; P[3][i * 3 + 2] = Math.sin(a) * rr * 0.5 - 1.2; rnd[i] = Math.random(); }
+      geo.setAttribute('position', new THREE.BufferAttribute(P[3], 3));
+      ['aA', 'aB', 'aC', 'aD'].forEach(function(k, j){ geo.setAttribute(k, new THREE.BufferAttribute(P[j], 3)); });
+      ['cA', 'cB', 'cC'].forEach(function(k, j){ geo.setAttribute(k, new THREE.BufferAttribute(C[j], 3, true)); });
+      geo.setAttribute('aR', new THREE.BufferAttribute(rnd, 1));
+      pts = new THREE.Points(geo, mat); pts.frustumCulled = false; scene.add(pts);
+    }); };
+    near(sec, function(){ img.src = 'a/p/looks.png'; });
+    /* el cursor dispersa: su posición sobre el plano de la figura */
+    var ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0), hit = new THREE.Vector3(), lastIn = -1e9;
+    function aim(e){ var r = cv.getBoundingClientRect(); ndc.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1); lastIn = performance.now(); }
+    cv.addEventListener('pointermove', aim, {passive: true}); cv.addEventListener('pointerdown', aim, {passive: true});
+    /* tramos del scroll: polvo → look 1 → look 2 → look 3 → polvo */
+    var ST = [[0, 0], [0.16, 1], [0.3, 1], [0.44, 2], [0.58, 2], [0.72, 3], [0.88, 3], [1, 4]], lw = 0, lh = 0, cur = -1;
+    function target(p){ for (var i = 1; i < ST.length; i++) if (p <= ST[i][0]){ var a = ST[i - 1], b = ST[i]; return a[1] + (b[1] - a[1]) * ease((p - a[0]) / (b[0] - a[0])); } return 4; }
+    function paint(i){ $('#dsNum').textContent = '(' + pad(i + 1) + ') / (03)'; $('#dsName').textContent = TR(LOOKS[i][0]); $('#dsMat').textContent = TR(LOOKS[i][1]); }
+    onLang(function(){ if (cur >= 0) paint(cur); });
+    onFrame(sec, function(t, dt){
+      var w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return;
+      if (w !== lw || h !== lh){ lw = w; lh = h; R.setSize(w, h, false); cam.aspect = w / h; cam.fov = w / h < 1 ? 52 : 35; cam.updateProjectionMatrix(); }
+      var p = prog(sec), tp = target(p); U.uP.value += (tp - U.uP.value) * Math.min(1, dt * 3.2); U.uT.value = t;
+      var li = Math.round(U.uP.value), near = li >= 1 && li <= 3 && Math.abs(U.uP.value - li) < 0.22 ? li - 1 : -1;
+      if (near !== cur){ cur = near; if (near >= 0) paint(near); info.classList.toggle('on', near >= 0); }
+      var px = MX / innerWidth - 0.5, py = MY / innerHeight - 0.5;
+      cam.position.x += (px * 1.1 - cam.position.x) * 0.05; cam.position.y += (-py * 0.6 - cam.position.y) * 0.05; cam.lookAt(0, 0, 0);
+      if (pts){
+        pts.rotation.y = reduce ? 0 : Math.sin(t * 0.22) * 0.24; pts.position.x += ((cam.aspect > 1.2 ? 0.8 : 0) - pts.position.x) * 0.1;
+        ray.setFromCamera(ndc, cam); if (ray.ray.intersectPlane(plane, hit)){ pts.worldToLocal(hit); U.uM.value.copy(hit); }
+        U.uMs.value += ((performance.now() - lastIn < 1400 ? 1 : 0) - U.uMs.value) * 0.08;
+      }
+      R.render(scene, cam);
+    });
+  });
+
+  /* ——— (V) pasarela horizontal ——— */
+  safe('runway', function(){
+    var sec = $('#runway'), track = $('#rwTrack'), ghost = $('#rwGhost'), pBar = $('#rwP'), nEl = $('#rwN'), nameEl = $('#rwName'), act = -1;
+    track.innerHTML = WORLDS.map(function(w, i){ return '<article class="wd"><div class="wd-m"><img loading="lazy" src="a/w/' + w[2] + '.jpg" alt="' + w[0] + '"><video muted loop playsinline preload="none" data-src="a/w/' + w[2] + '.mp4" aria-hidden="true"></video><span class="n">(' + pad(i + 1) + ')</span></div><div class="wd-t"><h3>' + w[0] + '</h3><p>' + w[1] + '</p></div></article>'; }).join('');
+    var cards = $$('.wd', track), vids = cards.map(function(c){ var v = c.querySelector('video'); v.addEventListener('playing', function(){ v.classList.add('ok'); }); return v; });
+    var dist = 0;
+    function size(){ dist = Math.max(0, track.scrollWidth - innerWidth); sec.style.height = (dist + innerHeight) + 'px'; }
+    window.addEventListener('resize', size); size(); setTimeout(size, 800);
+    if (window.IntersectionObserver) new IntersectionObserver(function(e){ if (!e[0].isIntersecting) vids.forEach(function(v){ v.pause(); }); }).observe(sec);
+    onFrame(sec, function(){
+      var p = prog(sec); track.style.transform = 'translate3d(' + (-p * dist).toFixed(1) + 'px,0,0)'; ghost.style.transform = 'translate3d(' + (-p * dist * 0.35).toFixed(1) + 'px,-50%,0)';
+      pBar.style.width = (p * 100) + '%';
+      var mid = innerWidth / 2, best = 0, bd = 1e9;
+      cards.forEach(function(c, i){
+        var r = c.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid), v = vids[i], vis = r.right > -innerWidth * 0.3 && r.left < innerWidth * 1.3;
+        if (d < bd){ bd = d; best = i; }
+        /* todas las tarjetas a la vista corren su video: nada queda como imagen fija */
+        if (vis){ if (!v.src) v.src = v.getAttribute('data-src'); if (v.paused){ var pl = v.play(); if (pl && pl.catch) pl.catch(function(){}); } } else if (!v.paused) v.pause();
+      });
+      if (best !== act){
+        act = best; cards.forEach(function(c, i){ c.classList.toggle('on', i === act); });
+        nEl.textContent = '(' + pad(act + 1) + ')'; nameEl.textContent = WORLDS[act][0];
+      }
+    });
+  });
+
+  /* ——— (IV) film ——— */
+  safe('film', function(){
+    var sec = $('#film'), vb = $('#vb'), v = $('#reel'), say = $('#vbSay'), ui = $('#vbUi'), seek = $('#vbSeek'), progEl = $('#vbProg'), tc = $('#vbTc'), prev = $('#vbPrev'), prevT = $('#vbPrevT'), sw = $('#vbSeekW');
+    var FX = ['Raw', 'Cold', 'Signal'], fx = 0, dragging = false, started = false, NT = 26;
+    away(sec, function(){ v.pause(); started = false; });
+    near(sec, function(){ prev.style.backgroundImage = 'url(a/film_thumbs3.jpg)'; }); prev.style.backgroundSize = (NT * 192) + 'px 108px';
+    function ts(s){ s = Math.max(0, s || 0); return pad(Math.floor(s / 60)) + ':' + pad(Math.floor(s % 60)); }
+    $('#vbFx').addEventListener('click', function(){ vb.classList.remove('fx' + fx); fx = (fx + 1) % 3; if (fx) vb.classList.add('fx' + fx); this.textContent = 'Grade · ' + FX[fx]; });
+    seek.addEventListener('input', function(){ dragging = true; if (v.duration) v.currentTime = seek.value / 1000 * v.duration; });
+    seek.addEventListener('change', function(){ dragging = false; });
+    sw.addEventListener('pointermove', function(e){ var r = sw.getBoundingClientRect(), f = clamp((e.clientX - r.left) / r.width, 0, 1), s = f * (v.duration || NT); prev.style.left = (f * 100) + '%'; prev.style.backgroundPosition = (-Math.min(NT - 1, Math.floor(s)) * 192) + 'px 0'; prevT.textContent = ts(s); });
+    v.addEventListener('timeupdate', function(){ var d = v.duration || NT, p = v.currentTime / d; progEl.style.width = (p * 100) + '%'; if (!dragging) seek.value = Math.round(p * 1000); tc.textContent = ts(v.currentTime) + ' / ' + ts(d); });
+    var tr = $('#vbTrail'), tx = tr.getContext('2d'), cells = {}, CELL = 24;
+    vb.addEventListener('pointermove', function(e){ if (e.target.closest && e.target.closest('.vb-ui')) return; var r = vb.getBoundingClientRect(); cells[Math.floor((e.clientX - r.left) / CELL) + ',' + Math.floor((e.clientY - r.top) / CELL)] = 1; });
+    onFrame(sec, function(t, dt){
+      var p = prog(sec), g = ease(clamp(p / 0.6, 0, 1));
+      var ix = lerp(small ? 6 : 24, 0, g), iy = lerp(small ? 30 : 22, 0, g);
+      vb.style.clipPath = 'inset(' + iy.toFixed(2) + '% ' + ix.toFixed(2) + '%)';
+      v.style.transform = 'scale(' + lerp(1.22, 1, g).toFixed(3) + ')';
+      say.style.opacity = clamp((p - 0.5) / 0.15, 0, 1) * clamp((0.92 - p) / 0.12, 0, 1);
+      ui.classList.toggle('on', p > 0.6);
+      if (p > 0.02 && p < 0.999 && v.paused && !started){ started = true; v.preload = 'auto'; var pl = v.play(); if (pl && pl.catch) pl.catch(function(){ started = false; }); }
+      if ((p <= 0.001 || p >= 1) && started && !v.paused){ v.pause(); started = false; }
+      if (fit(tr)){ tx.clearRect(0, 0, tr.width, tr.height); for (var k in cells){ var a = cells[k]; if (a <= 0){ delete cells[k]; continue; } var q = k.split(','); tx.fillStyle = 'rgba(201,197,186,' + (a * 0.7).toFixed(3) + ')'; tx.fillRect(q[0] * CELL * DPR, q[1] * CELL * DPR, CELL * DPR - DPR, CELL * DPR - DPR); cells[k] = a - dt * 1.5; } }
+    });
+  });
+
+  /* ——— (VI) encuentro ——— */
+  safe('encounter', function(){
+    var sec = $('#enc'), eyes = $('#encEyes'), vig = $('#encVig'), ps = $$('#encTxt p'), primed = false;
+    onFrame(sec, function(){
+      var p = prog(sec);
+      eyes.style.opacity = (clamp(p * 1.8, 0, 1) * 0.95).toFixed(3);
+      eyes.style.transform = 'scale(' + lerp(1.0, 1.16, p).toFixed(3) + ')'; eyes.style.transformOrigin = '50% 58%';
+      if (!primed){ primed = true; eyes.preload = 'auto'; var pp = eyes.play(); if (pp && pp.then) pp.then(function(){ eyes.pause(); }).catch(function(){ primed = false; }); else eyes.pause(); }
+      if (eyes.duration && !eyes.seeking){ var tt = clamp((p - 0.05) / 0.8, 0, 1) * (eyes.duration - 0.05); if (Math.abs(eyes.currentTime - tt) > 0.03) eyes.currentTime = tt; }
+      vig.style.setProperty('--vr', lerp(120, 42, p).toFixed(1) + 'vmax');
+      var k = Math.min(ps.length - 1, Math.floor(p * ps.length * 1.05)); ps.forEach(function(e, i){ e.classList.toggle('on', i === k && p > 0.04); });
+    });
+  });
+  safe('game', function(){
+    var gz = $('#gz'), vid = $('#gzV'), over = $('#gzOver'), fg = $('#gzFg'), rt = $('#gzRt'), msg = $('#gzMsg'), tEl = $('#gzT'), bEl = $('#gzB');
+    var LIM = 13000, t0 = 0, raf = 0, lastP = null, drift = 0, playing = false, best = 0;
+    try{ best = parseFloat(localStorage.getItem('dm_gaze_best')) || 0; }catch(e){}
+    bEl.textContent = best ? best.toFixed(1) : '00.0';
+    var EX = 0.5, EY = 0.42;
+    function imgBox(){ var r = gz.getBoundingClientRect(), iw = Math.max(r.width, r.height * 16 / 9), ih = Math.max(r.height, r.width * 9 / 16); return {r: r, iw: iw, ih: ih}; }
+    function eyeC(){ var b = imgBox(); return {b: b, x: b.r.left + b.r.width / 2 + (EX - 0.5) * b.iw, y: b.r.top + b.r.height / 2 + (EY - 0.5) * b.ih}; }
+    function inEyes(x, y){ var c = eyeC(), dx = (x - c.x) / (c.b.iw * 0.075), dy = (y - c.y) / (c.b.ih * 0.075); return dx * dx + dy * dy <= 1; }
+    function sizeRing(){ var c = eyeC(), e = gz.querySelector('.gb-eyes'); e.style.width = (c.b.iw * 0.13) + 'px'; e.style.left = (c.x - c.b.r.left) + 'px'; e.style.top = (c.y - c.b.r.top) + 'px'; }
+    window.addEventListener('resize', sizeRing); sizeRing();
+    /* la cabeza sigue al cursor: la X controla el giro; a la izquierda, el mismo clip en espejo (el cuadro central es simétrico, no hay salto) */
+    var fu = 0, fuT = 0, lastMove = -1e9, primed = false, flip = $('#gzFlip');
+    function aim(x){ var r = gz.getBoundingClientRect(); fuT = clamp(((x - r.left) / r.width - 0.5) * 2.3, -1, 1); lastMove = performance.now(); }
+    gz.addEventListener('pointermove', function(e){ aim(e.clientX); }, {passive: true});
+    gz.addEventListener('pointerdown', function(e){ aim(e.clientX); }, {passive: true});
+    onFrame(gz, function(t, dt){
+      if (!primed){ primed = true; vid.preload = 'auto'; var pp = vid.play(); if (pp && pp.then) pp.then(function(){ vid.pause(); }).catch(function(){ primed = false; }); else vid.pause(); sizeRing(); }
+      if (!t0 && !reduce && performance.now() - lastMove > 2600) fuT = Math.sin(t * 0.3) * 0.75;
+      fu += (fuT - fu) * Math.min(1, dt * 4.5);
+      var d = vid.duration; if (d && !vid.seeking){ var tt = Math.min(d - 0.05, Math.abs(fu) * (d - 0.05)); if (Math.abs(vid.currentTime - tt) > 0.02) vid.currentTime = tt; }
+      flip.classList.toggle('m', fu < 0);
+    });
+    function saveBest(s){ if (s > best){ best = s; bEl.textContent = best.toFixed(1); try{ localStorage.setItem('dm_gaze_best', String(best)); }catch(e){} } }
+    function stop(text){ cancelAnimationFrame(raf); if (t0) saveBest((Date.now() - t0) / 1000); t0 = 0; gz.classList.remove('hold'); fg.style.strokeDashoffset = 239; rt.textContent = tEl.textContent = '13.0'; gz.classList.remove('lost'); void gz.offsetWidth; gz.classList.add('lost'); if (text) msg.textContent = text; }
+    function tick(){
+      var el = Date.now() - t0, p = Math.min(1, el / LIM), left = Math.max(0, (LIM - el) / 1000).toFixed(1);
+      fg.style.strokeDashoffset = (239 * (1 - p)).toFixed(1); rt.textContent = tEl.textContent = left;
+      if (p >= 1){ saveBest(13); t0 = 0; playing = false; gz.classList.remove('hold'); gz.classList.add('won'); msg.textContent = 'Thirteen seconds. She turned to you. She let you go. This time.'; setTimeout(function(){ over.classList.remove('gone'); $('#gzPlay').textContent = 'Again'; gz.classList.remove('won'); }, 3200); return; }
+      raf = requestAnimationFrame(tick);
+    }
+    function start(x, y){ if (!playing || t0) return; if (!inEyes(x, y)){ msg.textContent = 'Closer. Rest on her eyes.'; return; } t0 = Date.now(); lastP = [x, y]; drift = 0; gz.classList.add('hold'); msg.textContent = 'Keep still. She is looking at you.'; raf = requestAnimationFrame(tick); }
+    $('#gzPlay').addEventListener('click', function(){ playing = true; sizeRing(); over.classList.add('gone'); msg.textContent = 'Rest on her eyes and keep still.'; });
+    gz.addEventListener('pointermove', function(e){ if (!playing) return; if (e.pointerType === 'mouse' && !t0){ start(e.clientX, e.clientY); return; } if (!t0 || !lastP) return; drift += Math.hypot(e.clientX - lastP[0], e.clientY - lastP[1]); lastP = [e.clientX, e.clientY]; if (drift > 26) stop('You moved. She is still looking.'); });
+    gz.addEventListener('pointerdown', function(e){ if (e.pointerType !== 'mouse' && playing){ e.preventDefault(); start(e.clientX, e.clientY); } });
+    gz.addEventListener('pointerleave', function(){ if (t0) stop('You looked away.'); });
+    gz.addEventListener('pointerup', function(e){ if (e.pointerType !== 'mouse' && t0) stop('You let go.'); });
+  });
+
+  /* ——— temporada (vista 2) ——— */
+  var SHOWS = [
+    ['01','The Red Opera','An abandoned opera house. The audience has been seated for decades.','2026-09-30','2026-10-06','N° 001 → 003'],
+    ['02','Hall of Mirrors','A palace of candles and mirrors. The reflections do not obey.','2026-10-07','2026-10-13','N° 004 → 006'],
+    ['03','Permafrost','A runway of black ice. Nobody on it is breathing.','2026-10-14','2026-10-20','N° 007 → 009'],
+    ['04','The Atelier','The fittings before Halloween. The mannequins follow the camera.','2026-10-21','2026-10-27','N° 010 → 012'],
+    ['05','Halloween','The invitation, the show, the morning after and All Souls.','2026-10-28','2026-11-03','N° 013 → 016'],
+    ['06','Hotel Obsidian','Check-in is at midnight. Check-out is never.','2026-11-04','2026-11-10','N° 017 → 019'],
+    ['07','Exhibit 13','A museum after hours. Friday the 13th falls here.','2026-11-11','2026-11-17','N° 020 → 022'],
+    ['08','Black Garden','Eden, after the end. The flowers turn to watch you.','2026-11-18','2026-11-24','N° 023 → 025'],
+    ['09','Finale','The last walk, the banquet, and the bride.','2026-11-25','2026-11-28','N° 026 → 027']
+  ];
+  var d0 = new Date(), today = d0.getFullYear() + '-' + pad(d0.getMonth() + 1) + '-' + pad(d0.getDate());
+  function fmt(s){ var p = s.split('-'); return p[2] + '.' + p[1]; }
+  function daysTo(s){ var p = s.split('-'); return Math.round((new Date(+p[0], +p[1] - 1, +p[2]) - new Date(d0.getFullYear(), d0.getMonth(), d0.getDate())) / 864e5); }
+  safe('season', function(){
+    var nextMarked = false, tn = null;
+    $('#sched').insertAdjacentHTML('beforeend', SHOWS.map(function(s){
+      var st, cls = '';
+      if (today > s[4]){ st = 'Shown'; cls = 'past'; }
+      else if (today >= s[3]){ st = '● On air'; cls = 'on'; tn = tn || ['On air tonight', s[1], fmt(s[3]) + ' → ' + fmt(s[4])]; }
+      else if (!nextMarked){ nextMarked = true; var dd = daysTo(s[3]); st = 'Next · ' + fmt(s[3]); cls = 'next'; tn = tn || [s[0] === '01' ? 'Premiere' : 'Next collection', s[1], dd === 1 ? 'tomorrow · ' + fmt(s[3]) : 'in ' + dd + ' days · ' + fmt(s[3])]; }
+      else st = 'Upcoming';
+      return '<div class="row ' + cls + '"><span class="nn">(' + s[0] + ')</span><span class="t">' + s[1] + '</span><span class="c">' + s[2] + '</span><span class="d">' + fmt(s[3]) + ' → ' + fmt(s[4]) + '<br>' + s[5] + '</span><span class="st ' + (cls === 'past' ? '' : cls) + '">' + st + '</span></div>';
+    }).join(''));
+    if (!tn) tn = ['The season', 'is over', '27 shows · 60 nights'];
+    function paintTn(){ $('#tnLab').textContent = TR(tn[0]); $('#tnBig').innerHTML = TR(tn[1]).replace(/^(The|El|La|Los|Las) /, '<em>$1</em> '); $('#tnWhen').textContent = TR(tn[2]); }
+    paintTn(); onLang(paintTn);
+    var rows = $$('#sched .row');
+    if ('IntersectionObserver' in window && !reduce){ var ro = new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); ro.unobserve(en.target); } }); }, {rootMargin: '0px 0px -10% 0px'}); rows.forEach(function(r){ ro.observe(r); }); } else rows.forEach(function(r){ r.classList.add('in'); });
+    var sched = $('#sched'), tl = $('#schedTl');
+    onFrame(sched, function(){ var r = sched.getBoundingClientRect(); tl.style.transform = 'scaleY(' + clamp((innerHeight * 0.7 - r.top) / r.height, 0, 1).toFixed(4) + ')'; });
+  });
+
+  /* ——— (VII) library ——— */
+  var LAD = [['2026-10-11',12,'11.10'],['2026-10-14',15,'14.10'],['2026-10-21',18,'21.10'],['2026-10-28',21,'28.10'],['2026-11-11',24,'11.11'],['2026-11-18',27,'18.11'],['2026-11-25',29,'25.11'],['2026-11-27',19,'BF']];
+  safe('library', function(){
+    var now = -1, price = 12, note = 'launch price · opens 11.10', state = 'opens 11.10';
+    for (var k = 0; k < LAD.length - 1; k++) if (today >= LAD[k][0]){ now = k; price = LAD[k][1]; note = 'this week\'s price'; state = 'open now'; }
+    if (today >= '2026-11-27' && today <= '2026-11-30'){ now = 7; price = 19; note = 'Black Friday → Cyber Monday'; state = 'Black Friday'; }
+    else if (today > '2026-11-30'){ now = 6; price = 29; note = 'the complete season'; state = 'complete'; }
+    $('#price').textContent = '$' + price; $('#priceNote').textContent = note; $('#libState').textContent = state;
+    $('#ladder').innerHTML = LAD.map(function(l, i){ return '<div class="' + (i === (now < 0 ? 0 : now) ? 'now' : '') + '"><i style="height:' + (l[1] / 30 * 100).toFixed(0) + '%"></i><span>$' + l[1] + '<br>' + l[2] + '</span></div>'; }).join('');
+    var sw = $('#sealW'), seal = $('#seal');
+    onFrame(sw, function(){ var r = sw.getBoundingClientRect(), p = clamp(1 - (r.top + r.height / 2) / innerHeight, 0, 1); seal.style.transform = 'rotate(' + lerp(-40, 8, p).toFixed(1) + 'deg) scale(' + lerp(0.8, 1, ease(p)).toFixed(3) + ')'; });
+    var GL = '█▓▒░#%&@';
+    $$('.redact .bars').forEach(function(b){
+      var orig = b.textContent, len = orig.length, iv = null;
+      b.textContent = orig.replace(/\S/g, '█');
+      b.parentNode.parentNode.addEventListener('mouseenter', function(){ clearInterval(iv); var n = 0; iv = setInterval(function(){ b.textContent = orig.replace(/\S/g, function(){ return GL[Math.random() * GL.length | 0]; }); if (++n > 14){ clearInterval(iv); b.textContent = 'sealed · opens on purchase'.padEnd(Math.min(len, 40), ' '); } }, 45); });
+      b.parentNode.parentNode.addEventListener('mouseleave', function(){ clearInterval(iv); b.textContent = orig.replace(/\S/g, '█'); });
+    });
+  });
+
+  /* ——— (VII) contacto ——— */
+  safe('intake', function(){
+    var MSG = {
+      library: 'LIBRARY\nHi Dark Matter, I would like the Season 1 Library.',
+      collab: 'Hi Dark Matter, I would like to collaborate.\nI make [images / sound / clothes].\nMy work: [link]',
+      commission: 'Hi Dark Matter, I would like to commission a show.\nProject: [music video / fashion film / campaign]\nTimeline: [date]',
+      casting: 'Hi Dark Matter, I would like to be considered as a muse.\nWhy me: [one line]',
+      press: 'Hi Dark Matter, I am writing about couture and horror for [outlet].\nCould we talk?',
+      watch: 'Hi Dark Matter. Just watching. Keep the signal on.'
+    };
+    var step = 1, choice = '', steps = $$('.ik-step'), next = $('#ikNext'), back = $('#ikBack'), note = $('#ikNote'), name = $('#ikName'), msg = $('#ikMsg');
+    function show(){ steps.forEach(function(s){ s.hidden = +s.getAttribute('data-step') !== step; }); back.hidden = step === 1; next.textContent = step === 3 ? 'Copy & open DM →' : 'Next →'; note.textContent = ''; }
+    $$('#ikOpts button').forEach(function(b){ b.addEventListener('click', function(){ $$('#ikOpts button').forEach(function(x){ x.setAttribute('aria-pressed', 'false'); }); b.setAttribute('aria-pressed', 'true'); choice = b.getAttribute('data-k'); }); });
+    back.addEventListener('click', function(){ step = Math.max(1, step - 1); show(); });
+    next.addEventListener('click', function(){
+      if (step === 1){ if (!choice){ note.textContent = 'Pick one first'; return; } step = 2; show(); name.focus(); return; }
+      if (step === 2){ var n = name.value.trim(); msg.value = TR(MSG[choice]) + (n ? '\n— ' + n : ''); step = 3; show(); msg.focus(); return; }
+      var text = msg.value, w = window.open('https://ig.me/m/darkmatter.tm', '_blank', 'noopener');
+      function ok(){ note.textContent = TR('Copied. Paste it in the DM.'); } function fail(){ msg.select(); note.textContent = TR('Select the text and copy it.'); }
+      try{ if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fail); else fail(); }catch(e){ fail(); }
+      if (!w) note.textContent += ' ' + TR('Open instagram.com/darkmatter.tm');
+    });
+    show();
+    /* encargos (vista 2): copia el mensaje y abre el DM */
+    $$('[data-dm]').forEach(function(b){ b.addEventListener('click', function(){
+      var cm = $('#cmNote'), text = TR(MSG[b.getAttribute('data-dm')]);
+      function ok(){ cm.textContent = TR('Copied. Paste it in the DM.'); } function fail(){ cm.textContent = TR('Open instagram.com/darkmatter.tm'); }
+      try{ if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fail); else fail(); }catch(e){ fail(); }
+    }); });
+  });
+
+  /* ——— planeta ——— */
+  safe('planet', function(){
+    if (!window.THREE) return;
+    var c = $('#planet'), R; try{ R = new THREE.WebGLRenderer({canvas: c, alpha: true, antialias: true}); }catch(e){ return; }
+    R.setPixelRatio(Math.min(DPR, small ? 1.25 : 1.5)); R.setClearColor(0x000000, 0);
+    var sc = new THREE.Scene(), cam = new THREE.PerspectiveCamera(30, 1, 0.1, 50); cam.position.set(0, 0, 4.2);
+    var NOISE = 'float h(vec3 p){p=fract(p*.3183099+.1);p*=17.;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}float n3(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.-2.*f);return mix(mix(mix(h(i),h(i+vec3(1,0,0)),f.x),mix(h(i+vec3(0,1,0)),h(i+vec3(1,1,0)),f.x),f.y),mix(mix(h(i+vec3(0,0,1)),h(i+vec3(1,0,1)),f.x),mix(h(i+vec3(0,1,1)),h(i+vec3(1,1,1)),f.x),f.y),f.z);}float fbm(vec3 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n3(p);p*=2.03;a*=.5;}return v;}';
+    var U = {t: {value: 0}};
+    var planet = new THREE.Mesh(new THREE.SphereGeometry(1, 96, 64), new THREE.ShaderMaterial({uniforms: U,
+      vertexShader: 'varying vec3 vP;varying vec3 vN;varying vec3 vV;void main(){vP=position;vN=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.);vV=-mv.xyz;gl_Position=projectionMatrix*mv;}',
+      fragmentShader: 'uniform float t;varying vec3 vP;varying vec3 vN;varying vec3 vV;' + NOISE + 'void main(){vec3 p=normalize(vP);float n=fbm(p*2.4+vec3(0.,0.,t*.015));float r=1.-abs(fbm(p*4.2+7.3)*2.-1.);float cr=smoothstep(.965,.995,r)*(.45+.55*sin(t*1.2+n*12.));vec3 base=mix(vec3(.039,.055,.031),vec3(.2,.22,.2),smoothstep(.35,.75,n));vec3 L=normalize(vec3(-.5,.45,.75));float d=max(dot(vN,L),0.);vec3 col=base*(.15+1.05*d);col+=vec3(.88,.14,.14)*cr*(.2+d)*.9;float fr=pow(1.-max(dot(normalize(vN),normalize(vV)),0.),2.8);col+=vec3(.67,.72,.77)*fr*.55;gl_FragColor=vec4(col,1.);}'}));
+    sc.add(planet);
+    var lw = 0, lh = 0;
+    onFrame(c, function(t){ var w = c.clientWidth, h = c.clientHeight; if (!w) return; if (w !== lw || h !== lh){ lw = w; lh = h; R.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); } U.t.value = t; planet.rotation.y = t * 0.04 + (MX / innerWidth - 0.5) * 0.3; planet.rotation.x = 0.2 + (MY / innerHeight - 0.5) * 0.1; R.render(sc, cam); });
+  });
+  /* ——— final: la firma se condensa desde un halo de materia oscura ——— */
+  safe('finale', function(){
+    if (!window.THREE) return;
+    var fin = $('#fin'), cv = $('#finCv'), hd = $('.handle', fin), R;
+    try{ R = new THREE.WebGLRenderer({canvas: cv, alpha: true, antialias: false, powerPreference: 'high-performance'}); }catch(e){ return; }
+    var PR = Math.min(DPR, small ? 1.4 : 1.6); R.setPixelRatio(PR); R.setClearColor(0x000000, 0);
+    var scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(32, 1, 1, 20000), pts = null, geo = new THREE.BufferGeometry();
+    var N = small ? 24000 : 72000;
+    var U = {uT: {value: 0}, uF: {value: reduce ? 1 : 0}, uM: {value: new THREE.Vector3(1e5, 1e5, 0)}, uMs: {value: 0}, uB: {value: 99}, uBP: {value: new THREE.Vector3()},
+      uH: {value: 0}, uW: {value: 99}, uR0: {value: 800}, uFs: {value: 100}, uSize: {value: (small ? 1.8 : 1.6) * PR}, uZ: {value: 1000}};
+    $('#finN').textContent = String(N).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    if (!fine) $('#finHint').textContent = 'Touch to detonate it';
+    var mat = new THREE.ShaderMaterial({uniforms: U, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+      vertexShader: [
+        'attribute vec3 aT;attribute vec3 aV;attribute float aR;attribute float aK;',
+        'uniform float uT;uniform float uF;uniform vec3 uM;uniform float uMs;uniform float uB;uniform vec3 uBP;uniform float uH;uniform float uW;uniform float uR0;uniform float uFs;uniform float uSize;uniform float uZ;',
+        'varying vec3 vC;varying float vA;',
+        /* halo: un disco inclinado que gira más rápido cerca del centro */
+        'vec3 halo(){float r=aV.x,a=aV.y+uT*(aK>.5?.085/sqrt(r/uR0+.04):.16);vec3 p=vec3(cos(a)*r,aV.z,sin(a)*r);float c=cos(.42),s=sin(.42);return vec3(p.x,p.y*c-p.z*s,p.y*s+p.z*c);}',
+        'void main(){',
+        '  float d=aR*.42,e=aK*smoothstep(d,d+.58,uF),mid=sin(e*3.14159);',
+        '  vec3 p=mix(halo(),aT,e);',
+        '  p+=vec3(sin(aR*50.+uT*.8+p.y*.01),cos(aR*37.+uT*.7+p.x*.01),sin(aR*23.+uT*.6))*(uFs*.55*mid+uFs*.012*e+uFs*.06*(1.-e));',
+        /* brasas: unas pocas se desprenden de las letras y suben */
+        '  float em=step(.972,aR)*e,ph=fract(uT*.11+aR*9.);p.y+=em*ph*uFs*1.6;p.x+=em*sin(ph*6.+aR*40.)*uFs*.12;',
+        /* la onda que recorre la firma cuando termina de formarse */
+        '  float wv=exp(-pow((uW*uR0*.9-length(aT.xy))/(uFs*.8),2.))*e;p.z+=wv*uFs*.7;',
+        /* el cursor la perturba: empuja y arremolina */
+        '  vec2 dm=p.xy-uM.xy;float L=length(dm)+1e-3,fo=smoothstep(uFs*1.5,0.,L)*uMs;vec2 n=dm/L;',
+        '  p.xy+=(n*.8+vec2(-n.y,n.x)*.5)*fo*uFs*.75;p.z+=fo*uFs*(aR-.5)*1.2;',
+        /* detonación */
+        '  vec2 db=p.xy-uBP.xy;float Lb=length(db)+1e-3,bs=exp(-uB*2.)*smoothstep(0.,.05,uB)*(1.-smoothstep(0.,1.,Lb/(uR0*1.3)));',
+        '  p.xy+=db/Lb*bs*uFs*(1.2+aR*2.6);p.z+=bs*uFs*3.*(aR-.5);',
+        '  vec4 mv=modelViewMatrix*vec4(p,1.);gl_Position=projectionMatrix*mv;',
+        '  gl_PointSize=uSize*(.55+aR*.95)*(uZ/-mv.z)*(1.+em*ph*.8);',
+        '  vec3 bone=vec3(.79,.77,.73),chrome=vec3(.67,.72,.77),fog=vec3(.30,.34,.35),red=vec3(.88,.14,.14);',
+        '  vec3 col=mix(mix(fog,chrome,aR),bone,e);',
+        '  float sw=smoothstep(uFs*1.2,0.,abs(aT.x-(fract(uT*.075)*2.6-1.3)*uR0))*e;col+=sw*.35;',
+        '  col=mix(col,red,clamp(uH*e*(.65+.35*sin(uT*18.+aR*30.))+bs*1.4+em*ph*.9+wv*.5,0.,1.));',
+        '  vC=col;vA=(mix(aK>.5?.3:.62,.66,e)+wv*.3+sw*.2)*(1.-fo*.35)*(1.-em*ph);',
+        '}'].join('\n'),
+      fragmentShader: 'varying vec3 vC;varying float vA;void main(){vec2 q=gl_PointCoord-.5;float r=length(q);if(r>.5)discard;gl_FragColor=vec4(vC,smoothstep(.5,.1,r)*vA);}'
+    });
+    var built = false, lw = 0, lh = 0, cr = null;
+    /* la firma se dibuja con la misma letra del enlace y se muestrea en 3D */
+    function build(){
+      var w = cv.clientWidth, h = cv.clientHeight, r = hd.getBoundingClientRect(); if (!w || !r.width) return;
+      cr = cv.getBoundingClientRect();
+      var cs = getComputedStyle(hd), fs = parseFloat(cs.fontSize), txt = (hd.textContent || '').toUpperCase().trim();
+      var k = small ? 1.5 : 1, TW = Math.ceil(r.width * k), TH = Math.ceil(fs * 1.3 * k), c = document.createElement('canvas'); c.width = TW; c.height = TH;
+      var x = c.getContext('2d'); x.font = cs.fontWeight + ' ' + (fs * k) + 'px ' + cs.fontFamily;
+      try{ x.letterSpacing = (parseFloat(cs.letterSpacing) || 0) * k + 'px'; }catch(e){}
+      x.textAlign = 'right'; x.textBaseline = 'alphabetic'; x.fillStyle = '#fff';
+      var m = x.measureText(txt), asc = m.actualBoundingBoxAscent || fs * k * .72, des = m.actualBoundingBoxDescent || 0;
+      x.fillText(txt, TW, TH / 2 + (asc - des) / 2);
+      var d = x.getImageData(0, 0, TW, TH).data, ink = [];
+      for (var i = 0; i < TW * TH; i++) if (d[i * 4 + 3] > 110) ink.push(i);
+      if (!ink.length) return;
+      /* centro de la firma en el mundo (1 unidad = 1 px del lienzo) */
+      var cx = (r.left + r.width / 2) - (cr.left + w / 2), cy = (cr.top + h / 2) - (r.top + r.height / 2);
+      var R0 = Math.max(w, h) * 0.62, RW = Math.min(r.width * 0.56, w * 0.5), depth = fs * 0.34;
+      var T = new Float32Array(N * 3), V = new Float32Array(N * 3), rnd = new Float32Array(N), K = new Float32Array(N);
+      for (i = 0; i < N; i++){
+        var q = ink[(Math.random() * ink.length) | 0], px = q % TW, py = (q / TW) | 0;
+        T[i * 3] = (px + Math.random() - TW / 2) / k; T[i * 3 + 1] = (TH / 2 - py - Math.random()) / k; T[i * 3 + 2] = (Math.random() - 0.5) * depth;
+        rnd[i] = Math.random(); K[i] = Math.random() < 0.8 ? 1 : 0;
+        if (K[i]){ /* galaxia de dos brazos: más densa en el centro */
+          var u = Math.random(), rr = R0 * (0.03 + Math.pow(u, 1.7)), a = (Math.random() < 0.5 ? 0 : Math.PI) + rr / R0 * 6.2 + (Math.random() - 0.5) * (0.35 + u * 0.9);
+          V[i * 3] = rr; V[i * 3 + 1] = a; V[i * 3 + 2] = (Math.random() - 0.5) * fs * 0.6 * (1.1 - rr / R0);
+        } else { /* anillo que orbita la firma y pasa por delante y por detrás */
+          V[i * 3] = RW * (1.02 + (Math.random() + Math.random() - 1) * 0.07); V[i * 3 + 1] = Math.random() * Math.PI * 2; V[i * 3 + 2] = (Math.random() - 0.5) * fs * 0.12;
+        }
+      }
+      geo.setAttribute('position', new THREE.BufferAttribute(T, 3));
+      geo.setAttribute('aT', new THREE.BufferAttribute(T, 3)); geo.setAttribute('aV', new THREE.BufferAttribute(V, 3));
+      geo.setAttribute('aR', new THREE.BufferAttribute(rnd, 1)); geo.setAttribute('aK', new THREE.BufferAttribute(K, 1));
+      if (!pts){ pts = new THREE.Points(geo, mat); pts.frustumCulled = false; scene.add(pts); }
+      pts.position.set(cx, cy, 0); U.uR0.value = R0; U.uFs.value = fs;
+      built = true; fin.classList.add('on');
+    }
+    var rb = 0; window.addEventListener('resize', function(){ clearTimeout(rb); rb = setTimeout(function(){ built = false; }, 250); });
+    onLang(function(){ built = false; });
+    /* el cursor sobre el plano de la firma */
+    var ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0), hit = new THREE.Vector3(), lastIn = -1e9;
+    function aim(e){ var r = cv.getBoundingClientRect(); ndc.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1); return r; }
+    window.addEventListener('pointermove', function(e){ var r = cv.getBoundingClientRect(); if (e.clientY > r.top && e.clientY < r.bottom){ aim(e); lastIn = performance.now(); } }, {passive: true});
+    var hov = 0; hd.addEventListener('pointerenter', function(){ hov = 1; }); hd.addEventListener('pointerleave', function(){ hov = 0; });
+    var tB = -99, tW = -99, formed = false;
+    fin.addEventListener('pointerdown', function(e){
+      if (reduce || !pts || (e.target.closest && e.target.closest('a,button'))) return;
+      aim(e); ray.setFromCamera(ndc, cam); if (ray.ray.intersectPlane(plane, hit)){ pts.worldToLocal(hit); U.uBP.value.copy(hit); tB = U.uT.value; }
+    });
+    onFrame(fin, function(t, dt){
+      var w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return;
+      if (w !== lw || h !== lh){ lw = w; lh = h; R.setSize(w, h, false); cam.aspect = w / h; var z = (h / 2) / Math.tan(16 * Math.PI / 180); cam.position.set(0, 0, z); cam.near = z * 0.1; cam.far = z * 4; cam.updateProjectionMatrix(); U.uZ.value = z; built = false; }
+      if (!built) build(); if (!pts) return;
+      U.uT.value = reduce ? 0 : t;
+      /* se forma en el último tramo del scroll y queda completa al llegar al fondo */
+      var H = innerHeight, left = (document.documentElement.scrollHeight - H) - (window.scrollY || pageYOffset), tf = reduce ? 1 : clamp((H * 0.8 - left) / (H * 0.68), 0, 1);
+      U.uF.value += (tf - U.uF.value) * Math.min(1, dt * 2.6);
+      if (!formed && U.uF.value > 0.985){ formed = true; tW = t; } else if (formed && U.uF.value < 0.6) formed = false;
+      U.uW.value = t - tW; U.uB.value = t - tB;
+      U.uH.value += (hov - U.uH.value) * Math.min(1, dt * 6);
+      var on = performance.now() - lastIn < 1600 ? 1 : 0; U.uMs.value += (on - U.uMs.value) * Math.min(1, dt * 4);
+      var px = MX / innerWidth - 0.5, py = MY / innerHeight - 0.5;
+      pts.rotation.y += ((reduce ? 0 : px * 0.5 + Math.sin(t * 0.21) * 0.1) - pts.rotation.y) * 0.05;
+      pts.rotation.x += ((reduce ? 0 : py * 0.3 + Math.sin(t * 0.17) * 0.04) - pts.rotation.x) * 0.05;
+      ray.setFromCamera(ndc, cam); if (ray.ray.intersectPlane(plane, hit)){ pts.worldToLocal(hit); U.uM.value.copy(hit); }
+      R.render(scene, cam);
+    });
+  });
+  /* ——— idioma: arranque ——— */
+  safe('lang-init', function(){
+    var pref = null; try{ pref = localStorage.getItem('dm_lang'); }catch(e){}
+    if (pref !== 'es' && pref !== 'en') pref = /^es/i.test(navigator.language || '') ? 'es' : 'en';
+    $$('.lang button').forEach(function(b){ b.addEventListener('click', function(){ if (b.getAttribute('data-l') !== LANG) setLang(b.getAttribute('data-l')); }); });
+    if ('MutationObserver' in window){
+      langMo = new MutationObserver(function(ms){ if (LANG !== 'es') return; ms.forEach(function(m){ if (m.type === 'characterData') trText(m.target); else for (var i = 0; i < m.addedNodes.length; i++) trTree(m.addedNodes[i]); }); langMo.takeRecords(); });
+      langMo.observe(document.body, {childList: true, subtree: true, characterData: true});
+    }
+    setLang(pref);
+    if (/^#(season|temporada)$/i.test(location.hash)) setView('season');
+  });
+})();
+</script>
+
+</html>
