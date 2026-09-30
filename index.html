@@ -426,6 +426,7 @@ html.pre .fx.views:not(#bar){opacity:1;pointer-events:auto;left:var(--side)}
   .gb-over h3{font-size:44px}
   .disp{font-size:12.4vw}
   .ds-info{max-width:none;right:var(--side);bottom:64px}
+  .inv-lines p{filter:none;will-change:opacity,transform}
   .intake{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(10,14,8,.94)}
   .sv-in h1{font-size:15vw}
   .views{left:var(--side);top:calc(22px + clamp(20px,2.5vw,38px) + 28px);transition:opacity .4s,transform .4s}
@@ -899,6 +900,31 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
   var mediaBlocked = false;
   function vplay(v, fail){ if (mediaBlocked){ if (fail) fail(); return; } var p; try{ p = v.play(); }catch(e){} if (p && p.catch) p.catch(function(e){ if (e && e.name === 'NotAllowedError') mediaBlocked = true; if (fail) fail(); }); }
   ['pointerdown', 'keydown', 'touchend'].forEach(function(ev){ document.addEventListener(ev, function(){ mediaBlocked = false; }, true); });
+  /* en el celular en vertical, los videos que se recorren con el scroll o el dedo se dibujan como secuencia de cuadros:
+     iOS no carga ni muestra saltos de un video que no se reproduce (y menos en modo de bajo consumo) */
+  var SEQ = !fine && innerHeight > innerWidth;
+  function Seq(vid, dir, n){
+    var cv = document.createElement('canvas'); cv.className = vid.className; cv.setAttribute('role', 'img'); cv.setAttribute('aria-label', vid.getAttribute('aria-label') || '');
+    cv.style.cssText = 'display:block;position:absolute;inset:0;width:100%;height:100%';
+    vid.parentNode.insertBefore(cv, vid); vid.style.display = 'none'; vid.removeAttribute('src'); vid.removeAttribute('data-poster'); vid.__ok = true;
+    var ctx = cv.getContext('2d'), imgs = [], ok = [], cur = -1, want = 0, lw = 0, lh = 0, started = false;
+    function load(){
+      if (started) return; started = true; var order = [], seen = {};
+      [8, 4, 2, 1].forEach(function(st){ for (var i = 0; i < n; i += st) if (!seen[i]){ seen[i] = 1; order.push(i); } }); if (!seen[n - 1]) order.push(n - 1);
+      var q = 0, fly = 0;
+      (function next(){ while (fly < 6 && q < order.length){ (function(i){ fly++; var im = new Image(); im.decoding = 'async'; im.onload = function(){ ok[i] = 1; fly--; cur = -1; next(); }; im.onerror = function(){ fly--; next(); }; im.src = dir + (i < 10 ? '0' : '') + i + '.webp'; imgs[i] = im; })(order[q++]); } })();
+    }
+    near(cv.parentNode, load);
+    function draw(){
+      var w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return; var pr = Math.min(DPR, 2);
+      if (w !== lw || h !== lh){ lw = w; lh = h; cv.width = Math.round(w * pr); cv.height = Math.round(h * pr); cur = -1; }
+      var k = -1; for (var d = 0; d < n && k < 0; d++){ if (ok[want - d]) k = want - d; else if (ok[want + d]) k = want + d; }
+      if (k < 0 || k === cur) return; cur = k;
+      var im = imgs[k], s = Math.max(cv.width / im.naturalWidth, cv.height / im.naturalHeight), dw = im.naturalWidth * s, dh = im.naturalHeight * s;
+      ctx.drawImage(im, (cv.width - dw) / 2, (cv.height - dh) / 2, dw, dh);
+    }
+    return {el: cv, set: function(f){ want = Math.round(clamp(f, 0, 1) * (n - 1)); draw(); }};
+  }
   function away(el, fn){ if ('IntersectionObserver' in window) IO(function(es){ if (!es[es.length - 1].isIntersecting) fn(); }, '120px').observe(el); }
   safe('posters', function(){ $$('video[data-poster]').forEach(function(v){ near(v, function(){ v.poster = v.getAttribute('data-poster'); }); }); });
   function fit(c){ var w = c.clientWidth, h = c.clientHeight; if (!w || !h) return false; var W = Math.round(w * DPR), H = Math.round(h * DPR); if (c.width !== W || c.height !== H){ c.width = W; c.height = H; } return true; }
@@ -1380,24 +1406,25 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
 
   /* ——— (VI) encuentro ——— */
   safe('encounter', function(){
-    var sec = $('#enc'), eyes = $('#encEyes'), vig = $('#encVig'), ps = $$('#encTxt p'), primed = false;
+    var sec = $('#enc'), eyes = $('#encEyes'), vig = $('#encVig'), ps = $$('#encTxt p'), primed = false, sq = SEQ ? Seq(eyes, 'a/q/enc/', 61) : null; if (sq) eyes = sq.el;
     onFrame(sec, function(){
       var p = prog(sec);
       eyes.style.opacity = (clamp(p * 1.8, 0, 1) * 0.95).toFixed(3);
       eyes.style.transform = 'scale(' + lerp(1.0, 1.16, p).toFixed(3) + ')'; eyes.style.transformOrigin = '50% 58%';
-      if (!primed && !mediaBlocked){ primed = true; eyes.preload = 'auto'; var pp = eyes.play(); if (pp && pp.then) pp.then(function(){ eyes.pause(); }).catch(function(e){ if (e && e.name === 'NotAllowedError') mediaBlocked = true; primed = false; }); else eyes.pause(); }
-      if (eyes.duration && !eyes.seeking){ var tt = clamp((p - 0.05) / 0.8, 0, 1) * (eyes.duration - 0.05); if (Math.abs(eyes.currentTime - tt) > 0.03) eyes.currentTime = tt; }
+      if (!sq && !primed && !mediaBlocked){ primed = true; eyes.preload = 'auto'; var pp = eyes.play(); if (pp && pp.then) pp.then(function(){ eyes.pause(); }).catch(function(e){ if (e && e.name === 'NotAllowedError') mediaBlocked = true; primed = false; }); else eyes.pause(); }
+      if (sq) sq.set(clamp((p - 0.05) / 0.8, 0, 1)); else if (eyes.duration && !eyes.seeking){ var tt = clamp((p - 0.05) / 0.8, 0, 1) * (eyes.duration - 0.05); if (Math.abs(eyes.currentTime - tt) > 0.03) eyes.currentTime = tt; }
       vig.style.setProperty('--vr', lerp(120, 42, p).toFixed(1) + 'vmax');
       var k = Math.min(ps.length - 1, Math.floor(p * ps.length * 1.05)); ps.forEach(function(e, i){ e.classList.toggle('on', i === k && p > 0.04); });
     });
   });
   safe('game', function(){
     var gz = $('#gz'), vid = $('#gzV'), over = $('#gzOver'), fg = $('#gzFg'), rt = $('#gzRt'), msg = $('#gzMsg'), tEl = $('#gzT'), bEl = $('#gzB');
+    var sq = SEQ ? Seq(vid, 'a/q/eyes/', 49) : null, MA = sq ? 0.75 : 16 / 9;
     var LIM = 13000, t0 = 0, raf = 0, lastP = null, drift = 0, playing = false, best = 0;
     try{ best = parseFloat(localStorage.getItem('dm_gaze_best')) || 0; }catch(e){}
     bEl.textContent = best ? best.toFixed(1) : '00.0';
     var EX = 0.5, EY = 0.42;
-    function imgBox(){ var r = gz.getBoundingClientRect(), iw = Math.max(r.width, r.height * 16 / 9), ih = Math.max(r.height, r.width * 9 / 16); return {r: r, iw: iw, ih: ih}; }
+    function imgBox(){ var r = gz.getBoundingClientRect(), ih = Math.max(r.height, r.width / MA), iw = ih * 16 / 9; return {r: r, iw: iw, ih: ih}; }
     function eyeC(){ var b = imgBox(); return {b: b, x: b.r.left + b.r.width / 2 + (EX - 0.5) * b.iw, y: b.r.top + b.r.height / 2 + (EY - 0.5) * b.ih}; }
     function inEyes(x, y){ var c = eyeC(), dx = (x - c.x) / (c.b.iw * 0.075), dy = (y - c.y) / (c.b.ih * 0.075); return dx * dx + dy * dy <= 1; }
     function sizeRing(){ var c = eyeC(), e = gz.querySelector('.gb-eyes'); e.style.width = (c.b.iw * 0.13) + 'px'; e.style.left = (c.x - c.b.r.left) + 'px'; e.style.top = (c.y - c.b.r.top) + 'px'; }
@@ -1408,10 +1435,10 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     gz.addEventListener('pointermove', function(e){ aim(e.clientX); }, {passive: true});
     gz.addEventListener('pointerdown', function(e){ aim(e.clientX); }, {passive: true});
     onFrame(gz, function(t, dt){
-      if (!primed && !mediaBlocked){ primed = true; vid.preload = 'auto'; var pp = vid.play(); if (pp && pp.then) pp.then(function(){ vid.pause(); }).catch(function(e){ if (e && e.name === 'NotAllowedError') mediaBlocked = true; primed = false; }); else vid.pause(); sizeRing(); }
+      if (!sq && !primed && !mediaBlocked){ primed = true; vid.preload = 'auto'; var pp = vid.play(); if (pp && pp.then) pp.then(function(){ vid.pause(); }).catch(function(e){ if (e && e.name === 'NotAllowedError') mediaBlocked = true; primed = false; }); else vid.pause(); sizeRing(); }
       if (!t0 && !reduce && performance.now() - lastMove > 2600) fuT = Math.sin(t * 0.3) * 0.75;
       fu += (fuT - fu) * Math.min(1, dt * 4.5);
-      var d = vid.duration; if (d && !vid.seeking){ var tt = Math.min(d - 0.05, Math.abs(fu) * (d - 0.05)); if (Math.abs(vid.currentTime - tt) > 0.02) vid.currentTime = tt; }
+      if (sq) sq.set(Math.abs(fu)); var d = sq ? 0 : vid.duration; if (d && !vid.seeking){ var tt = Math.min(d - 0.05, Math.abs(fu) * (d - 0.05)); if (Math.abs(vid.currentTime - tt) > 0.02) vid.currentTime = tt; }
       flip.classList.toggle('m', fu < 0); gz.classList.toggle('play', playing);
     });
     gz.addEventListener('contextmenu', function(e){ if (playing) e.preventDefault(); });
