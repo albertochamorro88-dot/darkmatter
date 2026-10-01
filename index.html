@@ -1038,7 +1038,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
 
   /* ——— la sala: intro + musas ——— */
   var MUSES = [
-    {k: 'bishop2', title: 'The Silver Bishop', desc: 'It attends every show. Nobody has seen its face.', attr: [['Seat', 'Front row'], ['Since', 'Season 00'], ['Face', 'Never shown']], line: 'It turned. It will remember you.'},
+    {k: 'bishop3', title: 'The Silver Bishop', desc: 'It attends every show. Nobody has seen its face.', attr: [['Seat', 'Front row'], ['Since', 'Season 00'], ['Face', 'Never shown']], line: 'It turned. It will remember you.'},
     {k: 'bride', title: 'The Red Bride', desc: 'She has walked every season. She has never reached the altar.', attr: [['Seat', 'The runway'], ['Train', 'Nine metres'], ['Altar', 'Never']], line: 'She is still walking. Toward you.'},
     {k: 'albino', title: 'The Albino', desc: 'Ivory horns, a coat of feathers and cable. Always in the crowd.', attr: [['Seat', 'Row 13'], ['Horns', 'Ivory'], ['Pulse', 'Red']], line: 'The crowd has stopped breathing.'},
     {k: 'machine', title: 'The Machine', desc: 'Chrome, cable and a red light where the eyes should be.', attr: [['Seat', 'Backstage'], ['Eyes', 'Red light'], ['Heart', 'Unknown']], line: 'It has learned your face.'}
@@ -1109,7 +1109,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
 
   safe('hall', function(){
     var cv = $('#hall3d');
-    function fb(){ var img = document.createElement('img'); img.src = 'a/m/bishop2.jpg'; img.alt = 'The Silver Bishop'; img.className = 'hall-fb'; cv.replaceWith(img); loadP.relic = loadP.muse = 1; }
+    function fb(){ var img = document.createElement('img'); img.src = 'a/m/bishop3.jpg'; img.alt = 'The Silver Bishop'; img.className = 'hall-fb'; cv.replaceWith(img); loadP.relic = loadP.muse = 1; }
     if (!window.THREE || !THREE.GLTFLoader){ fb(); return; }
     var R; try{ R = new THREE.WebGLRenderer({canvas: cv, antialias: !small, powerPreference: 'high-performance'}); }catch(e){ fb(); return; }
     R.setPixelRatio(Math.min(DPR, small ? 1.5 : 1.75)); R.setClearColor(0x0a0e08, 1); R.outputEncoding = THREE.sRGBEncoding; R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.1;
