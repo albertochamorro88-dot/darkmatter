@@ -1444,6 +1444,19 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
   safe('film', function(){
     var sec = $('#film'), vb = $('#vb'), v = $('#reel'), say = $('#vbSay'), ui = $('#vbUi'), seek = $('#vbSeek'), progEl = $('#vbProg'), tc = $('#vbTc'), prev = $('#vbPrev'), prevT = $('#vbPrevT'), sw = $('#vbSeekW');
     var FX = ['Raw', 'Cold', 'Signal'], fx = 0, dragging = false, started = false, NT = 26;
+    /* en el celular en vertical, el mismo film armado con los videos en su formato vertical (escritorio sin cambios) */
+    var vert = null;
+    function pickSrc(){
+      var want = !fine && innerHeight > innerWidth; if (want === vert) return;
+      var first = vert === null, t = v.currentTime || 0, was = !v.paused; vert = want;
+      var src = want ? 'a/film3v.mp4' : 'a/film3.mp4', pos = want ? 'a/film_v.jpg' : 'a/film.jpg';
+      v.setAttribute('data-poster', pos); if (v.poster) v.poster = pos;
+      if (first && !want) return;
+      v.src = src;
+      if (t) v.addEventListener('loadedmetadata', function f(){ v.removeEventListener('loadedmetadata', f); try{ v.currentTime = t; }catch(e){} });
+      if (was) vplay(v);
+    }
+    pickSrc(); addEventListener('resize', pickSrc);
     away(sec, function(){ v.pause(); started = false; });
     near(sec, function(){ prev.style.backgroundImage = 'url(a/film_thumbs3.jpg)'; }); prev.style.backgroundSize = (NT * 192) + 'px 108px';
     function ts(s){ s = Math.max(0, s || 0); return pad(Math.floor(s / 60)) + ':' + pad(Math.floor(s % 60)); }
