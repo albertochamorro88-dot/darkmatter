@@ -5,21 +5,21 @@
 The site is one page in English, with a Spanish version behind the EN/ES switch. It has two views: The films and The season. How the house makes its work is not public; the packs open the atelier to those who buy them.
 
 ## The films
-- [The muses](https://darkmatter-tm.pages.dev/#hall): a hall of screens where the house muses wait: The Silver Bishop, The Red Bride, The Albino and The Machine.
-- [The invitation](https://darkmatter-tm.pages.dev/#invite): you were not invited. You came anyway.
-- [The silhouettes](https://darkmatter-tm.pages.dev/#dust): three looks from the new season, made of dust.
-- [The film](https://darkmatter-tm.pages.dev/#film): twenty-five seconds from the other side.
-- [The runway](https://darkmatter-tm.pages.dev/#runway): eight worlds, each with its own film.
-- [The encounter](https://darkmatter-tm.pages.dev/#enc): someone in the audience has not looked at the runway once. Includes a short game, Hold her gaze.
-- [The exit](https://darkmatter-tm.pages.dev/#exit): questions, a contact form that replies by DM, and the finale.
+- [The muses](https://darkmatters.site/#hall): a hall of screens where the house muses wait: The Silver Bishop, The Red Bride, The Albino and The Machine.
+- [The invitation](https://darkmatters.site/#invite): you were not invited. You came anyway.
+- [The silhouettes](https://darkmatters.site/#dust): three looks from the new season, made of dust.
+- [The film](https://darkmatters.site/#film): twenty-five seconds from the other side.
+- [The runway](https://darkmatters.site/#runway): eight worlds, each with its own film.
+- [The encounter](https://darkmatters.site/#enc): someone in the audience has not looked at the runway once. Includes a short game, Hold her gaze.
+- [The exit](https://darkmatters.site/#exit): questions, a contact form that replies by DM, and the finale.
 
 ## The season
-- [Season 01 program](https://darkmatter-tm.pages.dev/#season): nine collections, twenty-seven shows, sixty nights.
-- [The packs](https://darkmatter-tm.pages.dev/#library): the prompts and the pipeline behind the season, to make the same films look by look.
+- [Season 01 program](https://darkmatters.site/#season): nine collections, twenty-seven shows, sixty nights.
+- [The packs](https://darkmatters.site/#library): the prompts and the pipeline behind the season, to make the same films look by look.
   - The Look, 9 USD, one payment: one look, from the first image to the finished film.
   - The World, 19 USD, one payment: one week of the season, one world and every look in it.
   - The Season, 49 USD, one payment: everything behind Season 01, with a new world every Wednesday until 28.11.
-- [Commissions](https://darkmatter-tm.pages.dev/#comm): music videos, fashion films and campaign worlds in the house style. Every commission is quoted by DM.
+- [Commissions](https://darkmatters.site/#comm): music videos, fashion films and campaign worlds in the house style. Every commission is quoted by DM.
 
 ## Contact
 - Instagram: https://www.instagram.com/darkmatter.tm/ (the house replies by DM)

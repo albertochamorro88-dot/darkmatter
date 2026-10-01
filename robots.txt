@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://darkmatter-tm.pages.dev/sitemap.xml
+Sitemap: https://darkmatters.site/sitemap.xml
