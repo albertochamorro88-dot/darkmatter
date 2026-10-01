@@ -292,6 +292,23 @@ html.pre .fx:not(#bar){opacity:0;pointer-events:none}
 .ladder div.now i{background:var(--rojo)}
 .ladder span{font:400 9px/1.3 var(--f-mono);color:var(--niebla);text-align:center}
 .ladder div.now span{color:var(--hueso)}
+.pk-flow{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.pk-flow li{display:flex;gap:10px;align-items:baseline;padding:10px 14px 9px;border:1px solid var(--line2);font:400 11px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hueso)}
+.pk-flow b{font-weight:400;color:var(--rojo)}
+.pk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(50px,8vh,90px)}
+.pk{position:relative;background:var(--negro);padding:clamp(22px,2.4vw,36px);display:flex;flex-direction:column;gap:14px;transition:background .4s}
+.pk:hover{background:var(--sombra)}
+.pk.on{background:linear-gradient(180deg,rgba(225,36,35,.10),rgba(10,14,8,0) 60%),var(--negro)}
+.pk h4{font:600 clamp(30px,3vw,54px)/.88 var(--f-ui);letter-spacing:-.05em;text-transform:uppercase;color:var(--hueso)}
+.pk p{font-size:15px;max-width:32ch}
+.pk-tag{position:absolute;top:clamp(22px,2.4vw,36px);right:clamp(22px,2.4vw,36px);font:400 9px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--rojo)}
+.pk-p{display:flex;align-items:baseline;gap:12px;margin-top:6px}
+.pk-p b{font:600 clamp(56px,5.4vw,96px)/.8 var(--f-ui);letter-spacing:-.06em;color:var(--hueso);font-variant-numeric:tabular-nums}
+.pk-p span{font:400 10px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.pk ul{list-style:none;display:grid;gap:8px;border-top:1px solid var(--line);padding-top:14px;margin-top:6px;font:400 10px/1.5 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.pk ul li::before{content:"+ ";color:var(--rojo)}
+.pk .btn{margin-top:auto;align-self:flex-start}
+.pk-note{margin-top:18px;font:400 10px/1.6 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--soft);min-height:1.6em}
 .how{margin-top:28px;font:500 clamp(20px,1.8vw,26px)/1.25 var(--f-ui);color:var(--hueso);letter-spacing:-.015em}
 .how .kw{font:500 .8em/1 var(--f-mono);letter-spacing:.1em;color:var(--rojo)}
 .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
@@ -410,7 +427,7 @@ html.pre .fx.views:not(#bar){opacity:1;pointer-events:auto;left:var(--side)}
   .tonight{grid-template-columns:minmax(0,1fr)}
   footer{grid-template-columns:repeat(2,minmax(0,1fr));padding-left:var(--side)}
   .wd{width:86vw}.rw-track{padding:0 7vw}
-  .cm-grid,.cm-steps{grid-template-columns:minmax(0,1fr)}
+  .cm-grid,.cm-steps,.pk-grid{grid-template-columns:minmax(0,1fr)}
   .cm{min-height:0}
 }
 @media (max-width:640px){
@@ -599,9 +616,9 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
 <section class="exit" id="exit" aria-label="Questions and contact">
   <canvas id="planet" aria-hidden="true"></canvas>
   <div class="faq"><div class="faq-in">
-    <details><summary>How is Dark Matter made? <b></b></summary><p>That stays inside the house. The Library opens the atelier to those who buy it.</p></details>
+    <details><summary>How is Dark Matter made? <b></b></summary><p>That stays inside the house. The packs open the atelier to those who buy them.</p></details>
     <details><summary>Who designs the collections? <b></b></summary><p>The house has no face. The work is signed with a number.</p></details>
-    <details><summary>What is inside the Library? <b></b></summary><p>Everything behind Season 01, sealed until you buy it. Comment LIBRARY on any post and we send you the link.</p></details>
+    <details><summary>What is inside the packs? <b></b></summary><p>The prompts and the pipeline behind each look, so you can make the same films. One look, one world or the whole season. <a class="lk" href="#library">See the packs →</a></p></details>
     <details><summary>When is the next show? <b></b></summary><p>A new look every night until 28 November. The season tab shows what is on tonight. <a class="lk" href="#season">Open the season →</a></p></details>
     <details><summary>Do you take commissions? <b></b></summary><p>Yes: music videos, fashion films and campaign worlds in the Dark Matter style. Every one is quoted by DM. <a class="lk" href="#comm">See commissions →</a></p></details>
     <details><summary>Why horror? <b></b></summary><p>Couture has always been a little frightening. We stopped pretending it isn't.</p></details>
@@ -609,7 +626,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
   <div class="intake rv" id="intake">
     <span class="lab"><span class="dot"></span>&nbsp; The house replies by DM</span>
     <div class="ik-step" data-step="1"><h3><span class="n">1/3</span>What brings you here</h3>
-      <div class="ik-opts" id="ikOpts"><button type="button" data-k="library" aria-pressed="false">The library</button><button type="button" data-k="collab" aria-pressed="false">Collaborate</button><button type="button" data-k="commission" aria-pressed="false">Commission a show</button><button type="button" data-k="casting" aria-pressed="false">Become a muse</button><button type="button" data-k="press" aria-pressed="false">Press</button><button type="button" data-k="watch" aria-pressed="false">Just watching</button></div>
+      <div class="ik-opts" id="ikOpts"><button type="button" data-k="library" aria-pressed="false">The packs</button><button type="button" data-k="collab" aria-pressed="false">Collaborate</button><button type="button" data-k="commission" aria-pressed="false">Commission a show</button><button type="button" data-k="casting" aria-pressed="false">Become a muse</button><button type="button" data-k="press" aria-pressed="false">Press</button><button type="button" data-k="watch" aria-pressed="false">Just watching</button></div>
     </div>
     <div class="ik-step" data-step="2" hidden><h3><span class="n">2/3</span>Who is asking</h3><input id="ikName" type="text" autocomplete="nickname" placeholder="Your name or @handle"></div>
     <div class="ik-step" data-step="3" hidden><h3><span class="n">3/3</span>Your message</h3><textarea id="ikMsg" aria-label="Your message"></textarea></div>
@@ -630,15 +647,15 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
 </section>
 </main>
 
-<!-- Vista 2 · La temporada: el programa, la Library con sus precios y los encargos -->
+<!-- Vista 2 · La temporada: el programa, los paquetes y los encargos -->
 <main id="vSeason" data-view="season" hidden>
 <section class="sv-hero" id="svHero" aria-label="Season 01">
   <video id="svV" src="a/s/sv_hero.mp4" data-poster="a/s/sv_hero.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
   <div class="sv-in">
     <span class="lab"><span class="n">Season 01</span>&nbsp; 30.09 → 28.11.2026</span>
     <h1>The season</h1>
-    <p>What is on tonight, the Library that opens only for those who buy it, and the commissions the house accepts.</p>
-    <div class="sv-jump"><a class="btn" href="#ch-season">Program</a><a class="btn" href="#ch-lib">The library</a><a class="btn" href="#ch-com">Commissions</a></div>
+    <p>What is on tonight, the packs to make the same films, and the commissions the house accepts.</p>
+    <div class="sv-jump"><a class="btn" href="#ch-season">Program</a><a class="btn" href="#ch-lib">The packs</a><a class="btn" href="#ch-com">Commissions</a></div>
   </div>
 </section>
 
@@ -649,30 +666,41 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
   <div class="sched" id="sched"><i class="tl" id="schedTl"></i></div>
 </section>
 
-<!-- (II) La library -->
-<header class="ch" id="ch-lib" data-ch="II" data-name="The library"><span class="ch-n">(II)</span><h2 class="ch-t disp">The library</h2><p class="ch-s">Everything behind Season 01, sealed. It opens only for those who buy it.</p></header>
-<section class="library" id="library" aria-label="The Season 1 Library">
+<!-- (II) Los paquetes: prompts + pipeline para hacer los mismos films -->
+<header class="ch" id="ch-lib" data-ch="II" data-name="The packs"><span class="ch-n">(II)</span><h2 class="ch-t disp">The packs</h2><p class="ch-s">The prompts and the pipeline behind the season. Make the same films, look by look.</p></header>
+<section class="library" id="library" aria-label="The packs">
   <div class="lib">
     <div class="seal-w" id="sealW">
-      <svg class="seal-ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="circ2" d="M50,50 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#circ2">Sealed · Season 1 Library · opens on purchase · Sealed · Season 1 Library · opens on purchase ·</textPath></text></svg>
+      <svg class="seal-ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="circ2" d="M50,50 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><text textLength="274" lengthAdjust="spacing"><textPath href="#circ2" textLength="274" lengthAdjust="spacing">Prompts + pipeline · Season 01 · Dark Matter™ ·</textPath></text></svg>
       <div class="seal" id="seal"><img src="a/logo.png" alt="The Dark Matter seal"></div>
     </div>
     <div class="rv">
-      <span class="lab">Season 1 Library · <span id="libState">opens 11.10</span></span>
-      <h3 style="margin-top:12px">Sealed until<br>you buy it</h3>
-      <p class="sub">The complete formula behind every look and every movement of the season. We do not show what is inside. You will know when you open it.</p>
-      <ul class="redact" aria-label="Contents, sealed">
-        <li><b>N° 001</b><span><span class="open">Sixty nights</span> · <span class="bars">the formula of every look</span></span></li>
-        <li><b>N° 002</b><span><span class="open">Every movement</span> · <span class="bars">written the way the house writes it</span></span></li>
-        <li><b>N° 003</b><span><span class="open">The house references</span> · <span class="bars">the ones that keep the grade</span></span></li>
-        <li><b>N° 004</b><span><span class="open">A new chapter</span> · <span class="bars">every Wednesday until the finale</span></span></li>
-      </ul>
-      <div class="price-row"><span class="price" id="price">$12</span><span class="pnote"><b id="priceNote">launch price</b><br>the price rises every Wednesday</span></div>
-      <div class="ladder" id="ladder" aria-label="Price by week"></div>
-      <p class="how">Comment <span class="kw">LIBRARY</span> on any of our posts and we send you the link by DM.</p>
-      <div class="btns"><a class="btn hot" href="https://www.instagram.com/darkmatter.tm/" target="_blank" rel="noopener">Open Instagram</a><a class="btn" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener">Send us a DM</a></div>
+      <span class="lab">Season 01 · prompts + pipeline</span>
+      <h3 style="margin-top:12px">Make the<br>same films</h3>
+      <p class="sub">Each pack opens the atelier: the exact prompts behind every look and the pipeline that turns one image into a film, step by step.</p>
+      <ol class="pk-flow" aria-label="The pipeline"><li><b>01</b>Image</li><li><b>02</b>Motion</li><li><b>03</b>Edit</li><li><b>04</b>Sound</li></ol>
     </div>
   </div>
+  <div class="pk-grid rv">
+    <article class="pk"><span class="n">(01)</span><h4>The Look</h4><p>One look, from the first image to the finished film.</p>
+      <div class="pk-p"><b>$9</b><span>one payment</span></div>
+      <ul><li>The image prompts of one look</li><li>The motion prompt of its film</li><li>The steps of that look, in order</li></ul>
+      <a class="btn" data-buy="look" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener">Buy with PayPal</a></article>
+    <article class="pk"><span class="n">(02)</span><h4>The World</h4><p>One week of the season: one world and every look in it.</p>
+      <div class="pk-p"><b>$19</b><span>one payment</span></div>
+      <ul><li>Every look of one world</li><li>The full pipeline: image, motion, edit, sound</li><li>The house references that keep the grade</li></ul>
+      <a class="btn" data-buy="world" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener">Buy with PayPal</a></article>
+    <article class="pk on"><span class="n">(03)</span><span class="pk-tag">Most complete</span><h4>The Season</h4><p>Everything behind Season 01, until the finale.</p>
+      <div class="pk-p"><b>$49</b><span>one payment</span></div>
+      <ul><li>Every look of the season</li><li>The full pipeline with every setting the house uses</li><li>A new world every Wednesday until 28.11</li></ul>
+      <a class="btn hot" data-buy="season" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener">Buy with PayPal</a></article>
+  </div>
+  <ol class="cm-steps pk-how rv">
+    <li><b>01</b><span>Pay with PayPal.</span></li>
+    <li><b>02</b><span>Send us a DM with your PayPal email and the pack.</span></li>
+    <li><b>03</b><span>The house sends your pack by DM.</span></li>
+  </ol>
+  <p class="pk-note" id="pkNote" aria-live="polite"></p>
 </section>
 
 <!-- (III) Encargos: sin precios publicados; se cotizan por DM -->
@@ -732,7 +760,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     'Haute couture from below.': 'Alta costura desde abajo.',
     'SOUND OFF': 'SIN SONIDO', 'SOUND ON': 'CON SONIDO', 'Sound off': 'Sin sonido', 'Sound on': 'Con sonido', 'INVERT': 'INVERTIR',
     'The muses': 'Las musas', 'The invitation': 'La invitación', 'The runway': 'La pasarela', 'The film': 'La película', 'The encounter': 'El encuentro',
-    'The season': 'La temporada', 'The library': 'La Library', 'The exit': 'La salida', 'The hall': 'La sala', 'Hall': 'Sala', 'Chapters': 'Capítulos',
+    'The season': 'La temporada', 'The library': 'La Library', 'The packs': 'Los paquetes', 'The exit': 'La salida', 'The hall': 'La sala', 'Hall': 'Sala', 'Chapters': 'Capítulos',
     'Dark Matter™ · Season 01 · haute couture from below ·': 'Dark Matter™ · Temporada 01 · costura desde abajo ·',
     'DARK MATTER™ · SEASON 01 · HAUTE COUTURE FROM BELOW · FOUR MUSES ARE WAITING · ': 'DARK MATTER™ · TEMPORADA 01 · ALTA COSTURA DESDE ABAJO · CUATRO MUSAS TE ESPERAN · ',
     'Signals from another reality': 'Señales de otra realidad', 'The house is about to open': 'La casa está por abrir',
@@ -799,6 +827,24 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     'Finale': 'Final', 'The last walk, the banquet, and the bride.': 'La última caminata, el banquete y la novia.',
     'Everything behind Season 01, sealed. It opens only for those who buy it.': 'Todo lo que hay detrás de la Temporada 01, sellado. Solo se abre para quien la compra.',
     'Sealed · Season 1 Library · opens on purchase · Sealed · Season 1 Library · opens on purchase ·': 'Sellada · Library T01 · se abre al comprarla · Sellada · Library T01 · se abre al comprarla ·',
+    'The prompts and the pipeline behind the season. Make the same films, look by look.': 'Los prompts y el pipeline detrás de la temporada. Haz los mismos films, look por look.',
+    'Prompts + pipeline · Season 01 · Dark Matter™ ·': 'Prompts + pipeline · Temporada 01 · Dark Matter™ ·', 'Season 01 · prompts + pipeline': 'Temporada 01 · prompts + pipeline',
+    'Make the': 'Haz los', 'same films': 'mismos films',
+    'Each pack opens the atelier: the exact prompts behind every look and the pipeline that turns one image into a film, step by step.': 'Cada paquete abre el atelier: los prompts exactos de cada look y el pipeline que convierte una imagen en un film, paso a paso.',
+    'The pipeline': 'El pipeline', 'Image': 'Imagen', 'Motion': 'Movimiento', 'Edit': 'Edición', 'Sound': 'Sonido',
+    'The Look': 'El Look', 'One look, from the first image to the finished film.': 'Un look, de la primera imagen al film terminado.', 'one payment': 'pago único',
+    'The image prompts of one look': 'Los prompts de imagen de un look', 'The motion prompt of its film': 'El prompt de movimiento de su film', 'The steps of that look, in order': 'Los pasos de ese look, en orden',
+    'The World': 'El Mundo', 'One week of the season: one world and every look in it.': 'Una semana de la temporada: un mundo y todos sus looks.',
+    'Every look of one world': 'Todos los looks de un mundo', 'The full pipeline: image, motion, edit, sound': 'El pipeline completo: imagen, movimiento, edición, sonido', 'The house references that keep the grade': 'Las referencias de la casa que sostienen el color',
+    'Most complete': 'El más completo', 'The Season': 'La Temporada', 'Everything behind Season 01, until the finale.': 'Todo lo de la Temporada 01, hasta el final.',
+    'Every look of the season': 'Todos los looks de la temporada', 'The full pipeline with every setting the house uses': 'El pipeline completo con cada ajuste que usa la casa', 'A new world every Wednesday until 28.11': 'Un mundo nuevo cada miércoles hasta el 28.11',
+    'Buy with PayPal': 'Comprar con PayPal', 'Pay with PayPal.': 'Paga con PayPal.', 'Send us a DM with your PayPal email and the pack.': 'Escríbenos por DM con tu correo de PayPal y el paquete.', 'The house sends your pack by DM.': 'La casa te manda tu paquete por DM.',
+    'Hi Dark Matter, I would like the pack': 'Hola Dark Matter, quiero el paquete', 'I paid with PayPal. My PayPal email:': 'Pagué con PayPal. Mi correo de PayPal:', 'How do I pay with PayPal?': '¿Cómo pago con PayPal?',
+    'After paying, send us a DM with your PayPal email.': 'Después de pagar, escríbenos por DM con tu correo de PayPal.',
+    'That stays inside the house. The packs open the atelier to those who buy them.': 'Eso se queda dentro de la casa. Los paquetes abren el atelier a quien los compra.',
+    'What is inside the packs?': '¿Qué hay en los paquetes?', 'The prompts and the pipeline behind each look, so you can make the same films. One look, one world or the whole season.': 'Los prompts y el pipeline de cada look, para que hagas los mismos films. Un look, un mundo o la temporada completa.', 'See the packs →': 'Ver los paquetes →',
+    'What is on tonight, the packs to make the same films, and the commissions the house accepts.': 'Lo que hay esta noche, los paquetes para hacer los mismos films y los encargos que acepta la casa.',
+    'Hi Dark Matter, I would like one of the packs.\nPack: [The Look / The World / The Season]': 'Hola Dark Matter, quiero uno de los paquetes.\nPaquete: [El Look / El Mundo / La Temporada]',
     'Season 1 Library ·': 'Library Temporada 1 ·', 'The Season 1 Library': 'La Library de la Temporada 1', 'opens 11.10': 'abre el 11.10',
     'Sealed until': 'Sellada hasta', 'you buy it': 'que la compres', 'The Dark Matter seal': 'El sello de Dark Matter', 'Contents, sealed': 'Contenido, sellado',
     'The complete formula behind every look and every movement of the season. We do not show what is inside. You will know when you open it.': 'La fórmula completa detrás de cada look y cada movimiento de la temporada. No mostramos lo que hay dentro. Lo sabrás cuando la abras.',
@@ -992,7 +1038,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
 
   /* ——— la sala: intro + musas ——— */
   var MUSES = [
-    {k: 'bishop', title: 'The Silver Bishop', desc: 'It attends every show. Nobody has seen its face.', attr: [['Seat', 'Front row'], ['Since', 'Season 00'], ['Face', 'Never shown']], line: 'It turned. It will remember you.'},
+    {k: 'bishop2', title: 'The Silver Bishop', desc: 'It attends every show. Nobody has seen its face.', attr: [['Seat', 'Front row'], ['Since', 'Season 00'], ['Face', 'Never shown']], line: 'It turned. It will remember you.'},
     {k: 'bride', title: 'The Red Bride', desc: 'She has walked every season. She has never reached the altar.', attr: [['Seat', 'The runway'], ['Train', 'Nine metres'], ['Altar', 'Never']], line: 'She is still walking. Toward you.'},
     {k: 'albino', title: 'The Albino', desc: 'Ivory horns, a coat of feathers and cable. Always in the crowd.', attr: [['Seat', 'Row 13'], ['Horns', 'Ivory'], ['Pulse', 'Red']], line: 'The crowd has stopped breathing.'},
     {k: 'machine', title: 'The Machine', desc: 'Chrome, cable and a red light where the eyes should be.', attr: [['Seat', 'Backstage'], ['Eyes', 'Red light'], ['Heart', 'Unknown']], line: 'It has learned your face.'}
@@ -1063,7 +1109,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
 
   safe('hall', function(){
     var cv = $('#hall3d');
-    function fb(){ var img = document.createElement('img'); img.src = 'a/m/bishop.jpg'; img.alt = 'The Silver Bishop'; img.className = 'hall-fb'; cv.replaceWith(img); loadP.relic = loadP.muse = 1; }
+    function fb(){ var img = document.createElement('img'); img.src = 'a/m/bishop2.jpg'; img.alt = 'The Silver Bishop'; img.className = 'hall-fb'; cv.replaceWith(img); loadP.relic = loadP.muse = 1; }
     if (!window.THREE || !THREE.GLTFLoader){ fb(); return; }
     var R; try{ R = new THREE.WebGLRenderer({canvas: cv, antialias: !small, powerPreference: 'high-performance'}); }catch(e){ fb(); return; }
     R.setPixelRatio(Math.min(DPR, small ? 1.5 : 1.75)); R.setClearColor(0x0a0e08, 1); R.outputEncoding = THREE.sRGBEncoding; R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.1;
@@ -1134,7 +1180,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     /* pantallas altas con los ocho mundos */
     var tl = new THREE.TextureLoader(), worldU = [];
     WORLDS.forEach(function(w, j){
-      var an = (-70 + j * 20) * Math.PI / 180, r = 12.5, tx = tl.load('a/h/h' + (j + 1) + '.jpg'); tx.encoding = THREE.sRGBEncoding;
+      var an = (-70 + j * 20) * Math.PI / 180, r = 12.5, tx = tl.load('a/h/h' + (j + 1) + (j === 2 ? 'b' : '') + '.jpg'); tx.encoding = THREE.sRGBEncoding;
       var U = {map: {value: tx}, on: {value: 0}};
       var m = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 1.35), new THREE.ShaderMaterial({uniforms: U, fog: false,
         vertexShader: 'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
@@ -1492,30 +1538,28 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     onFrame(sched, function(){ var r = sched.getBoundingClientRect(); tl.style.transform = 'scaleY(' + clamp((innerHeight * 0.7 - r.top) / r.height, 0, 1).toFixed(4) + ')'; });
   });
 
-  /* ——— (VII) library ——— */
-  var LAD = [['2026-10-11',12,'11.10'],['2026-10-14',15,'14.10'],['2026-10-21',18,'21.10'],['2026-10-28',21,'28.10'],['2026-11-11',24,'11.11'],['2026-11-18',27,'18.11'],['2026-11-25',29,'25.11'],['2026-11-27',19,'BF']];
-  safe('library', function(){
-    var now = -1, price = 12, note = 'launch price · opens 11.10', state = 'opens 11.10';
-    for (var k = 0; k < LAD.length - 1; k++) if (today >= LAD[k][0]){ now = k; price = LAD[k][1]; note = 'this week\'s price'; state = 'open now'; }
-    if (today >= '2026-11-27' && today <= '2026-11-30'){ now = 7; price = 19; note = 'Black Friday → Cyber Monday'; state = 'Black Friday'; }
-    else if (today > '2026-11-30'){ now = 6; price = 29; note = 'the complete season'; state = 'complete'; }
-    $('#price').textContent = '$' + price; $('#priceNote').textContent = note; $('#libState').textContent = state;
-    $('#ladder').innerHTML = LAD.map(function(l, i){ return '<div class="' + (i === (now < 0 ? 0 : now) ? 'now' : '') + '"><i style="height:' + (l[1] / 30 * 100).toFixed(0) + '%"></i><span>$' + l[1] + '<br>' + l[2] + '</span></div>'; }).join('');
+  /* ——— (II) paquetes: el botón paga por PayPal; sin link de PayPal todavía, copia el pedido y abre el DM ——— */
+  var PAYPAL = '';  /* p. ej. 'https://www.paypal.com/paypalme/USUARIO' */
+  var PACKS = {look: ['The Look', 9], world: ['The World', 19], season: ['The Season', 49]};
+  safe('packs', function(){
+    var note = $('#pkNote');
+    $$('[data-buy]').forEach(function(a){
+      var k = a.getAttribute('data-buy'), pk = PACKS[k];
+      if (PAYPAL) a.href = PAYPAL.replace(/\/$/, '') + '/' + pk[1] + 'USD';
+      a.addEventListener('click', function(){
+        var text = TR('Hi Dark Matter, I would like the pack') + ' ' + TR(pk[0]) + ' ($' + pk[1] + ').' + (PAYPAL ? ' ' + TR('I paid with PayPal. My PayPal email:') + ' ' : ' ' + TR('How do I pay with PayPal?'));
+        function ok(){ note.textContent = PAYPAL ? TR('After paying, send us a DM with your PayPal email.') : TR('Copied. Paste it in the DM.'); }
+        try{ if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, ok); else ok(); }catch(e){ ok(); }
+      });
+    });
     var sw = $('#sealW'), seal = $('#seal');
     onFrame(sw, function(){ var r = sw.getBoundingClientRect(), p = clamp(1 - (r.top + r.height / 2) / innerHeight, 0, 1); seal.style.transform = 'rotate(' + lerp(-40, 8, p).toFixed(1) + 'deg) scale(' + lerp(0.8, 1, ease(p)).toFixed(3) + ')'; });
-    var GL = '█▓▒░#%&@';
-    $$('.redact .bars').forEach(function(b){
-      var orig = b.textContent, len = orig.length, iv = null;
-      b.textContent = orig.replace(/\S/g, '█');
-      b.parentNode.parentNode.addEventListener('mouseenter', function(){ clearInterval(iv); var n = 0; iv = setInterval(function(){ b.textContent = orig.replace(/\S/g, function(){ return GL[Math.random() * GL.length | 0]; }); if (++n > 14){ clearInterval(iv); b.textContent = 'sealed · opens on purchase'.padEnd(Math.min(len, 40), ' '); } }, 45); });
-      b.parentNode.parentNode.addEventListener('mouseleave', function(){ clearInterval(iv); b.textContent = orig.replace(/\S/g, '█'); });
-    });
   });
 
   /* ——— (VII) contacto ——— */
   safe('intake', function(){
     var MSG = {
-      library: 'LIBRARY\nHi Dark Matter, I would like the Season 1 Library.',
+      library: 'Hi Dark Matter, I would like one of the packs.\nPack: [The Look / The World / The Season]',
       collab: 'Hi Dark Matter, I would like to collaborate.\nI make [images / sound / clothes].\nMy work: [link]',
       commission: 'Hi Dark Matter, I would like to commission a show.\nProject: [music video / fashion film / campaign]\nTimeline: [date]',
       casting: 'Hi Dark Matter, I would like to be considered as a muse.\nWhy me: [one line]',
