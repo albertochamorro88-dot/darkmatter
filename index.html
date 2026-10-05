@@ -331,6 +331,29 @@ html.pre .fx:not(#bar){opacity:0;pointer-events:none}
 .how .kw{font:500 .8em/1 var(--f-mono);letter-spacing:.1em;color:var(--rojo)}
 .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
 
+/* wallpapers */
+.wps{max-width:1600px;margin:0 auto;padding:0 calc(var(--side) + var(--rail)) 0 var(--side)}
+.wp-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(14px,1.6vw,26px)}
+.wp{display:flex;flex-direction:column;gap:14px;min-width:0}
+.wp-ph{position:relative;aspect-ratio:1290/2796;max-width:100%;border-radius:12%/5.6%;overflow:hidden;background:var(--sombra);border:1px solid var(--line2);box-shadow:0 30px 60px rgba(0,0,0,.45);transition:transform .6s var(--out),border-color .4s}
+.wp:hover .wp-ph{transform:translateY(-6px);border-color:var(--ghost2)}
+.wp-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+.wp-ph img.on{opacity:1}
+.wp-lock{position:absolute;left:0;right:0;top:9%;display:grid;justify-items:center;gap:4px;pointer-events:none;text-shadow:0 1px 18px rgba(0,0,0,.5)}
+.wp-lock b{font:300 clamp(30px,3.2vw,52px)/1 var(--f-ui);letter-spacing:-.03em;color:rgba(255,255,255,.92);font-variant-numeric:tabular-nums}
+.wp-lock i{font:400 8.5px/1 var(--f-mono);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75);order:-1}
+.wp-ph::after{content:"";position:absolute;left:35%;right:35%;bottom:2.4%;height:3px;border-radius:3px;background:rgba(255,255,255,.7)}
+.wp-meta{display:grid;gap:8px}.wp-meta h4{margin:0}
+.wp-meta h4{font:600 clamp(18px,1.5vw,24px)/.95 var(--f-ui);letter-spacing:-.04em;text-transform:uppercase;color:var(--hueso)}
+.wp-meta p{font:400 9.5px/1.5 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.wp-buy{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:12px;margin-top:auto}
+.wp-p{font:400 9.5px/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.wp-p b{display:block;font:600 26px/1 var(--f-ui);letter-spacing:-.04em;color:var(--hueso);margin-bottom:4px}
+.wps .btn{padding-inline:16px}
+@media (max-width:1180px){.wp-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.wp-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1 * var(--side));padding:6px var(--side) 18px;scrollbar-width:none}.wp-grid::-webkit-scrollbar{display:none}.wp{flex:0 0 64vw;scroll-snap-align:center}.wps .cm-steps{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.wp-ph img{transition:none}}
+
 /* salida */
 .exit{position:relative;overflow:hidden;padding-bottom:6vh}
 #planet{position:absolute;left:-14vw;top:20vh;width:min(100vh,72vw);height:min(100vh,72vw);pointer-events:none}
@@ -672,8 +695,8 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
   <div class="sv-in">
     <span class="lab"><span class="n">Season 01</span>&nbsp; 30.09 → 28.11.2026</span>
     <h2>The season</h2>
-    <p>What is on tonight, the packs to make the same films, and the commissions the house accepts.</p>
-    <div class="sv-jump"><a class="btn" href="#ch-season">Program</a><a class="btn" href="#ch-lib">The packs</a><a class="btn" href="#ch-com">Commissions</a></div>
+    <p>What is on tonight, the packs to make the same films, wallpapers from every world, and the commissions the house accepts.</p>
+    <div class="sv-jump"><a class="btn" href="#ch-season">Program</a><a class="btn" href="#ch-lib">The packs</a><a class="btn" href="#ch-wp">Wallpapers</a><a class="btn" href="#ch-com">Commissions</a></div>
   </div>
 </section>
 
@@ -721,8 +744,51 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
   <p class="pk-note" id="pkNote" aria-live="polite"></p>
 </section>
 
-<!-- (III) Encargos: sin precios publicados; se cotizan por DM -->
-<header class="ch" id="ch-com" data-ch="III" data-name="Commissions"><span class="ch-n">(III)</span><h2 class="ch-t disp">Commissions</h2><p class="ch-s">Music videos, fashion films and campaign worlds in the house style. Every commission is quoted by DM.</p></header>
+<!-- (III) Wallpapers: 6 paquetes de $2; Payhip cobra y envía la descarga al correo -->
+<header class="ch" id="ch-wp" data-ch="III" data-name="Wallpapers"><span class="ch-n">(III)</span><h2 class="ch-t disp">Wallpapers</h2><p class="ch-s">Six screens from each world, for the phone you carry at night. Two dollars a world.</p></header>
+<section class="wps" id="wallpapers" aria-label="Wallpapers">
+  <div class="wp-grid rv">
+    <article class="wp" data-wp="cursed-new-york">
+      <div class="wp-ph" aria-hidden="true"><img data-src="a/wp/cursed-new-york_1.jpg" alt="" class="on"><img data-src="a/wp/cursed-new-york_2.jpg" alt=""><img data-src="a/wp/cursed-new-york_3.jpg" alt=""><img data-src="a/wp/cursed-new-york_4.jpg" alt=""><img data-src="a/wp/cursed-new-york_5.jpg" alt=""><img data-src="a/wp/cursed-new-york_6.jpg" alt=""><span class="wp-lock"><b>03:33</b><i>Season 01</i></span></div>
+      <div class="wp-meta"><span class="n">(01)</span><h4>Cursed New York</h4><p>Red veils · chrome mitres · the subway at night</p></div>
+      <div class="wp-buy"><span class="wp-p"><b>$2</b> 6 wallpapers</span><a class="btn" data-wp-buy="cursed-new-york" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener">Buy</a></div>
+    </article>
+    <article class="wp" data-wp="apocalypse">
+      <div class="wp-ph" aria-hidden="true"><img data-src="a/wp/apocalypse_1.jpg" alt="" class="on"><img data-src="a/wp/apocalypse_2.jpg" alt=""><img data-src="a/wp/apocalypse_3.jpg" alt=""><img data-src="a/wp/apocalypse_4.jpg" alt=""><img data-src="a/wp/apocalypse_5.jpg" alt=""><img data-src="a/wp/apocalypse_6.jpg" alt=""><span class="wp-lock"><b>03:33</b><i>Season 01</i></span></div>
+      <div class="wp-meta"><span class="n">(02)</span><h4>Apocalypse</h4><p>Cathedrals on fire · white horns · red capes</p></div>
+      <div class="wp-buy"><span class="wp-p"><b>$2</b> 6 wallpapers</span><a class="btn" data-wp-buy="apocalypse" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener">Buy</a></div>
+    </article>
+    <article class="wp" data-wp="editorial">
+      <div class="wp-ph" aria-hidden="true"><img data-src="a/wp/editorial_1.jpg" alt="" class="on"><img data-src="a/wp/editorial_2.jpg" alt=""><img data-src="a/wp/editorial_3.jpg" alt=""><img data-src="a/wp/editorial_4.jpg" alt=""><img data-src="a/wp/editorial_5.jpg" alt=""><img data-src="a/wp/editorial_6.jpg" alt=""><span class="wp-lock"><b>03:33</b><i>Season 01</i></span></div>
+      <div class="wp-meta"><span class="n">(03)</span><h4>Editorial and Period</h4><p>Chrome lace · red couture · salons</p></div>
+      <div class="wp-buy"><span class="wp-p"><b>$2</b> 6 wallpapers</span><a class="btn" data-wp-buy="editorial" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener">Buy</a></div>
+    </article>
+    <article class="wp" data-wp="future-asia">
+      <div class="wp-ph" aria-hidden="true"><img data-src="a/wp/future-asia_1.jpg" alt="" class="on"><img data-src="a/wp/future-asia_2.jpg" alt=""><img data-src="a/wp/future-asia_3.jpg" alt=""><img data-src="a/wp/future-asia_4.jpg" alt=""><img data-src="a/wp/future-asia_5.jpg" alt=""><img data-src="a/wp/future-asia_6.jpg" alt=""><span class="wp-lock"><b>03:33</b><i>Season 01</i></span></div>
+      <div class="wp-meta"><span class="n">(04)</span><h4>Future Asia</h4><p>Red lacquer coats · sky towers</p></div>
+      <div class="wp-buy"><span class="wp-p"><b>$2</b> 6 wallpapers</span><a class="btn" data-wp-buy="future-asia" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener">Buy</a></div>
+    </article>
+    <article class="wp" data-wp="infernal-runway">
+      <div class="wp-ph" aria-hidden="true"><img data-src="a/wp/infernal-runway_1.jpg" alt="" class="on"><img data-src="a/wp/infernal-runway_2.jpg" alt=""><img data-src="a/wp/infernal-runway_3.jpg" alt=""><img data-src="a/wp/infernal-runway_4.jpg" alt=""><img data-src="a/wp/infernal-runway_5.jpg" alt=""><img data-src="a/wp/infernal-runway_6.jpg" alt=""><span class="wp-lock"><b>03:33</b><i>Season 01</i></span></div>
+      <div class="wp-meta"><span class="n">(05)</span><h4>Infernal Runway</h4><p>Black horns · porcelain hoods · the red theatre</p></div>
+      <div class="wp-buy"><span class="wp-p"><b>$2</b> 6 wallpapers</span><a class="btn" data-wp-buy="infernal-runway" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener">Buy</a></div>
+    </article>
+    <article class="wp" data-wp="dark-eden">
+      <div class="wp-ph" aria-hidden="true"><img data-src="a/wp/dark-eden_1.jpg" alt="" class="on"><img data-src="a/wp/dark-eden_2.jpg" alt=""><img data-src="a/wp/dark-eden_3.jpg" alt=""><img data-src="a/wp/dark-eden_4.jpg" alt=""><img data-src="a/wp/dark-eden_5.jpg" alt=""><img data-src="a/wp/dark-eden_6.jpg" alt=""><span class="wp-lock"><b>03:33</b><i>Season 01</i></span></div>
+      <div class="wp-meta"><span class="n">(06)</span><h4>Dark Eden</h4><p>Gardens of horns · pearls · black velvet</p></div>
+      <div class="wp-buy"><span class="wp-p"><b>$2</b> 6 wallpapers</span><a class="btn" data-wp-buy="dark-eden" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener">Buy</a></div>
+    </article>
+  </div>
+  <ol class="cm-steps rv">
+    <li><b>01</b><span>Pay with PayPal or card.</span></li>
+    <li><b>02</b><span>The download reaches your email in seconds.</span></li>
+    <li><b>03</b><span>Set it on your lock screen. 1290 × 2796, ready for any phone.</span></li>
+  </ol>
+  <p class="cm-q">Personal use only · each pack is a .zip with six wallpapers</p>
+</section>
+
+<!-- (IV) Encargos: sin precios publicados; se cotizan por DM -->
+<header class="ch" id="ch-com" data-ch="IV" data-name="Commissions"><span class="ch-n">(IV)</span><h2 class="ch-t disp">Commissions</h2><p class="ch-s">Music videos, fashion films and campaign worlds in the house style. Every commission is quoted by DM.</p></header>
 <section class="comm" id="comm" aria-label="Commissions">
   <div class="cm-grid rv">
     <article class="cm"><span class="n">(01)</span><h3>Music video</h3><p>A film for your song, built the way the house builds its own: one look, one world, one turn.</p><ul><li>For artists and labels</li></ul></article>
@@ -897,6 +963,16 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     'Go to a muse': 'Ir a una musa', 'Language': 'Idioma',
     'The films': 'Los films', 'Views': 'Vistas', 'Back to the films ↑': 'Volver a los films ↑', 'Open the season →': 'Abrir la temporada →', 'See commissions →': 'Ver encargos →',
     'What is on tonight, the Library that opens only for those who buy it, and the commissions the house accepts.': 'Lo que hay esta noche, la Library que solo se abre para quien la compra y los encargos que acepta la casa.',
+    'Wallpapers': 'Wallpapers', 'Six screens from each world, for the phone you carry at night. Two dollars a world.': 'Seis pantallas de cada mundo, para el teléfono que llevas de noche. Dos dólares por mundo.',
+    'Cursed New York': 'Nueva York maldita', 'Apocalypse': 'Apocalipsis', 'Editorial and Period': 'Editorial y época', 'Future Asia': 'Asia futurista', 'Infernal Runway': 'Pasarela infernal', 'Dark Eden': 'Edén sombrío',
+    'Red veils · chrome mitres · the subway at night': 'Velos rojos · mitras de cromo · el metro de noche', 'Cathedrals on fire · white horns · red capes': 'Catedrales en llamas · cuernos blancos · capas rojas',
+    'Chrome lace · red couture · salons': 'Encaje de cromo · alta costura roja · salones', 'Red lacquer coats · sky towers': 'Abrigos de laca roja · torres en el cielo',
+    'Black horns · porcelain hoods · the red theatre': 'Cuernos negros · capuchas de porcelana · el teatro rojo', 'Gardens of horns · pearls · black velvet': 'Jardines de cuernos · perlas · terciopelo negro',
+    '6 wallpapers': '6 wallpapers', 'Buy': 'Comprar', 'Pay with PayPal or card.': 'Paga con PayPal o tarjeta.', 'The download reaches your email in seconds.': 'La descarga llega a tu correo en segundos.',
+    'Set it on your lock screen. 1290 × 2796, ready for any phone.': 'Ponlo en tu pantalla de bloqueo. 1290 × 2796, listo para cualquier teléfono.',
+    'Personal use only · each pack is a .zip with six wallpapers': 'Solo uso personal · cada paquete es un .zip con seis wallpapers',
+    'What is on tonight, the packs to make the same films, wallpapers from every world, and the commissions the house accepts.': 'Lo que hay esta noche, los paquetes para hacer los mismos films, wallpapers de cada mundo y los encargos que acepta la casa.',
+    'Hi Dark Matter, I would like the wallpapers': 'Hola Dark Matter, quiero los wallpapers',
     'Program': 'Programa', 'Commissions': 'Encargos',
     'Music videos, fashion films and campaign worlds in the house style. Every commission is quoted by DM.': 'Videoclips, fashion films y mundos de campaña con el estilo de la casa. Cada encargo se cotiza por DM.',
     'Music video': 'Videoclip', 'A film for your song, built the way the house builds its own: one look, one world, one turn.': 'Un film para tu canción, hecho como la casa hace los suyos: un look, un mundo, un giro.',
@@ -1585,6 +1661,26 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     });
     var sw = $('#sealW'), seal = $('#seal');
     onFrame(sw, function(){ var r = sw.getBoundingClientRect(), p = clamp(1 - (r.top + r.height / 2) / innerHeight, 0, 1); seal.style.transform = 'rotate(' + lerp(-40, 8, p).toFixed(1) + 'deg) scale(' + lerp(0.8, 1, ease(p)).toFixed(3) + ')'; });
+  });
+
+  /* ——— (III) wallpapers: Payhip cobra (PayPal o tarjeta) y envía el .zip al correo del comprador.
+     Código de cada producto de Payhip (payhip.com/b/XXXX); el botón va directo al checkout. Vacío = abre el DM. ——— */
+  var PAYHIP = {'cursed-new-york': '3ZWjT', 'apocalypse': 'tnDGV', 'editorial': 'wfLZq', 'future-asia': 'AD8wo', 'infernal-runway': 'f8JAn', 'dark-eden': 'sNZR1'};
+  safe('wallpapers', function(){
+    var sec = $('#wallpapers'), cards = $$('.wp', sec);
+    $$('[data-wp-buy]', sec).forEach(function(a){
+      var k = a.getAttribute('data-wp-buy'), code = PAYHIP[k];
+      if (code){ a.href = 'https://payhip.com/buy?link=' + code; return; }
+      a.addEventListener('click', function(){ var name = $('h4', a.closest('.wp')).textContent; try{ navigator.clipboard.writeText(TR('Hi Dark Matter, I would like the wallpapers') + ' ' + name + ' ($2).'); }catch(e){} });
+    });
+    near(sec, function(){
+      cards.forEach(function(c){ $$('img[data-src]', c).forEach(function(im){ im.src = im.getAttribute('data-src'); im.removeAttribute('data-src'); }); });
+    });
+    var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, n = 0;
+    if (!RM) onFrame(sec, function(t){
+      var step = Math.floor(t / 2.6); if (step === n) return; n = step;
+      cards.forEach(function(c, i){ var ims = $$('img', c), k = (step + i) % ims.length; ims.forEach(function(im, j){ im.classList.toggle('on', j === k); }); });
+    });
   });
 
   /* ——— (VII) contacto ——— */
