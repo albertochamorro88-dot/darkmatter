@@ -400,6 +400,11 @@ html.pre .fx.views:not(#bar){opacity:1;pointer-events:auto;left:var(--side)}
 .sv-in h2{font:600 clamp(64px,13vw,236px)/.82 var(--f-ui);letter-spacing:-.065em;text-transform:uppercase;color:var(--hueso)}
 .sv-in p{font:300 clamp(16px,1.3vw,19px)/1.5 var(--f-ui);color:var(--soft);max-width:46ch}
 .sv-jump{display:flex;flex-wrap:wrap;gap:10px}
+/* en la temporada, al bajar, un velo detrás del encabezado para que los títulos no pisen la marca (el celular ya lo tiene) */
+@media (min-width:641px){
+  html.v-season body::after{content:"";position:fixed;left:0;right:0;top:0;height:calc(150px + env(safe-area-inset-top,0px));background:linear-gradient(to bottom,rgba(10,14,8,.96) 55%,rgba(10,14,8,0));z-index:55;pointer-events:none;opacity:0;transition:opacity .5s}
+  html.v-season.scrolled:not(.pre):not(.imm) body::after{opacity:1}
+}
 
 /* encargos: se cotizan por DM */
 .comm{max-width:1600px;margin:0 auto;padding:0 calc(var(--side) + var(--rail)) 0 var(--side)}
@@ -671,7 +676,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
 </section>
 
 <!-- (I) El programa -->
-<header class="ch" id="ch-season" data-ch="I" data-name="The season"><span class="ch-n">(I)</span><h2 class="ch-t disp">The season</h2><p class="ch-s">Nine collections, twenty-seven shows, sixty nights. A new look every night until the finale.</p></header>
+<header class="ch" id="ch-season" data-ch="I" data-name="The program"><span class="ch-n">(I)</span><h2 class="ch-t disp">The program</h2><p class="ch-s">Nine collections, twenty-seven shows, sixty nights. A new look every night until the finale.</p></header>
 <section class="season" id="season" aria-label="Season 01 program">
   <div class="tonight rv"><span class="lab" id="tnLab">Premiere</span><span class="big" id="tnBig">The Red Opera</span><span class="lab" id="tnWhen">30.09</span></div>
   <div class="sched" id="sched"><i class="tl" id="schedTl"></i></div>
@@ -909,7 +914,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     'That stays inside the house.': 'Eso se queda dentro de la casa.', 'Can I buy the wallpapers?': '¿Puedo comprar los wallpapers?',
     'Yes: six wallpapers from each world for two dollars, sent to your email the moment you pay.': 'Sí: seis wallpapers de cada mundo por dos dólares, enviados a tu correo en cuanto pagas.', 'See the wallpapers →': 'Ver los wallpapers →',
     'What is on tonight, wallpapers from every world, and the commissions the house accepts.': 'Lo que hay esta noche, wallpapers de cada mundo y los encargos que acepta la casa.',
-    'Program': 'Programa', 'Commissions': 'Encargos',
+    'The program': 'El programa', 'Program': 'Programa', 'Commissions': 'Encargos',
     'Music videos, fashion films and campaign worlds in the house style. Every commission is quoted by DM.': 'Videoclips, fashion films y mundos de campaña con el estilo de la casa. Cada encargo se cotiza por DM.',
     'Music video': 'Videoclip', 'A film for your song, built the way the house builds its own: one look, one world, one turn.': 'Un film para tu canción, hecho como la casa hace los suyos: un look, un mundo, un giro.',
     'For artists and labels': 'Para artistas y sellos', 'Your collection walks one of our runways. Couture first, horror last.': 'Tu colección desfila en una de nuestras pasarelas. Primero la costura, al final el terror.',
@@ -1118,7 +1123,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
   /* ——— vistas: los films / la temporada ——— */
   function setView(v){
     v = v === 'season' ? 'season' : 'films'; if (v === VIEW) return;
-    VIEW = v;
+    VIEW = v; root.classList.toggle('v-season', v === 'season');
     $$('[data-view]').forEach(function(m){ m.hidden = m.getAttribute('data-view') !== v; });
     $$('.views button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-v') === v ? 'true' : 'false'); });
     if (v === 'season' || entered){ root.classList.remove('lock', 'pre'); if (lenis) lenis.start(); }
