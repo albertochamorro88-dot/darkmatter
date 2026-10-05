@@ -2,7 +2,7 @@
 
 > Dark Matter™ is a haute couture house from another reality. Fashion first, with horror only as the turn. Season 01 runs from 30 September to 28 November 2026: nine collections, twenty-seven shows, a new look every night until the finale.
 
-The site is one page in English, with a Spanish version behind the EN/ES switch. It has two views: The films and The season. How the house makes its work is not public; the packs open the atelier to those who buy them.
+The site is one page in English, with a Spanish version behind the EN/ES switch. It has two views: The films and The season. How the house makes its work is not public.
 
 ## The films
 - [The muses](https://darkmatters.site/#hall): a hall of screens where the house muses wait: The Silver Bishop, The Red Bride, The Albino and The Machine.
@@ -15,10 +15,7 @@ The site is one page in English, with a Spanish version behind the EN/ES switch.
 
 ## The season
 - [Season 01 program](https://darkmatters.site/#season): nine collections, twenty-seven shows, sixty nights.
-- [The packs](https://darkmatters.site/#library): the prompts and the pipeline behind the season, to make the same films look by look.
-  - The Look, 9 USD, one payment: one look, from the first image to the finished film.
-  - The World, 19 USD, one payment: one week of the season, one world and every look in it.
-  - The Season, 49 USD, one payment: everything behind Season 01, with a new world every Wednesday until 28.11.
+- [Wallpapers](https://darkmatters.site/#wallpapers): six phone wallpapers (1290 × 2796) from each world, 2 USD per world, sent to your email after payment. Worlds: Cursed New York, Apocalypse, Editorial and Period, Future Asia, Infernal Runway, Dark Eden.
 - [Commissions](https://darkmatters.site/#comm): music videos, fashion films and campaign worlds in the house style. Every commission is quoted by DM.
 
 ## Contact
