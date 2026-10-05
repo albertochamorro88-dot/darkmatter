@@ -397,7 +397,7 @@ html.pre .fx.views:not(#bar){opacity:1;pointer-events:auto;left:var(--side)}
 .sv-hero video,.sv-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.42) saturate(.8)}
 .sv-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--negro) 2%,rgba(10,14,8,.2) 55%,rgba(10,14,8,.5) 100%)}
 .sv-in{position:relative;z-index:2;padding:0 calc(var(--side) + var(--rail)) 11vh var(--side);display:grid;gap:18px;max-width:1600px;width:100%;margin:0 auto}
-.sv-in h2{font:600 clamp(64px,13vw,236px)/.82 var(--f-ui);letter-spacing:-.065em;text-transform:uppercase;color:var(--hueso)}
+.sv-in h2{font:600 clamp(56px,min(9.5vw,19vh),190px)/.84 var(--f-ui);letter-spacing:-.06em;text-transform:uppercase;color:var(--hueso);max-width:12ch;text-wrap:balance}
 .sv-in p{font:300 clamp(16px,1.3vw,19px)/1.5 var(--f-ui);color:var(--soft);max-width:46ch}
 .sv-jump{display:flex;flex-wrap:wrap;gap:10px}
 /* en la temporada, al bajar, un velo detrás del encabezado para que los títulos no pisen la marca (el celular ya lo tiene) */
@@ -461,7 +461,7 @@ html.pre .fx.views:not(#bar){opacity:1;pointer-events:auto;left:var(--side)}
   .ds-info{max-width:none;right:var(--side);bottom:64px}
   .inv-lines p{filter:none;will-change:opacity,transform}
   .intake{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(10,14,8,.94);margin-top:5vh}
-  .sv-in h2{font-size:15vw}
+  .sv-in h2{font-size:14vw}
   .views{left:var(--side);top:calc(22px + clamp(20px,2.5vw,38px) + 28px);transition:opacity .4s,transform .4s}
   .wd p{display:none}
   /* al bajar, el selector se esconde y vuelve al subir; la barra lleva un velo para no pisar los títulos */
@@ -665,13 +665,13 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
 
 <!-- Vista 2 · La temporada: el programa, los paquetes y los encargos -->
 <main id="vSeason" data-view="season" hidden>
-<section class="sv-hero" id="svHero" aria-label="Season 01">
+<section class="sv-hero" id="svHero" aria-label="Wallpapers and support">
   <video id="svV" src="a/s/sv_hero.mp4" data-poster="a/s/sv_hero.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
   <div class="sv-in">
-    <span class="lab"><span class="n">Season 01</span>&nbsp; 30.09 → 28.11.2026</span>
-    <h2>The season</h2>
-    <p>What is on tonight, wallpapers from every world, and the commissions the house accepts.</p>
-    <div class="sv-jump"><a class="btn" href="#ch-season">Program</a><a class="btn" href="#ch-wp">Wallpapers</a><a class="btn" href="#ch-com">Commissions</a></div>
+    <span class="lab"><span class="n">Support the artist</span>&nbsp; Wallpapers from $2</span>
+    <h2>Take a world home.</h2>
+    <p>Six phone wallpapers from every world for $2, sent to your email. Every one you buy keeps the house making films.</p>
+    <div class="sv-jump"><a class="btn hot" href="#ch-wp">Get the wallpapers · $2</a><a class="btn" href="#ch-season">Program</a><a class="btn" href="#ch-com">Commissions</a></div>
   </div>
 </section>
 
@@ -914,6 +914,9 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     'That stays inside the house.': 'Eso se queda dentro de la casa.', 'Can I buy the wallpapers?': '¿Puedo comprar los wallpapers?',
     'Yes: six wallpapers from each world for two dollars, sent to your email the moment you pay.': 'Sí: seis wallpapers de cada mundo por dos dólares, enviados a tu correo en cuanto pagas.', 'See the wallpapers →': 'Ver los wallpapers →',
     'What is on tonight, wallpapers from every world, and the commissions the house accepts.': 'Lo que hay esta noche, wallpapers de cada mundo y los encargos que acepta la casa.',
+    'Support the artist': 'Apoya al artista', 'Wallpapers from $2': 'Wallpapers desde $2', 'Take a world home.': 'Llévate un mundo.',
+    'Six phone wallpapers from every world for $2, sent to your email. Every one you buy keeps the house making films.': 'Seis wallpapers de cada mundo por $2, directo a tu correo. Cada uno que compras mantiene a la casa haciendo films.',
+    'Get the wallpapers · $2': 'Llévate los wallpapers · $2', 'Wallpapers and support': 'Wallpapers y apoyo',
     'The program': 'El programa', 'Program': 'Programa', 'Commissions': 'Encargos',
     'Music videos, fashion films and campaign worlds in the house style. Every commission is quoted by DM.': 'Videoclips, fashion films y mundos de campaña con el estilo de la casa. Cada encargo se cotiza por DM.',
     'Music video': 'Videoclip', 'A film for your song, built the way the house builds its own: one look, one world, one turn.': 'Un film para tu canción, hecho como la casa hace los suyos: un look, un mundo, un giro.',
