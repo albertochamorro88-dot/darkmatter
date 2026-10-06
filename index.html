@@ -479,6 +479,51 @@ html.pre .fx.views:not(#bar){opacity:1;pointer-events:auto;left:var(--side)}
   .rv,.row{opacity:1;transform:none;transition:none}
 }
 html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
+/* ——— pestaña 3: el escenario (show 3D con nuestras visuales) ——— */
+.stg{position:relative;height:760vh}
+.stg-pin{position:sticky;top:0;height:100vh;height:calc(var(--vh,1vh)*100);overflow:hidden;background:#040504}
+#stgCv{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;cursor:grab}
+#stgCv:active{cursor:grabbing}
+.stg-fb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.85)}
+.stg-load{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:12px;font:400 10px/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--soft);background:#040504;transition:opacity 1.2s;pointer-events:none}
+.stg-load b{font:300 clamp(40px,6vw,88px)/1 var(--f-ui);letter-spacing:-.05em;color:var(--hueso);font-variant-numeric:tabular-nums}
+.stg.on .stg-load{opacity:0}
+.stg-title{position:absolute;left:var(--side);right:calc(var(--side) + var(--rail));bottom:clamp(110px,17vh,190px);display:grid;gap:14px;justify-items:start;pointer-events:none;transition:opacity .8s,transform .8s var(--out)}
+.stg-title .disp{color:var(--hueso);text-shadow:0 0 60px rgba(4,5,4,.8)}
+.stg-title p{font:300 clamp(15px,1.25vw,18px)/1.5 var(--f-ui);color:var(--txt);max-width:40ch}
+.stg.go .stg-title{opacity:0;transform:translateY(-16px)}
+.stg-cap{position:absolute;left:var(--side);bottom:calc(78px + env(safe-area-inset-bottom,0px));max-width:min(44ch,72vw);display:grid;gap:7px;pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .7s,transform .7s var(--out)}
+.stg.go .stg-cap{opacity:1;transform:none}
+.stg-cap b{font:500 11px/1 var(--f-mono);letter-spacing:.16em;color:var(--rojo)}
+.stg-cap strong{font:600 clamp(26px,3vw,46px)/.9 var(--f-ui);letter-spacing:-.05em;text-transform:uppercase;color:var(--hueso)}
+.stg-cap p{font-size:14px;line-height:1.45;color:var(--txt);text-shadow:0 1px 14px rgba(4,5,4,.9)}
+.stg-hud{position:absolute;right:calc(var(--side) + var(--rail));top:calc(78px + env(safe-area-inset-top,0px));display:grid;gap:7px;justify-items:end;font:400 10px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft);pointer-events:none;font-variant-numeric:tabular-nums}
+.stg-hud span:first-child{color:var(--hueso)}
+.stg-hud i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--rojo);margin-right:8px;vertical-align:1px;animation:blink 1.3s steps(2) infinite}
+.stg-bar{position:absolute;left:var(--side);right:calc(var(--side) + var(--rail));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap}
+.stg-cues{list-style:none;display:flex;gap:2px;margin:0;padding:2px;border:1px solid var(--line2);background:rgba(10,14,8,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.stg-cues button{position:relative;background:none;border:0;padding:9px 11px 8px;font:400 10px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--niebla);white-space:nowrap;transition:color .25s,background .25s}
+.stg-cues button b{font-weight:400;color:var(--soft);margin-right:7px}
+.stg-cues button:hover{color:var(--hueso)}
+.stg-cues button[aria-current="true"]{background:var(--hueso);color:var(--negro)}
+.stg-cues button[aria-current="true"] b{color:var(--rojo)}
+.stg-cues button i{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rojo)}
+.stg-bar .btn{background:rgba(10,14,8,.6)}
+.stg-bar .btn[aria-pressed="true"]{background:var(--rojo);border-color:var(--rojo);color:var(--negro)}
+.stg-hint{font:400 10px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--niebla)}
+#vStage .comm{margin-top:-4vh}
+#vStage footer{margin-top:16vh}
+@media (max-width:1000px){ .stg-cues button span{display:none} .stg-cues button b{margin:0} .stg-hint{display:none} }
+@media (max-width:640px){
+  .stg-hud{top:calc(118px + env(safe-area-inset-top,0px));left:var(--side);right:auto;justify-items:start}
+  .stg-hud span:last-child{display:none}
+  .stg-cap{bottom:calc(122px + env(safe-area-inset-bottom,0px));max-width:none;right:var(--side)}
+  .stg-cap p{font-size:13px}
+  .stg-cues{flex:1 1 100%;justify-content:space-between}
+  .stg-cues button{padding:9px 8px 8px;flex:1}
+  .stg-title{bottom:150px}
+}
+@media (max-width:400px){ .views button{padding:8px 7px 7px;letter-spacing:.1em} }
 </style>
 <script>(function(){var d=document.documentElement;d.classList.add('lock','pre');try{if('scrollRestoration' in history)history.scrollRestoration='manual';}catch(e){}var l=null;try{l=localStorage.getItem('dm_lang');}catch(e){}if(l!=='es'&&l!=='en')l=/^es/i.test(navigator.language||'')?'es':'en';if(l==='es')d.classList.add('es-pending');setTimeout(function(){d.classList.remove('es-pending');},4000);setTimeout(function(){if(!window.__dm)d.classList.remove('lock','pre');},15000);})();</script>
 
@@ -504,7 +549,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
   <a href="https://www.instagram.com/darkmatter.tm/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 12 12"><path d="M6 0l.9 5.1L12 6l-5.1.9L6 12l-.9-5.1L0 6l5.1-.9z" fill="#E12423"/></svg></a>
   <a href="https://www.tiktok.com/@darkmattertm" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 16 10"><path d="M1 5c2-3.2 4.3-4.5 7-4.5S13 1.8 15 5c-2 3.2-4.3 4.5-7 4.5S3 8.2 1 5z" fill="none" stroke="#ABB8C5"/><circle cx="8" cy="5" r="2" fill="#C9C5BA"/></svg></a>
 </div>
-<div class="fx views" role="group" aria-label="Views"><button type="button" data-v="films" aria-pressed="true">The films</button><button type="button" data-v="season" aria-pressed="false">The season</button></div>
+<div class="fx views" role="group" aria-label="Views"><button type="button" data-v="films" aria-pressed="true">The films</button><button type="button" data-v="stage" aria-pressed="false">The stage</button><button type="button" data-v="season" aria-pressed="false">The season</button></div>
 <div class="fx top-r">
   <div class="lang" role="group" aria-label="Language"><button type="button" data-l="en" aria-pressed="true">EN</button><button type="button" data-l="es" aria-pressed="false">ES</button></div>
   <button class="sw" type="button" id="snd" aria-pressed="false"><i></i><span id="sndt">SOUND OFF</span></button>
@@ -749,6 +794,45 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
 </footer>
 </main>
 
+<!-- Vista 3 · El escenario: un show en 3D con nuestras visuales en las pantallas (a/stage.js) -->
+<main id="vStage" data-view="stage" hidden>
+<section class="stg" id="stg" data-ch="I" data-name="The show" aria-label="The stage: a show in 3D. Our looks play on the screens of an arena, with crowd, lights, lasers and pyro.">
+  <div class="stg-pin">
+    <canvas id="stgCv" aria-hidden="true"></canvas>
+    <div class="stg-load" id="stgLoad"><span>Building the stage</span><b id="stgPct">00</b></div>
+    <div class="stg-title"><span class="ch-n">(I)</span><h2 class="disp">The stage</h2><p>Our looks on the screens of your show. Scroll and the show begins.</p></div>
+    <div class="stg-cap" aria-live="polite"><b id="stgCapN">(01)</b><strong id="stgCapT">Doors</strong><p id="stgCapP">The arena fills up. The screens wait for the house.</p></div>
+    <div class="stg-hud" aria-hidden="true"><span><i></i>Live</span><span id="stgHudT">118 BPM · BAR 001</span><span id="stgHudS">Visuals · Dark Matter™</span></div>
+    <div class="stg-bar">
+      <ol class="stg-cues" id="stgCues" aria-label="Show cues"><li><button type="button" data-c="0" aria-current="true"><b>01</b><span>Doors</span><i></i></button></li><li><button type="button" data-c="1" aria-current="false"><b>02</b><span>Ignition</span><i></i></button></li><li><button type="button" data-c="2" aria-current="false"><b>03</b><span>The muses</span><i></i></button></li><li><button type="button" data-c="3" aria-current="false"><b>04</b><span>The runway</span><i></i></button></li><li><button type="button" data-c="4" aria-current="false"><b>05</b><span>The turn</span><i></i></button></li><li><button type="button" data-c="5" aria-current="false"><b>06</b><span>Finale</span><i></i></button></li></ol>
+      <button type="button" class="btn" id="stgPlay" aria-pressed="false">Play the show</button>
+      <span class="stg-hint">Drag to look around</span>
+    </div>
+  </div>
+</section>
+<header class="ch" id="stgPitch" data-ch="II" data-name="Your show"><span class="ch-n">(II)</span><h2 class="ch-t disp">Your show</h2><p class="ch-s">Every screen you just saw plays looks from the house. We make the visuals for your stage: tours, festivals, fashion shows and launches.</p></header>
+<section class="comm" aria-label="Stage visuals">
+  <div class="cm-grid rv">
+    <article class="cm"><span class="n">(01)</span><h3>LED walls</h3><p>A loop for every song, delivered at the exact size of your screens: centre wall, towers, ribbons and floor.</p><ul><li>For artists and tours</li></ul></article>
+    <article class="cm"><span class="n">(02)</span><h3>Show moments</h3><p>The intro, the drop, the turn and the finale. Visuals made to land with your lights.</p><ul><li>For creative and lighting directors</li></ul></article>
+    <article class="cm"><span class="n">(03)</span><h3>Runway screens</h3><p>A world behind your collection, from the first look to the last walk.</p><ul><li>For designers and fashion weeks</li></ul></article>
+  </div>
+  <p class="cm-q rv">Prices are not published. Every stage is quoted by DM.</p>
+  <ol class="cm-steps rv">
+    <li><b>01</b><span>Send your screen layout and the setlist.</span></li>
+    <li><b>02</b><span>The house answers with a world for your show.</span></li>
+    <li><b>03</b><span>Quote and dates, by DM.</span></li>
+  </ol>
+  <div class="cm-cta rv"><a class="btn hot" href="https://ig.me/m/darkmatter.tm" target="_blank" rel="noopener" data-dm="stage">Ask for your stage by DM</a><a class="btn" href="https://www.instagram.com/darkmatter.tm/" target="_blank" rel="noopener">See the work on Instagram</a><span class="note" aria-live="polite"></span></div>
+</section>
+<footer>
+  <div><b>Dark Matter™</b>Haute couture from another reality</div>
+  <div><b>Follow</b><a href="https://www.instagram.com/darkmatter.tm/" target="_blank" rel="noopener">Instagram @darkmatter.tm</a><br><a href="https://www.tiktok.com/@darkmattertm" target="_blank" rel="noopener">TikTok @darkmattertm</a></div>
+  <div><b>Season 01</b>30.09 → 28.11.2026<br>Nine collections</div>
+  <div><b>©2026</b>All rights reserved<br><a href="#stg">Back to the stage ↑</a></div>
+</footer>
+</main>
+
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -925,7 +1009,28 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     'For brands and agencies': 'Para marcas y agencias', 'Prices are not published. Every world is quoted by DM.': 'No publicamos precios. Cada mundo se cotiza por DM.',
     'Tell us what it is for and when you need it.': 'Cuéntanos para qué es y cuándo lo necesitas.', 'The house answers with a world: one look, one turn.': 'La casa responde con un mundo: un look, un giro.',
     'Quote and dates, by DM.': 'Cotización y fechas, por DM.', 'Ask for a quote by DM': 'Pide una cotización por DM', 'See the work on Instagram': 'Ver el trabajo en Instagram',
-    'A chrome Dark Matter relic in a dark hall of hanging screens. On each screen a muse walks.': 'Una reliquia de cromo de Dark Matter en una sala oscura de pantallas colgantes. En cada pantalla camina una musa.'
+    'A chrome Dark Matter relic in a dark hall of hanging screens. On each screen a muse walks.': 'Una reliquia de cromo de Dark Matter en una sala oscura de pantallas colgantes. En cada pantalla camina una musa.',
+    'The stage': 'El escenario', 'The show': 'El show', 'Your show': 'Tu show', 'Building the stage': 'Montando el escenario', 'Live': 'En vivo',
+    'The stage: a show in 3D. Our looks play on the screens of an arena, with crowd, lights, lasers and pyro.': 'El escenario: un show en 3D. Nuestros looks en las pantallas de un estadio, con público, luces, láseres y pirotecnia.',
+    'Our looks on the screens of your show. Scroll and the show begins.': 'Nuestros looks en las pantallas de tu show. Baja y empieza el show.',
+    'Play the show': 'Ver el show', 'Pause the show': 'Pausar el show', 'Drag to look around': 'Arrastra para mirar', 'Show cues': 'Momentos del show', 'Visuals · Dark Matter™': 'Visuales · Dark Matter™',
+    'Doors': 'Puertas', 'Ignition': 'Ignición', 'The turn': 'El giro', 'Finale': 'Final',
+    'The arena fills up. The screens wait for the house.': 'El estadio se llena. Las pantallas esperan a la casa.',
+    'Blackout. The wall turns red and the house speaks in giant type.': 'Apagón. La pared se vuelve roja y la casa habla en letras gigantes.',
+    'Three looks of the season on the screens, cut to the beat.': 'Tres looks de la temporada en las pantallas, cortados al ritmo.',
+    'The runway climbs the towers. Lasers over the crowd.': 'La pasarela sube por las torres. Láseres sobre el público.',
+    'One turn per show: the lights go red and the looks look back.': 'Un giro por show: las luces se vuelven rojas y los looks te devuelven la mirada.',
+    'Pyro, confetti and the last look. Goodnight.': 'Pirotecnia, confeti y el último look. Buenas noches.',
+    'Every screen you just saw plays looks from the house. We make the visuals for your stage: tours, festivals, fashion shows and launches.': 'Cada pantalla que acabas de ver muestra looks de la casa. Hacemos las visuales de tu escenario: giras, festivales, desfiles y lanzamientos.',
+    'Stage visuals': 'Visuales para escenario', 'LED walls': 'Pantallas LED', 'Show moments': 'Momentos del show', 'Runway screens': 'Pantallas de pasarela',
+    'A loop for every song, delivered at the exact size of your screens: centre wall, towers, ribbons and floor.': 'Un loop para cada canción, entregado al tamaño exacto de tus pantallas: pared central, torres, cintas y piso.',
+    'The intro, the drop, the turn and the finale. Visuals made to land with your lights.': 'La intro, el drop, el giro y el final. Visuales hechas para caer junto con tus luces.',
+    'A world behind your collection, from the first look to the last walk.': 'Un mundo detrás de tu colección, del primer look a la última salida.',
+    'For artists and tours': 'Para artistas y giras', 'For creative and lighting directors': 'Para directores creativos y de iluminación', 'For designers and fashion weeks': 'Para diseñadores y semanas de la moda',
+    'Prices are not published. Every stage is quoted by DM.': 'No publicamos precios. Cada escenario se cotiza por DM.',
+    'Send your screen layout and the setlist.': 'Envía el plano de tus pantallas y el setlist.', 'The house answers with a world for your show.': 'La casa responde con un mundo para tu show.',
+    'Ask for your stage by DM': 'Pide tu escenario por DM', 'Back to the stage ↑': 'Volver al escenario ↑',
+    'Hi Dark Matter, I would like visuals for a show.\nShow: [tour / festival / fashion show / launch]\nScreens: [layout or link]\nDate: [date]': 'Hola Dark Matter, quiero visuales para un show.\nShow: [gira / festival / desfile / lanzamiento]\nPantallas: [plano o link]\nFecha: [fecha]'
   };
   var GRADE = {Raw: 'Crudo', Cold: 'Frío', Signal: 'Señal'}, GRADE_EN = {Crudo: 'Raw', 'Frío': 'Cold', 'Señal': 'Signal'};
   var RULES = {
@@ -1064,7 +1169,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     var H = document.documentElement.scrollHeight - innerHeight; bar.style.transform = 'scaleX(' + (H > 0 ? scrollY / H : 0).toFixed(4) + ')';
     if (!CH.length) return;
     var k = 0; for (var i = 0; i < CH.length; i++) if (CH[i].getBoundingClientRect().top < innerHeight * 0.5) k = i;
-    var imm = false; if (VIEW === 'films') (small ? ['dust', 'runway', 'film', 'game', 'hall'] : ['dust', 'runway', 'film', 'game']).forEach(function(id){ var r = document.getElementById(id).getBoundingClientRect(); if (r.top < innerHeight * 0.5 && r.bottom > innerHeight * 0.5) imm = true; }); root.classList.toggle('imm', imm);
+    var imm = false; if (VIEW === 'films') (small ? ['dust', 'runway', 'film', 'game', 'hall'] : ['dust', 'runway', 'film', 'game']).forEach(function(id){ var r = document.getElementById(id).getBoundingClientRect(); if (r.top < innerHeight * 0.5 && r.bottom > innerHeight * 0.5) imm = true; }); if (VIEW === 'stage'){ var sr = document.getElementById('stg').getBoundingClientRect(); if (sr.top < innerHeight * 0.5 && sr.bottom > innerHeight * 0.5) imm = true; } root.classList.toggle('imm', imm);
     if (k !== curCh){ curCh = k; chLinks.forEach(function(a, i){ a.classList.toggle('on', i === k); }); chlab.innerHTML = '<b>(' + CH[k].getAttribute('data-ch') + ')</b>' + CH[k].getAttribute('data-name'); }
   });
   function splitT(h){ var src = h.getAttribute('data-en') || h.textContent.trim(); h.setAttribute('data-en', src); var i = 0; h.innerHTML = TR(src).split(' ').map(function(w){ return '<span class="w">' + w.split('').map(function(c){ return '<span class="c" style="--i:' + (i++) + '">' + c + '</span>'; }).join('') + '</span>'; }).join(''); }
@@ -1086,7 +1191,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     ['Possessed close-ups', 'Chrome · red eyes · machines', 'w5'], ['Editorial and period', 'Lace · salons · candles', 'w6'], ['Future Asia', 'Sky trains · red coats', 'w7'], ['Sky terminal', 'Black latex · volume · a city above the clouds', 'w8m']
   ];
   var stage = $('#stage'), hall = $('#hall'), introUi = $('#introUi'), entered = false, loadP = {relic: 0, muse: 0, fonts: 0}, shownP = 0, introT0 = performance.now(), hallApi = null;
-  if (!/^#(season|temporada)$/i.test(location.hash)) try{ scrollTo(0, 0); }catch(e){}
+  if (!/^#(season|temporada|live|escenario)$/i.test(location.hash)) try{ scrollTo(0, 0); }catch(e){}
   root.classList.add('lock', 'pre'); if (lenis) lenis.stop();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ loadP.fonts = 1; }); else loadP.fonts = 1;
   setTimeout(function(){ loadP.relic = loadP.muse = loadP.fonts = 1; }, Math.max(2500, 7000 - performance.now()));
@@ -1125,18 +1230,100 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
 
   /* ——— vistas: los films / la temporada ——— */
   function setView(v){
-    v = v === 'season' ? 'season' : 'films'; if (v === VIEW) return;
-    VIEW = v; root.classList.toggle('v-season', v === 'season');
+    v = v === 'season' || v === 'stage' ? v : 'films'; if (v === VIEW) return;
+    VIEW = v; root.classList.toggle('v-season', v === 'season'); root.classList.toggle('v-stage', v === 'stage');
     $$('[data-view]').forEach(function(m){ m.hidden = m.getAttribute('data-view') !== v; });
     $$('.views button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-v') === v ? 'true' : 'false'); });
-    if (v === 'season' || entered){ root.classList.remove('lock', 'pre'); if (lenis) lenis.start(); }
+    if (v !== 'films' || entered){ root.classList.remove('lock', 'pre'); if (lenis) lenis.start(); }
     else { root.classList.add('lock', 'pre'); if (lenis) lenis.stop(); }
     if (lenis) lenis.scrollTo(0, {immediate: true, force: true}); scrollTo(0, 0);
     buildNav(); window.dispatchEvent(new Event('resize'));
     var sv = $('#svV'); if (v === 'season' && sv && !reduce){ sv.preload = 'auto'; var pl = sv.play(); if (pl && pl.catch) pl.catch(function(){}); } else if (sv) sv.pause();
-    try{ history.replaceState(null, '', v === 'season' ? '#season' : location.pathname + location.search); }catch(e){}
+    if (window.__stg) window.__stg(v === 'stage');
+    try{ history.replaceState(null, '', v === 'season' ? '#season' : v === 'stage' ? '#live' : location.pathname + location.search); }catch(e){}
   }
   $$('.views button').forEach(function(b){ b.addEventListener('click', function(){ setView(b.getAttribute('data-v')); }); });
+
+  /* ——— vista 3: el escenario. El motor (a/stage.js) y el postproceso se bajan recién al abrir la pestaña ——— */
+  safe('stage', function(){
+    var sec = $('#stg'), cv = $('#stgCv'), pct = $('#stgPct'), play = $('#stgPlay'), hudT = $('#stgHudT');
+    var cueBtns = $$('#stgCues button'), capN = $('#stgCapN'), capT = $('#stgCapT'), capP = $('#stgCapP');
+    var CAP = [
+      ['Doors', 'The arena fills up. The screens wait for the house.'],
+      ['Ignition', 'Blackout. The wall turns red and the house speaks in giant type.'],
+      ['The muses', 'Three looks of the season on the screens, cut to the beat.'],
+      ['The runway', 'The runway climbs the towers. Lasers over the crowd.'],
+      ['The turn', 'One turn per show: the lights go red and the looks look back.'],
+      ['Finale', 'Pyro, confetti and the last look. Goodnight.']
+    ];
+    var JS = ['shaders/CopyShader.js', 'shaders/LuminosityHighPassShader.js', 'postprocessing/EffectComposer.js', 'postprocessing/RenderPass.js', 'postprocessing/ShaderPass.js', 'postprocessing/UnrealBloomPass.js']
+      .map(function(p){ return 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/' + p; }).concat(['a/stage.js']);
+    var api = null, state = 0, primed = {}, auto = false, curCue = 0, hudAt = 0, hudS = '';
+    function loadSeq(list, done, step){ var i = 0; (function nx(){ if (i >= list.length) return done(); var s = document.createElement('script'); s.src = list[i++]; s.async = false; s.onload = s.onerror = function(){ step(i / list.length); nx(); }; document.head.appendChild(s); })(); }
+    function prog(){ var r = sec.getBoundingClientRect(), H = r.height - innerHeight; return H > 0 ? clamp(-r.top / H, 0, 1) : 0; }
+    function paintCue(i){ curCue = i; cueBtns.forEach(function(b, j){ b.setAttribute('aria-current', j === i ? 'true' : 'false'); if (j !== i) $('i', b).style.width = '0'; }); capN.textContent = '(' + pad(i + 1) + ')'; capT.textContent = TR(CAP[i][0]); capP.textContent = TR(CAP[i][1]); }
+    function size(){ if (api) api.size(cv.clientWidth, cv.clientHeight); }
+    function fail(){
+      state = -1; sec.classList.add('on');
+      var v = document.createElement('video'); v.className = 'stg-fb'; v.muted = true; v.loop = true; v.playsInline = true; v.setAttribute('playsinline', ''); v.autoplay = true; v.src = 'a/st/muses.mp4';
+      cv.parentNode.replaceChild(v, cv);
+    }
+    function boot(){
+      if (state) return; state = 1;
+      loadSeq(JS, function(){
+        if (!window.DMStage || !window.THREE) return fail();
+        api = window.DMStage({canvas: cv, small: small, reduce: reduce, lang: LANG, base: 'a/', videos: primed, onCue: paintCue,
+          clock: function(){ return {t: amb.currentTime || 0, on: soundOn && !amb.paused}; }});
+        if (!api) return fail();
+        state = 2; size(); setTimeout(function(){ sec.classList.add('on'); }, 250);
+      }, function(f){ pct.textContent = pad(Math.round(f * 100)); });
+    }
+    window.addEventListener('resize', size);
+    window.__stg = function(on){
+      if (on){
+        /* el toque en la pestaña deja habilitado el primer video, aunque el celular esté en bajo consumo */
+        if (!primed.muses){ var v = document.createElement('video'); v.muted = true; v.defaultMuted = true; v.playsInline = true; v.setAttribute('playsinline', ''); v.loop = true; v.preload = 'auto'; v.src = 'a/st/muses.mp4';
+          try{ var pl = v.play(); if (pl && pl.then) pl.then(function(){ v.pause(); }, function(){}); }catch(e){} primed.muses = v; }
+        boot(); if (api) api.wake(); setTimeout(size, 60);
+      } else { stopAuto(); if (api) api.sleep(); }
+    };
+    onLang(function(){ if (api) api.setLang(LANG); paintCue(curCue); play.textContent = TR(auto ? 'Pause the show' : 'Play the show'); });
+    onFrame(sec, function(t, dt){
+      if (VIEW !== 'stage' || !api) return;
+      if (auto && !lenis) scrollTo(0, (window.scrollY || 0) + dt * (sec.offsetHeight - innerHeight) / 120);
+      var p = prog(); api.setProgress(p); sec.classList.toggle('go', p > 0.01);
+      var b = cueBtns[curCue]; if (b) $('i', b).style.width = (clamp(p * 6 - curCue, 0, 1) * 100).toFixed(1) + '%';
+      api.frame(t, dt);
+      if (t - hudAt > 0.25){ hudAt = t; var inf = api.info(), s1 = inf.bpm + ' BPM · ' + (LANG === 'es' ? 'COMPÁS ' : 'BAR ') + pad(inf.bar, 3); if (s1 !== hudS){ hudS = s1; hudT.textContent = s1; } }
+      if (auto && p >= 0.999) stopAuto();
+    });
+    /* arrastrar para mirar alrededor; con mouse, la cámara sigue un poco al cursor */
+    var drag = null;
+    cv.addEventListener('pointerdown', function(e){ drag = {x: e.clientX, y: e.clientY, id: e.pointerId}; try{ cv.setPointerCapture(e.pointerId); }catch(er){} });
+    cv.addEventListener('pointermove', function(e){
+      if (!api) return;
+      if (drag && drag.id === e.pointerId){ api.look((e.clientX - drag.x) / innerWidth, (e.clientY - drag.y) / innerHeight); drag.x = e.clientX; drag.y = e.clientY; }
+      else if (e.pointerType === 'mouse') api.pointer(e.clientX / innerWidth * 2 - 1, e.clientY / innerHeight * 2 - 1);
+    });
+    function endDrag(){ drag = null; if (api) api.release(); }
+    cv.addEventListener('pointerup', endDrag); cv.addEventListener('pointercancel', endDrag);
+    cv.addEventListener('pointerleave', function(){ if (api) api.pointer(0, 0); });
+    /* los botones de cue saltan a cada momento del show */
+    function secTop(){ return sec.getBoundingClientRect().top + (window.scrollY || 0); }
+    function goCue(i){ var y = secTop() + (sec.offsetHeight - innerHeight) * (i + 0.18) / 6; stopAuto(); if (lenis) lenis.scrollTo(y, {duration: 1.6}); else scrollTo({top: y, behavior: 'smooth'}); }
+    cueBtns.forEach(function(b){ b.addEventListener('click', function(){ goCue(+b.getAttribute('data-c')); }); });
+    /* "Ver el show": baja solo de punta a punta en dos minutos, con la música */
+    function stopAuto(){ if (!auto) return; auto = false; play.setAttribute('aria-pressed', 'false'); play.textContent = TR('Play the show'); if (lenis) lenis.scrollTo(window.scrollY || 0, {immediate: true, force: true}); }
+    play.addEventListener('click', function(){
+      if (auto) return stopAuto();
+      var H = sec.offsetHeight - innerHeight, top = secTop(), p = prog();
+      if (p > 0.97){ p = 0; if (lenis) lenis.scrollTo(top, {immediate: true, force: true}); else scrollTo(0, top); }
+      auto = true; play.setAttribute('aria-pressed', 'true'); play.textContent = TR('Pause the show');
+      if (!soundOn) setSound(true);
+      if (lenis) lenis.scrollTo(top + H, {duration: (1 - p) * 120, easing: function(x){ return x; }, force: true, onComplete: function(){ stopAuto(); }});
+    });
+    ['wheel', 'touchstart', 'keydown'].forEach(function(ev){ window.addEventListener(ev, function(e){ if (auto && VIEW === 'stage' && !(e.target && e.target.closest && e.target.closest('#stgPlay'))) stopAuto(); }, {passive: true}); });
+  });
   onFrame(null, function(){
     if (entered) return;
     var p = clamp(loadP.relic * 0.6 + loadP.muse * 0.2 + loadP.fonts * 0.1 + clamp((performance.now() - introT0) / 2500, 0, 1) * 0.1, 0, 1);
@@ -1589,14 +1776,19 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     onFrame(sched, function(){ var r = sched.getBoundingClientRect(); tl.style.transform = 'scaleY(' + clamp((innerHeight * 0.7 - r.top) / r.height, 0, 1).toFixed(4) + ')'; });
   });
 
-  /* ——— (II) wallpapers: Payhip cobra (PayPal o tarjeta) y envía el .zip al correo del comprador.
-     Código de cada producto de Payhip (payhip.com/b/XXXX); el botón va directo al checkout. Vacío = abre el DM. ——— */
+  /* ——— (II) wallpapers: Lemon Squeezy cobra (tarjeta, PayPal, Google Pay) y envía el .zip al correo del comprador.
+     PayPal no deja cobrar entre cuentas de Colombia, así que Payhip+PayPal solo sirve a compradores de fuera.
+     LEMON_LIVE = true cuando Lemon Squeezy apruebe la tienda (sale del modo de prueba); mientras, quedan los links de Payhip.
+     Sin link = el botón copia el mensaje y abre el DM. ——— */
+  var LEMON_LIVE = false;
+  var LEMON = {'cursed-new-york': '110245da-9434-463e-9a1b-5f2ab499b2df', 'apocalypse': 'fe463d94-f9fd-4cd2-8800-9ea27d93829d', 'editorial': '42877a57-b936-47d3-8586-afe6cf6e3419', 'future-asia': '2416c17b-a861-4398-970d-37c967f6343d', 'infernal-runway': 'ce11fc9b-7d52-43cd-bf08-86ae43b38da5', 'dark-eden': 'ca308bc2-d62f-45e4-b9d4-515be38da3aa'};
   var PAYHIP = {'cursed-new-york': '3ZWjT', 'apocalypse': 'tnDGV', 'editorial': 'wfLZq', 'future-asia': 'AD8wo', 'infernal-runway': 'f8JAn', 'dark-eden': 'sNZR1'};
   safe('wallpapers', function(){
     var sec = $('#wallpapers'), cards = $$('.wp', sec);
     $$('[data-wp-buy]', sec).forEach(function(a){
-      var k = a.getAttribute('data-wp-buy'), code = PAYHIP[k];
-      if (code){ a.href = 'https://payhip.com/buy?link=' + code; return; }
+      var k = a.getAttribute('data-wp-buy');
+      if (LEMON_LIVE && LEMON[k]){ a.href = 'https://darkmatters.lemonsqueezy.com/checkout/buy/' + LEMON[k]; return; }
+      if (PAYHIP[k]){ a.href = 'https://payhip.com/buy?link=' + PAYHIP[k]; return; }
       a.addEventListener('click', function(){ var name = $('h4', a.closest('.wp')).textContent; try{ navigator.clipboard.writeText(TR('Hi Dark Matter, I would like the wallpapers') + ' ' + name + ' ($2).'); }catch(e){} });
     });
     near(sec, function(){
@@ -1616,7 +1808,8 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
       commission: 'Hi Dark Matter, I would like to commission a show.\nProject: [music video / fashion film / campaign]\nTimeline: [date]',
       casting: 'Hi Dark Matter, I would like to be considered as a muse.\nWhy me: [one line]',
       press: 'Hi Dark Matter, I am writing about couture and horror for [outlet].\nCould we talk?',
-      watch: 'Hi Dark Matter. Just watching. Keep the signal on.'
+      watch: 'Hi Dark Matter. Just watching. Keep the signal on.',
+      stage: 'Hi Dark Matter, I would like visuals for a show.\nShow: [tour / festival / fashion show / launch]\nScreens: [layout or link]\nDate: [date]'
     };
     var step = 1, choice = '', steps = $$('.ik-step'), next = $('#ikNext'), back = $('#ikBack'), note = $('#ikNote'), name = $('#ikName'), msg = $('#ikMsg');
     function show(){ steps.forEach(function(s){ s.hidden = +s.getAttribute('data-step') !== step; }); back.hidden = step === 1; next.textContent = step === 3 ? 'Copy & open DM →' : 'Next →'; note.textContent = ''; }
@@ -1634,7 +1827,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     show();
     /* encargos (vista 2): copia el mensaje y abre el DM */
     $$('[data-dm]').forEach(function(b){ b.addEventListener('click', function(){
-      var cm = $('#cmNote'), text = TR(MSG[b.getAttribute('data-dm')]);
+      var cm = (b.parentNode && b.parentNode.querySelector('.note')) || $('#cmNote'), text = TR(MSG[b.getAttribute('data-dm')]);
       function ok(){ cm.textContent = TR('Copied. Paste it in the DM.'); } function fail(){ cm.textContent = TR('Open instagram.com/darkmatter.tm'); }
       try{ if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fail); else fail(); }catch(e){ fail(); }
     }); });
@@ -1779,6 +1972,7 @@ html.es-pending .intro-ui,html.es-pending .fx{visibility:hidden}
     }
     setLang(pref); root.classList.remove('es-pending');
     if (/^#(season|temporada)$/i.test(location.hash)) setView('season');
+    else if (/^#(live|escenario)$/i.test(location.hash)) setView('stage');
   });
 })();
 </script>
