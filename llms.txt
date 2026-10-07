@@ -2,7 +2,7 @@
 
 > Dark Matter™ is a haute couture house from another reality. Fashion first, with horror only as the turn. Season 01 runs from 30 September to 28 November 2026: nine collections, twenty-seven shows, a new look every night until the finale.
 
-The site is one page in English, with a Spanish version behind the EN/ES switch. It has two views: The films and The season. How the house makes its work is not public.
+The site is one page in English, with a Spanish version behind the EN/ES switch. It has three views: The films, The stage and The wallpapers. How the house makes its work is not public.
 
 ## The films
 - [The muses](https://darkmatters.site/#hall): a hall of screens where the house muses wait: The Silver Bishop, The Red Bride, The Albino and The Machine.
@@ -13,9 +13,12 @@ The site is one page in English, with a Spanish version behind the EN/ES switch.
 - [The encounter](https://darkmatters.site/#enc): someone in the audience has not looked at the runway once. Includes a short game, Hold her gaze.
 - [The exit](https://darkmatters.site/#exit): questions, a contact form that replies by DM, and the finale.
 
-## The season
-- [Season 01 program](https://darkmatters.site/#season): nine collections, twenty-seven shows, sixty nights.
-- [Wallpapers](https://darkmatters.site/#wallpapers): six phone wallpapers (1290 × 2796) from each world, 2 USD per world, sent to your email after payment. Worlds: Cursed New York, Apocalypse, Editorial and Period, Future Asia, Infernal Runway, Dark Eden.
+## The stage
+- [The stage](https://darkmatters.site/#live): a show in 3D with the house looks on the screens of an arena. The house makes stage visuals for tours, festivals, fashion shows and launches; quoted by DM.
+
+## The wallpapers
+- [The wallpapers](https://darkmatters.site/#wallpapers): ten packs of 32 wallpapers each, for phone (6 lock + 6 home, 1440 × 3120), iPad (3, 2048 × 2732), desktop (4 scenes in 5K, 4K, Full HD and MacBook) and ultrawide (5120 × 1440), with a palette and an install guide. 6 USD per pack, sent to your email after payment. Packs: N° 01 Noir d'Or, 02 Rouge, 03 Ivoire, 04 Possessed, 05 Voile, 06 Inferno, 07 Glacier, 08 Chrome, 09 Or Liquide, 10 Cathédrale.
+- [The complete collection](https://darkmatters.site/#collection): all ten packs, 320 wallpapers, 29 USD.
 - [Commissions](https://darkmatters.site/#comm): music videos, fashion films and campaign worlds in the house style. Every commission is quoted by DM.
 
 ## Contact
